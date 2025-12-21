@@ -1,0 +1,15 @@
+.neural-network-mesh {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neural-network-mesh {
+    opacity: 0.25;
+  }
+}

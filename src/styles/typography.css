@@ -1,0 +1,25 @@
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text-main);
+  background: var(--bg-main);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  color: var(--text-muted);
+  max-width: 65ch;
+}

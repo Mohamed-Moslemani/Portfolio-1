@@ -1,0 +1,17 @@
+{
+  "name": "M. Moslemani Portfolio",
+  "short_name": "Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#3b82f6",
+  "description": "Personal portfolio and blog by M. Moslemani",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

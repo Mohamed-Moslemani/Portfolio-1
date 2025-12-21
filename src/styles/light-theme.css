@@ -1,0 +1,150 @@
+/* Light Theme Variables */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --border-color: rgba(59, 130, 246, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] body {
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] section {
+  background: transparent;
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="light"] .home-title,
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .home-subtitle,
+[data-theme="light"] p {
+  color: var(--text-secondary);
+}
+
+/* Cards in light mode */
+[data-theme="light"] .work-item,
+[data-theme="light"] .experience-card,
+[data-theme="light"] .interest-card,
+[data-theme="light"] .contact-card,
+[data-theme="light"] .philosophy-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .work-item:hover,
+[data-theme="light"] .experience-card:hover,
+[data-theme="light"] .interest-card:hover,
+[data-theme="light"] .contact-card:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+}
+
+/* Tags in light mode */
+[data-theme="light"] .home-tags span,
+[data-theme="light"] .work-focus-tag {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e40af;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Buttons in light mode */
+[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="light"] .btn-secondary {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e40af;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="light"] .btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+/* Timeline in light mode */
+[data-theme="light"] .experience-timeline::before {
+  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.3), transparent);
+}
+
+[data-theme="light"] .experience-timeline-dot {
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Floating elements in light mode */
+[data-theme="light"] .floating-particle {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent);
+}
+
+/* Cube canvas in light mode */
+[data-theme="light"] .home-cube canvas {
+  opacity: 0.7;
+}
+
+/* Navigation links in light mode */
+[data-theme="light"] .nav-links a {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .nav-links a:hover {
+  color: #3b82f6;
+}
+
+[data-theme="light"] .nav-links a.active {
+  color: #3b82f6;
+}
+
+/* Gradient text remains visible in light mode */
+[data-theme="light"] .gradient-text {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Interest cards in light mode */
+[data-theme="light"] .interest-card.active {
+  border-color: var(--card-color);
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Contact card hover states */
+[data-theme="light"] .contact-card:hover .contact-icon {
+  transform: scale(1.2);
+}
+
+/* Smooth transition between themes */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Exception for animations that should not transition */
+.typing,
+.floating-particle,
+.experience-timeline-dot::after,
+canvas,
+.theme-toggle-thumb {
+  transition: none;
+}

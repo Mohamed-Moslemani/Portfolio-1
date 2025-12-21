@@ -1,0 +1,97 @@
+/* Page Section Transitions */
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: sectionFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes sectionFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger section animations */
+section:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+section:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+section:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+section:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+section:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Smooth navigation transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced scroll padding for smooth navigation */
+html {
+  scroll-padding-top: 90px;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  section {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Intersection-based section reveal on scroll */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth transitions for page elements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* Exception for elements that should not transition */
+.typing,
+.floating-particle,
+.experience-timeline-dot::after,
+canvas,
+.theme-toggle-thumb,
+.loading-progress,
+.lazy-image {
+  transition: none;
+}
+
+@media (max-width: 768px) {
+  section {
+    animation-duration: 0.6s;
+  }
+}

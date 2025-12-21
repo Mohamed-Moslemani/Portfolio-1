@@ -1,0 +1,12 @@
+:root {
+  --bg-main: #0b1220;
+  --bg-soft: #111827;
+
+  --text-main: #e5e7eb;
+  --text-muted: #94a3b8;
+
+  --accent-primary: #3b82f6;
+  --accent-secondary: #5eead4;
+
+  --max-width: 1100px;
+}

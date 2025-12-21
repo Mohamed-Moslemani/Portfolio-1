@@ -1,0 +1,75 @@
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  border: 1px solid rgba(59, 130, 246, 0.5);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, #60a5fa, #93c5fd);
+}
+
+.back-to-top:active {
+  transform: translateY(-2px);
+}
+
+.back-to-top svg {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.back-to-top:hover svg {
+  animation: none;
+  transform: translateY(-2px);
+}
+
+/* Light theme */
+[data-theme="light"] .back-to-top {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="light"] .back-to-top:hover {
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.6);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+  }
+}

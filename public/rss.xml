@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>M. Moslemani Blog</title>
+    <link>https://mmoslemani.com/writing</link>
+    <description>Essays on AI systems and ML in production.</description>
+    <item>
+      <title>Designing Agentic Systems That Scale</title>
+      <link>https://mmoslemani.com/writing/agentic-systems-architecture</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 GMT</pubDate>
+      <description>A practical architecture for production-grade agentic systems, from orchestration to evaluation.</description>
+    </item>
+    <item>
+      <title>ML Systems: From Notebooks to Production</title>
+      <link>https://mmoslemani.com/writing/ml-systems-in-production</link>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+      <description>Bridging the gap between exploration and robust, maintainable ML services.</description>
+    </item>
+    <item>
+      <title>Turning Research into Impact</title>
+      <link>https://mmoslemani.com/writing/research-to-impact</link>
+      <pubDate>Fri, 18 Apr 2025 00:00:00 GMT</pubDate>
+      <description>A framework to translate research insights into real-world systems.</description>
+    </item>
+  </channel>
+</rss>

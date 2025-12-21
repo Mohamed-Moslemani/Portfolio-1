@@ -1,0 +1,139 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section {
+  padding: 8rem 1.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  background: #0b1220;
+  background-image:
+    radial-gradient(600px 600px at 15% 20%, rgba(59, 130, 246, 0.12), transparent 60%),
+    radial-gradient(500px 500px at 85% 10%, rgba(14, 165, 233, 0.1), transparent 55%),
+    radial-gradient(700px 700px at 70% 70%, rgba(59, 130, 246, 0.08), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Keyboard Navigation & Focus States */
+*:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Enhanced focus for interactive elements */
+button:focus-visible,
+a:focus-visible,
+.work-item:focus-visible,
+.experience-card:focus-visible,
+.interest-card:focus-visible,
+.contact-card:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+/* Skip to content link for screen readers */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Improve keyboard navigation for cards */
+.work-item:focus,
+.experience-card:focus,
+.interest-card:focus {
+  transform: translateY(-8px);
+  border-color: rgba(59, 130, 246, 0.8);
+}
+
+/* Button focus states */
+.btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Navigation link focus */
+.nav-links a:focus-visible {
+  background: rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
+}
+
+/* Responsive section padding */
+@media (max-width: 768px) {
+  section {
+    padding: 5rem 1.25rem;
+  }
+
+  html {
+    scroll-padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 4rem 1rem;
+  }
+
+  html {
+    scroll-padding-top: 60px;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+}
