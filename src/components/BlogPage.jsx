@@ -207,19 +207,14 @@ export default function BlogPage() {
       <div className="reading-progress" aria-hidden="true">
         <div className="reading-progress-bar" style={{ width: `${progress * 100}%` }} />
       </div>
+
       <header className="blog-header">
-        <div className="blog-header-top">
-          <h1>{post.title}</h1>
-          <div className="blog-share-actions" aria-label="Share actions">
-            <button type="button" className="btn-ghost" onClick={onCopyLink}>Copy link</button>
-            <button type="button" className="btn-ghost" onClick={onShare}>Share</button>
-            {shareMessage && <span className="share-hint">{shareMessage}</span>}
-          </div>
-        </div>
+        <h1>{post.title}</h1>
         <p className="blog-meta">
           Published {new Date(post.date).toLocaleDateString()} • Last updated {new Date(post.updated || post.date).toLocaleDateString()} • {readingTimeMinutes} min read
         </p>
       </header>
+
       {post.cover && (
         <div className="blog-cover-wrap">
           <img
@@ -231,19 +226,33 @@ export default function BlogPage() {
           />
         </div>
       )}
-      {toc.length > 0 && (
-        <nav className="blog-toc" aria-label="Table of contents">
-          {toc.map((t) => (
-            <a key={t.id} href={`#${t.id}`} className={`toc-item level-${t.level}`}>{t.text}</a>
-          ))}
-        </nav>
-      )}
 
-      <div ref={contentRef} className="blog-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div className="blog-layout">
+        <main className="blog-main">
+          <div ref={contentRef} className="blog-content" dangerouslySetInnerHTML={{ __html: post.content }} />
 
-      <footer className="blog-footer">
-        <Link to="/" className="btn btn-secondary">Back to Portfolio</Link>
-      </footer>
+          <footer className="blog-footer">
+            <Link to="/" className="btn btn-secondary">Back to Portfolio</Link>
+          </footer>
+        </main>
+
+        <aside className="blog-aside" aria-label="Article tools and table of contents">
+          <div className="blog-share-actions" aria-label="Share actions">
+            <button type="button" className="btn-ghost" onClick={onShare}>Share</button>
+            <button type="button" className="btn-ghost" onClick={onCopyLink}>Copy link</button>
+            {shareMessage && <span className="share-hint">{shareMessage}</span>}
+          </div>
+
+          {toc.length > 0 && (
+            <nav className="blog-toc" aria-label="Table of contents">
+              <h3 className="toc-title">On this page</h3>
+              {toc.map((t) => (
+                <a key={t.id} href={`#${t.id}`} className={`toc-item level-${t.level}`}>{t.text}</a>
+              ))}
+            </nav>
+          )}
+        </aside>
+      </div>
     </article>
   );
 }

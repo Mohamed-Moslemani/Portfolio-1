@@ -11,7 +11,7 @@ import BlogLinkPreview from "./components/BlogLinkPreview";
 
 import { useTheme } from "./hooks/useTheme";
 import Home from "./sections/Home";
-import Work from "./sections/Work";
+const Work = lazy(() => import("./sections/Work"));
 import Experience from "./sections/Experience";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
