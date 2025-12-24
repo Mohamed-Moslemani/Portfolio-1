@@ -5,6 +5,7 @@ export default function RotatingCube() {
   const mouseRef = useRef({ x: 0, y: 0, hovering: false });
   const velRef = useRef({ x: 0.004, y: 0.003 });
   const baseSpeedRef = useRef(0.006);
+  const runningRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -14,6 +15,17 @@ export default function RotatingCube() {
     let animationId;
     let rotationX = 0;
     let rotationY = 0;
+
+    // Adaptive sizing / DPR for performance
+    const isSmall = window.innerWidth < 768;
+    const rawDPR = window.devicePixelRatio || 1;
+    const DPR = Math.min(rawDPR, isSmall ? 1.2 : Math.max(1, rawDPR));
+    const DISPLAY_SIZE = Math.min(window.innerWidth * 0.85, 900);
+    const INTERNAL = Math.round(DISPLAY_SIZE * DPR);
+    canvas.width = INTERNAL;
+    canvas.height = INTERNAL;
+    canvas.style.width = `${DISPLAY_SIZE}px`;
+    canvas.style.height = `${DISPLAY_SIZE}px`;
 
     const width = canvas.width;
     const height = canvas.height;
@@ -175,9 +187,29 @@ export default function RotatingCube() {
     const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) {
       baseSpeedRef.current = 0.002;
+      // reduce visual complexity when user requests reduced motion
     }
 
-    const animate = () => {
+    // Frame capping for smoother perceived performance
+    const targetFPS = isSmall ? 40 : 60;
+    const minFrameTime = 1000 / targetFPS;
+    let lastFrameTime = performance.now();
+
+    // Pause animation when canvas is not visible (saves CPU)
+    runningRef.current = true;
+    const io = new IntersectionObserver((entries) => {
+      const e = entries[0];
+      runningRef.current = e.isIntersecting;
+    }, { threshold: 0.1 });
+    io.observe(canvas);
+
+    const animate = (now) => {
+      animationId = requestAnimationFrame(animate);
+      if (!runningRef.current) return; // skip rendering when offscreen
+      const dt = now - lastFrameTime;
+      if (dt < minFrameTime) return; // throttle
+      lastFrameTime = now;
+
       ctx.clearRect(0, 0, width, height);
 
       // Always rotate with current velocity
@@ -234,27 +266,34 @@ export default function RotatingCube() {
         const [start, end] = edge;
         const p1 = projectedVertices[start];
         const p2 = projectedVertices[end];
-
-        ctx.strokeStyle = `rgba(93, 165, 254, ${0.6 + (p1[2] + p2[2]) / 8})`;
-        ctx.lineWidth = 2;
+        // avoid drawing very faint/hidden edges to reduce GPU work
+        const alpha = 0.5 + ((p1[2] + p2[2]) / 8);
+        if (alpha < 0.08) return;
+        ctx.strokeStyle = `rgba(93, 165, 254, ${Math.min(alpha, 0.9)})`;
+        ctx.lineWidth = DPR < 1.5 ? 1 : 1.5;
         ctx.beginPath();
         ctx.moveTo(p1[0], p1[1]);
         ctx.lineTo(p2[0], p2[1]);
         ctx.stroke();
       });
 
-      // Draw vertices
-      projectedVertices.forEach((p) => {
-        ctx.fillStyle = `rgba(147, 197, 253, ${0.7 + p[2] / 8})`;
+      // Draw vertices (skip some on small screens)
+      const vertexRadius = DPR < 1.5 ? 2 : 3;
+      for (let i = 0; i < projectedVertices.length; i++) {
+        const p = projectedVertices[i];
+        const depthFactor = (p[2] + 1) / 2;
+        const alpha = 0.4 + depthFactor * 0.6;
+        if (alpha < 0.2 && isSmall) continue; // skip faint small points on mobile
+        ctx.fillStyle = `rgba(147, 197, 253, ${Math.min(alpha, 0.95)})`;
         ctx.beginPath();
-        ctx.arc(p[0], p[1], 3, 0, Math.PI * 2);
+        ctx.arc(p[0], p[1], vertexRadius, 0, Math.PI * 2);
         ctx.fill();
-      });
+      }
 
-      animationId = requestAnimationFrame(animate);
+      // animationId is managed by outer requestAnimationFrame loop
     };
 
-    animate();
+    animationId = requestAnimationFrame(animate);
 
     const handleMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect();
@@ -276,8 +315,16 @@ export default function RotatingCube() {
     canvas.addEventListener('mouseenter', handleEnter);
     canvas.addEventListener('mouseleave', handleLeave);
 
+    // Visibility change: pause animations when tab hidden
+    const onVisibility = () => {
+      runningRef.current = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', onVisibility, { passive: true });
+
     return () => {
       cancelAnimationFrame(animationId);
+      io.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseenter', handleEnter);
       canvas.removeEventListener('mouseleave', handleLeave);

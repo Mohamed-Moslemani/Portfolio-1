@@ -4,7 +4,8 @@ export default function ConstellationGraph() {
   const canvasRef = useRef(null);
   const starsRef = useRef([]);
   const animationRef = useRef(null);
-  const prefersReducedMotion = useRef(false);
+  const lastFrameRef = useRef(0);
+  const visibleRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,6 +16,13 @@ export default function ConstellationGraph() {
     let height = canvas.clientHeight;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const connectionDistance = Math.max(width, height) * 0.18;
+    const connectionDistSq = connectionDistance * connectionDistance;
+
+    let backgroundGradient = null;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     const resize = () => {
       width = canvas.clientWidth;
@@ -22,31 +30,8 @@ export default function ConstellationGraph() {
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
 
-    const initStars = () => {
-      const count = 28;
-      starsRef.current = new Array(count).fill(0).map(() => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 1.35 + 0.65,
-        brightness: Math.random() * 0.35 + 0.55,
-        vx: (Math.random() - 0.5) * 0.12,
-        vy: (Math.random() - 0.5) * 0.12,
-      }));
-    };
-
-    const distSq = (x1, y1, x2, y2) => {
-      const dx = x2 - x1;
-      const dy = y2 - y1;
-      return dx * dx + dy * dy;
-    };
-
-    const draw = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      // Subtle background
-      const grd = ctx.createRadialGradient(
+      backgroundGradient = ctx.createRadialGradient(
         width / 2,
         height / 2,
         0,
@@ -54,19 +39,36 @@ export default function ConstellationGraph() {
         height / 2,
         Math.max(width, height) / 1.3
       );
-      grd.addColorStop(0, "rgba(59, 130, 246, 0.02)");
-      grd.addColorStop(1, "rgba(30, 58, 138, 0.04)");
-      ctx.fillStyle = grd;
+      backgroundGradient.addColorStop(0, "rgba(59, 130, 246, 0.02)");
+      backgroundGradient.addColorStop(1, "rgba(30, 58, 138, 0.04)");
+    };
+
+    const initStars = () => {
+      const count = 28;
+      starsRef.current = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 1.35 + 0.65,
+        brightness: Math.random() * 0.35 + 0.55,
+        vx: (Math.random() - 0.5) * 0.08,
+        vy: (Math.random() - 0.5) * 0.08,
+      }));
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      ctx.fillStyle = backgroundGradient;
       ctx.fillRect(0, 0, width, height);
 
-      const connectionDistSq = connectionDistance * connectionDistance;
-
-      // Draw connections
       for (let i = 0; i < starsRef.current.length; i++) {
+        const s1 = starsRef.current[i];
+
         for (let j = i + 1; j < starsRef.current.length; j++) {
-          const s1 = starsRef.current[i];
           const s2 = starsRef.current[j];
-          const d = distSq(s1.x, s1.y, s2.x, s2.y);
+          const dx = s2.x - s1.x;
+          const dy = s2.y - s1.y;
+          const d = dx * dx + dy * dy;
 
           if (d < connectionDistSq) {
             const dist = Math.sqrt(d);
@@ -82,47 +84,63 @@ export default function ConstellationGraph() {
         }
       }
 
-      // Draw stars
-      starsRef.current.forEach((star) => {
-        ctx.fillStyle = `rgba(219, 234, 254, ${star.brightness})`;
+      starsRef.current.forEach((s) => {
+        ctx.fillStyle = `rgba(219, 234, 254, ${s.brightness})`;
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();
 
-        // Small core highlight
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.brightness * 0.55})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${s.brightness * 0.55})`;
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r * 0.4, 0, Math.PI * 2);
+        ctx.arc(s.x, s.y, s.r * 0.4, 0, Math.PI * 2);
         ctx.fill();
       });
     };
 
-    const step = () => {
-      draw();
-      animationRef.current = requestAnimationFrame(step);
+    const update = () => {
+      starsRef.current.forEach((s) => {
+        s.x += s.vx;
+        s.y += s.vy;
+
+        if (s.x < 0 || s.x > width) s.vx *= -1;
+        if (s.y < 0 || s.y > height) s.vy *= -1;
+      });
     };
 
-    const onResize = () => {
-      resize();
-      initStars();
-      draw();
+    const loop = (t) => {
+      if (!visibleRef.current || prefersReducedMotion) {
+        animationRef.current = requestAnimationFrame(loop);
+        return;
+      }
+
+      if (t - lastFrameRef.current > 32) {
+        update();
+        draw();
+        lastFrameRef.current = t;
+      }
+
+      animationRef.current = requestAnimationFrame(loop);
     };
 
-    const init = () => {
-      resize();
-      initStars();
-      draw();
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
 
-    prefersReducedMotion.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    resize();
+    initStars();
+    draw();
 
-    init();
-    step();
-    window.addEventListener("resize", onResize);
+    observer.observe(canvas);
+    window.addEventListener("resize", resize);
+    animationRef.current = requestAnimationFrame(loop);
 
     return () => {
-      window.removeEventListener("resize", onResize);
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      window.removeEventListener("resize", resize);
+      observer.disconnect();
+      cancelAnimationFrame(animationRef.current);
     };
   }, []);
 

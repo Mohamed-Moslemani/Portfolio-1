@@ -1,48 +1,57 @@
-import { useEffect } from 'react';
-import '../styles/custom-cursor.css';
+import { useEffect } from "react";
+import "../styles/custom-cursor.css";
 
 export default function CustomCursor() {
   useEffect(() => {
-    const cursor = document.createElement('div');
-    const cursorBorder = document.createElement('div');
+    // Disable on touch devices
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
-    cursor.className = 'custom-cursor';
-    cursorBorder.className = 'custom-cursor-border';
+    const cursor = document.createElement("div");
+    const border = document.createElement("div");
+
+    cursor.className = "custom-cursor";
+    border.className = "custom-cursor-border";
 
     document.body.appendChild(cursor);
-    document.body.appendChild(cursorBorder);
+    document.body.appendChild(border);
 
-    const moveCursor = (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+    let x = 0;
+    let y = 0;
+    let raf = null;
 
-      cursorBorder.style.left = e.clientX + 'px';
-      cursorBorder.style.top = e.clientY + 'px';
+    const render = () => {
+    cursor.style.transform = `translate3d(${x - 4}px, ${y - 4}px, 0)`;
+    border.style.transform = `translate3d(${x - 15}px, ${y - 15}px, 0)`;
+  };
+
+
+    const move = (e) => {
+      x = e.clientX;
+      y = e.clientY;
+
+      if (!raf) {
+        raf = requestAnimationFrame(render);
+      }
     };
 
-    const hoverElements = () => {
-      const interactive = document.querySelectorAll('a, button, .interactive');
-      
-      interactive.forEach((el) => {
-        el.addEventListener('mouseenter', () => {
-          cursor.classList.add('active');
-          cursorBorder.classList.add('active');
-        });
+    const onHover = (e) => {
+      const isInteractive = e.target.closest(
+        "a, button, .interactive"
+      );
 
-        el.addEventListener('mouseleave', () => {
-          cursor.classList.remove('active');
-          cursorBorder.classList.remove('active');
-        });
-      });
+      cursor.classList.toggle("active", !!isInteractive);
+      border.classList.toggle("active", !!isInteractive);
     };
 
-    document.addEventListener('mousemove', moveCursor);
-    hoverElements();
+    document.addEventListener("mousemove", move, { passive: true });
+    document.addEventListener("mouseover", onHover);
 
     return () => {
-      document.removeEventListener('mousemove', moveCursor);
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseover", onHover);
       cursor.remove();
-      cursorBorder.remove();
+      border.remove();
+      if (raf) cancelAnimationFrame(raf);
     };
   }, []);
 
