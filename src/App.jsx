@@ -5,8 +5,9 @@ import BackToTop from "./components/BackToTop";
 import LoadingAnimation from "./components/LoadingAnimation";
 import Footer from "./components/Footer";
 import BlogLinkPreview from "./components/BlogLinkPreview";
-import AmbientAnimation from "./components/AmbientAnimation";
-import ConstellationGraph from "./components/ConstellationGraph";
+import { Suspense, lazy } from "react";
+const AmbientAnimation = lazy(() => import("./components/AmbientAnimation"));
+const ConstellationGraph = lazy(() => import("./components/ConstellationGraph"));
 import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { useTheme } from "./hooks/useTheme";
@@ -52,8 +53,10 @@ export default function App() {
     <>
       <LoadingAnimation />
       <CustomCursor />
-      <AmbientAnimation />
-      <ConstellationGraph />
+      <Suspense fallback={null}>
+        <AmbientAnimation />
+        <ConstellationGraph />
+      </Suspense>
       <BlogLinkPreview />
       <Navbar activeSection={activeSection} theme={theme} toggleTheme={toggleTheme} />
       <BackToTop />
