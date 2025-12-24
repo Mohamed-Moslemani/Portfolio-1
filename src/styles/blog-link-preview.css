@@ -4,6 +4,28 @@
   animation: previewFadeIn 0.2s ease-out;
 }
 
+.blog-link-preview {
+  --r-x: 50%;
+  --r-y: 50%;
+  --r-opacity: 0;
+}
+
+.blog-link-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--r-x) var(--r-y), rgba(99,102,241,0.14) 0%, rgba(59,130,246,0.06) 25%, transparent 50%);
+  opacity: var(--r-opacity);
+  transition: opacity 260ms ease-out, background-position 180ms ease-out;
+  border-radius: 10px;
+  mix-blend-mode: screen;
+}
+
+.blog-link-preview.reduced-motion::before {
+  display: none;
+}
+
 @keyframes previewFadeIn {
   from {
     opacity: 0;

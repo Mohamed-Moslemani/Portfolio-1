@@ -11,7 +11,6 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
   const [writingOpen, setWritingOpen] = useState(false);
   const [isNavHidden, setIsNavHidden] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const writingRef = useRef(null);
   const dropdownRef = useRef(null);
   const openTimeout = useRef(null);
@@ -31,7 +30,6 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
     closeTimeout.current = setTimeout(() => setWritingOpen(false), 120);
   };
   const toggleWriting = () => setWritingOpen((v) => !v);
-  const toggleMobile = () => setMobileOpen((v) => !v);
 
   const onWritingKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -66,17 +64,6 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
       document.removeEventListener('touchstart', onDocClick);
     };
   }, [writingOpen]);
-
-  // Close mobile menu when clicking outside or on route change
-  useEffect(() => {
-    const onDocClick = (e) => {
-      if (!mobileOpen) return;
-      const target = e.target;
-      if (navbarRef.current && !navbarRef.current.contains(target)) setMobileOpen(false);
-    };
-    document.addEventListener('mousedown', onDocClick);
-    return () => document.removeEventListener('mousedown', onDocClick);
-  }, [mobileOpen]);
 
   // Scroll hide effect
   useEffect(() => {
@@ -113,98 +100,101 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
   };
 
   return (
-    <nav ref={navbarRef} className={`navbar ${isNavHidden ? 'nav-hidden' : ''} ${mobileOpen ? 'mobile-open' : ''}`} role="navigation" aria-label="Main navigation">
+    <nav ref={navbarRef} className={`navbar ${isNavHidden ? 'nav-hidden' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="nav-inner">
-        <div className="nav-left">
-          <Link to="/" className="nav-logo" aria-label="Home - M. Moslemani" onClick={() => { onLogoClick(); setMobileOpen(false); }}>
-            <span className="logo-m logo-m-1" aria-hidden="true">M</span>
-            <span className="logo-m logo-m-2" aria-hidden="true">M</span>
-            <span className="logo-slash" aria-hidden="true">/</span>
-          </Link>
-        </div>
+        <Link to="/" className="nav-logo" aria-label="Home - M. Moslemani" onClick={onLogoClick}>
+          <span className="logo-m logo-m-1" aria-hidden="true">M</span>
+          <span className="logo-m logo-m-2" aria-hidden="true">M</span>
+          <span className="logo-slash" aria-hidden="true">/</span>
+        </Link>
 
-        <button className="nav-toggle" aria-label="Toggle menu" aria-expanded={mobileOpen} onClick={toggleMobile}>
-          <span className="bar" aria-hidden="true"></span>
-          <span className="bar" aria-hidden="true"></span>
-          <span className="bar" aria-hidden="true"></span>
-        </button>
-
-        <div className="nav-center">
-          <div className={`nav-links ${mobileOpen ? 'open' : ''}`} role="menubar">
-            <a href="#work" className={activeSection === "work" ? "active" : ""} role="menuitem" aria-current={activeSection === "work" ? "page" : undefined}>
-              <span>Work</span>
-            </a>
-            <a href="#experience" className={activeSection === "experience" ? "active" : ""} role="menuitem" aria-current={activeSection === "experience" ? "page" : undefined}>
-              <span>Experience</span>
-            </a>
-            <div
-              className="nav-writing"
-              role="menuitem"
-              aria-haspopup="true"
-              aria-expanded={writingOpen ? "true" : "false"}
-              tabIndex={0}
-              onMouseEnter={openWriting}
-              onMouseLeave={closeWriting}
-              onFocus={openWriting}
-              onKeyDown={onWritingKeyDown}
-              onClick={toggleWriting}
-              ref={writingRef}
-            >
-              <span>Blogs</span>
-              <span className={`nav-caret ${writingOpen ? 'open' : ''}`} aria-hidden="true">▾</span>
-              <div ref={dropdownRef} className={`nav-dropdown ${writingOpen ? 'open' : ''}`} role="menu" aria-label="Available blogs">
-                <div className="nav-backdrop" aria-hidden="true" onClick={closeWriting}></div>
+        <div className="nav-links" role="menubar">
+          <a href="#work" className={activeSection === "work" ? "active" : ""} role="menuitem" aria-current={activeSection === "work" ? "page" : undefined}>
+            <span>Work</span>
+          </a>
+          <a href="#experience" className={activeSection === "experience" ? "active" : ""} role="menuitem" aria-current={activeSection === "experience" ? "page" : undefined}>
+            <span>Experience</span>
+          </a>
+          <div
+            className="nav-writing"
+            role="menuitem"
+            aria-haspopup="true"
+            aria-expanded={writingOpen ? "true" : "false"}
+            tabIndex={0}
+            onMouseEnter={openWriting}
+            onMouseLeave={closeWriting}
+            onFocus={openWriting}
+            onKeyDown={onWritingKeyDown}
+            onClick={toggleWriting}
+            ref={writingRef}
+          >
+            <span>Blogs</span>
+            <span className={`nav-caret ${writingOpen ? 'open' : ''}`} aria-hidden="true">▾</span>
+            <div ref={dropdownRef} className={`nav-dropdown ${writingOpen ? 'open' : ''}`} role="menu" aria-label="Available blogs">
+              <div className="nav-backdrop" aria-hidden="true" onClick={closeWriting}></div>
+              <Link
+                to="/writing"
+                role="menuitem"
+                className="nav-dropdown-item nav-dropdown-viewall"
+                onClick={() => {
+                  trackEvent({ action: 'nav_blog_index', category: 'navigation', label: 'view_all' });
+                  closeWriting();
+                }}
+              >
+                <span className="nav-dropdown-title">Browse all blogs</span>
+                <span className="nav-dropdown-date">Browse index</span>
+              </Link>
+              <div className="nav-dropdown-separator" aria-hidden="true"></div>
+              {featuredPosts.map((post) => (
                 <Link
-                  to="/writing"
+                  key={post.slug}
+                  to={`/writing/${post.slug}`}
                   role="menuitem"
-                  className="nav-dropdown-item nav-dropdown-viewall"
+                  className="nav-dropdown-item"
                   onClick={() => {
-                    trackEvent({ action: 'nav_blog_index', category: 'navigation', label: 'view_all' });
+                    trackEvent({ action: 'nav_blog_click', category: 'navigation', label: post.slug });
                     closeWriting();
                   }}
+                  onMouseEnter={() => {
+                    // Prefetch route components
+                    import('../components/BlogPage');
+                  }}
+                  onKeyDown={(e) => {
+                    const items = dropdownRef.current?.querySelectorAll('.nav-dropdown-item');
+                    if (!items) return;
+                    const arr = Array.from(items);
+                    const idx = arr.indexOf(e.currentTarget);
+                    if (e.key === 'ArrowDown') {
+                      e.preventDefault();
+                      arr[idx + 1]?.focus();
+                    } else if (e.key === 'ArrowUp') {
+                      e.preventDefault();
+                      arr[idx - 1]?.focus();
+                    }
+                  }}
                 >
-                  <span className="nav-dropdown-title">Browse all blogs</span>
-                  <span className="nav-dropdown-date">Browse index</span>
+                  <span className="nav-dropdown-title">{post.title}</span>
+                  <span className="nav-dropdown-date">{new Date(post.date).toLocaleDateString()}</span>
+                  {post.tags?.length ? (
+                    <div className="nav-dropdown-tags" aria-hidden="true">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="nav-dropdown-tag">{tag}</span>
+                      ))}
+                    </div>
+                  ) : null}
                 </Link>
-                <div className="nav-dropdown-separator" aria-hidden="true"></div>
-                {featuredPosts.map((post) => (
-                  <Link
-                    key={post.slug}
-                    to={`/writing/${post.slug}`}
-                    role="menuitem"
-                    className="nav-dropdown-item"
-                    onClick={() => {
-                      trackEvent({ action: 'nav_blog_click', category: 'navigation', label: post.slug });
-                      closeWriting();
-                      setMobileOpen(false);
-                    }}
-                    onMouseEnter={() => {
-                      import('../components/BlogPage');
-                    }}
-                  >
-                    <span className="nav-dropdown-title">{post.title}</span>
-                    <span className="nav-dropdown-date">{new Date(post.date).toLocaleDateString()}</span>
-                    {post.tags?.length ? (
-                      <div className="nav-dropdown-tags" aria-hidden="true">
-                        {post.tags.map((tag) => (
-                          <span key={tag} className="nav-dropdown-tag">{tag}</span>
-                        ))}
-                      </div>
-                    ) : null}
-                  </Link>
-                ))}
-              </div>
+              ))}
             </div>
-            <a href="#about" className={activeSection === "about" ? "active" : ""} role="menuitem" aria-current={activeSection === "about" ? "page" : undefined}>
-              <span>About</span>
-            </a>
-            <a href="#contact" className={activeSection === "contact" ? "active" : ""} role="menuitem" aria-current={activeSection === "contact" ? "page" : undefined}>
-              <span>Contact</span>
-            </a>
           </div>
+          <a href="#about" className={activeSection === "about" ? "active" : ""} role="menuitem" aria-current={activeSection === "about" ? "page" : undefined}>
+            <span>About</span>
+          </a>
+          <a href="#contact" className={activeSection === "contact" ? "active" : ""} role="menuitem" aria-current={activeSection === "contact" ? "page" : undefined}>
+            <span>Contact</span>
+          </a>
         </div>
 
-        <div className="nav-right">
+        <div className="nav-actions">
           <a 
             href="/resume.pdf" 
             download="M_Moslemani_Resume.pdf"

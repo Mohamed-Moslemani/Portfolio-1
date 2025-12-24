@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { posts } from '../posts';
+import AttentionRipple from './AttentionRipple';
 
 export default function BlogLinkPreview() {
   const [preview, setPreview] = useState(null);
@@ -56,6 +57,7 @@ export default function BlogLinkPreview() {
         zIndex: 1000,
       }}
     >
+      <AttentionRipple parentRef={previewRef} />
       <div className="blog-link-preview-card">
         <h4 className="blog-link-preview-title">{preview.title}</h4>
         <p className="blog-link-preview-date">
