@@ -26,8 +26,8 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  width: 520px;
-  height: 520px;
+  width: clamp(360px, 42vw, 640px);
+  height: clamp(360px, 42vw, 640px);
 }
 
 .home-cube canvas {
@@ -189,8 +189,8 @@
 .home-cube::before {
   content: '';
   position: absolute;
-  width: 450px;
-  height: 450px;
+  width: clamp(260px, 32vw, 540px);
+  height: clamp(260px, 32vw, 540px);
   background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
   border-radius: 50%;
   top: 50%;
@@ -222,13 +222,13 @@
   }
 
   .home-cube {
-    width: 500px;
-    height: 500px;
+    width: clamp(340px, 46vw, 560px);
+    height: clamp(340px, 46vw, 560px);
   }
 
   .home-cube::before {
-    width: 350px;
-    height: 350px;
+    width: clamp(240px, 34vw, 460px);
+    height: clamp(240px, 34vw, 460px);
   }
 
   .home-title {
@@ -242,8 +242,8 @@
   }
 
   .home-cube {
-    width: 400px;
-    height: 400px;
+    width: 380px;
+    height: 380px;
   }
 
   .home-title {

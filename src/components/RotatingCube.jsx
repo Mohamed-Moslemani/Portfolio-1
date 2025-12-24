@@ -158,7 +158,7 @@ export default function RotatingCube() {
     };
 
     const project = (point) => {
-      const scale = (width * 0.35) / (point[2] + 4);
+      const scale = (width * 0.55) / (point[2] + 4);
       return [
         centerX + point[0] * scale,
         centerY + point[1] * scale,
@@ -287,8 +287,8 @@ export default function RotatingCube() {
   return (
     <canvas
       ref={canvasRef}
-      width={950}
-      height={950}
+      width={1100}
+      height={1100}
       style={{
         display: 'block',
       }}

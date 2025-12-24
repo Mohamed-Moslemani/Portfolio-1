@@ -19,7 +19,7 @@ export function useTyping(words, speed = 100, pause = 1200) {
 
         if (charIndex + 1 === currentWord.length) {
           setPhase("pausing");
-        }
+        } 
       }, speed);
     }
 

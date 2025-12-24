@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
-import { posts } from "../posts";
+import { posts } from "../posts/index";
 import { trackEvent } from "../utils/analytics";
 import "../styles/blog.css";
 
