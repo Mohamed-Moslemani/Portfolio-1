@@ -2,6 +2,8 @@ import Section from "../components/Section";
 import { useTyping } from "../hooks/useTyping";
 import RotatingCube from "../components/RotatingCube";
 import FloatingElements from "../components/FloatingElements";
+import AIConnectome from "../components/AIConnectome";
+import "../styles/ai-connectome.css";
 
 export default function Home() {
   const typedText = useTyping(
@@ -44,6 +46,7 @@ export default function Home() {
           </div>
           <div className="home-cube" aria-label="Interactive 3D cube visualization" role="img">
             <RotatingCube />
+            <AIConnectome size={260} maxNodes={24} />
           </div>
         </div>
       </div>
