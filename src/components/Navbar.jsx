@@ -9,13 +9,11 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
   const [writingOpen, setWritingOpen] = useState(false);
-  const [isNavHidden, setIsNavHidden] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
   const writingRef = useRef(null);
   const dropdownRef = useRef(null);
   const openTimeout = useRef(null);
   const closeTimeout = useRef(null);
-  const lastScrollY = useRef(0);
   const navbarRef = useRef(null);
 
 
@@ -65,27 +63,6 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
     };
   }, [writingOpen]);
 
-  // Scroll hide effect
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollDelta = Math.abs(currentScrollY - lastScrollY.current);
-
-      if (scrollDelta < 10) return;
-
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        setIsNavHidden(true);
-      } else {
-        setIsNavHidden(false);
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   // Logo easter egg
   const onLogoClick = () => {
     const newClicks = logoClicks + 1;
@@ -100,7 +77,7 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
   };
 
   return (
-    <nav ref={navbarRef} className={`navbar ${isNavHidden ? 'nav-hidden' : ''}`} role="navigation" aria-label="Main navigation">
+    <nav ref={navbarRef} className="navbar" role="navigation" aria-label="Main navigation">
       <div className="nav-inner">
         <Link to="/" className="nav-logo" aria-label="Home - M. Moslemani" onClick={onLogoClick}>
           <span className="logo-m logo-m-1" aria-hidden="true">M</span>
