@@ -2,8 +2,6 @@ import Section from "../components/Section";
 import { useTyping } from "../hooks/useTyping";
 import RotatingCube from "../components/RotatingCube";
 import FloatingElements from "../components/FloatingElements";
-import AIConnectome from "../components/AIConnectome";
-import "../styles/ai-connectome.css";
 
 export default function Home() {
   const typedText = useTyping(

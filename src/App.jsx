@@ -3,7 +3,6 @@ import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-import CustomCursor from "./components/CustomCursor";
 import BackToTop from "./components/BackToTop";
 import LoadingAnimation from "./components/LoadingAnimation";
 import Footer from "./components/Footer";
