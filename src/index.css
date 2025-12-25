@@ -15,7 +15,6 @@
 
 @import './styles/animations.css';
 @import './styles/floating-elements.css';
-@import './styles/custom-cursor.css';
 
 a {
   font-weight: 500;

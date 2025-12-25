@@ -44,7 +44,6 @@ export default function Home() {
           </div>
           <div className="home-cube" aria-label="Interactive 3D cube visualization" role="img">
             <RotatingCube />
-            <AIConnectome size={260} maxNodes={24} />
           </div>
         </div>
       </div>

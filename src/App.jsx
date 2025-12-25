@@ -55,7 +55,6 @@ export default function App() {
   return (
     <>
       <LoadingAnimation />
-      <CustomCursor />
       <Suspense fallback={null}>
         <AmbientAnimation />
         <ConstellationGraph />
