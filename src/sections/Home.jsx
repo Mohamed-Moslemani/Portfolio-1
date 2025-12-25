@@ -31,10 +31,11 @@ export default function Home() {
             </p>
 
             <div className="home-tags" role="list" aria-label="Core competencies">
-              <span role="listitem">Agentic Systems</span>
-              <span role="listitem">Applied ML</span>
-              <span role="listitem">Systems Design</span>
-              <span role="listitem">Research</span>
+   <span role="listitem">ML Infrastructure</span>
+<span role="listitem">End-to-End Model Deployment</span>
+<span role="listitem">Distributed Systems</span>
+<span role="listitem">Applied Research</span>
+
             </div>
 
             <div className="home-cta">
