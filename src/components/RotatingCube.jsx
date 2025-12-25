@@ -72,7 +72,7 @@ export default function RotatingCube() {
     };
 
     const project = ([x, y, z]) => {
-      const scale = (width() * 0.55) / (z + 4);
+      const scale = (width() * 0.35) / (z + 4);
       const { x: cx, y: cy } = center();
       return [cx + x * scale, cy + y * scale, z];
     };
