@@ -8,10 +8,10 @@
   "description": "Personal portfolio and blog by M. Moslemani",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/vite.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
