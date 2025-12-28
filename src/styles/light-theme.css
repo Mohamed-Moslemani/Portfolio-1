@@ -3,9 +3,12 @@
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
   --bg-tertiary: #f3f4f6;
+  /* Adjust text tokens for better contrast on light backgrounds */
+  --text-main: #111827;
   --text-primary: #111827;
   --text-secondary: #4b5563;
   --text-tertiary: #6b7280;
+  --text-muted: #6b7280;
   --border-color: rgba(59, 130, 246, 0.2);
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
@@ -128,6 +131,21 @@
 [data-theme="light"] .interest-card.active {
   border-color: var(--card-color);
   background: rgba(255, 255, 255, 1);
+}
+
+/* Ensure titles and hover text remain visible on light cards */
+[data-theme="light"] .interest-title {
+  color: var(--text-primary);
+}
+[data-theme="light"] .interest-card:hover .interest-description,
+[data-theme="light"] .interest-card.active .interest-description {
+  color: var(--text-secondary);
+}
+[data-theme="light"] .about-narrative:hover .narrative-text {
+  color: var(--text-primary);
+}
+[data-theme="light"] .philosophy-card:hover p {
+  color: var(--text-primary);
 }
 
 /* Contact card hover states */
