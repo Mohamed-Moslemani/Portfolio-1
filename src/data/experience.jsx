@@ -5,16 +5,6 @@ import unicefLogo from "../assets/logos/unicef.png";
 
 export const experience = [
   {
-    role: "Digital Project Specialist",
-    company: "Strategy&",
-    org: "PwC Network",
-    location: "Beirut · Hybrid",
-    period: "Jan 2026 – Present",
-    logo: strategyLogo,
-    summary:
-      "High-impact digital initiatives at the intersection of strategy, technology, and execution.",
-  },
-  {
     role: "Technical Consultant",
     company: "QuanTech",
     org: "Midis Group · IBM Partner",
