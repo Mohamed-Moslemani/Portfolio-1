@@ -3,9 +3,8 @@ import { useEffect, useRef } from "react";
 export default function RotatingCube() {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: 0, y: 0, hovering: false });
-  const velRef = useRef({ x: 0.004, y: 0.003 });
-  const baseSpeedRef = useRef(0.006);
-  const runningRef = useRef(true);
+  const velRef = useRef({ x: 0.02, y: 0.015 });
+  const baseSpeedRef = useRef(0.03);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -110,16 +109,10 @@ export default function RotatingCube() {
     const minFrame = 1000 / targetFPS;
     let last = performance.now();
 
-    const io = new IntersectionObserver(
-      ([e]) => (runningRef.current = e.isIntersecting),
-      { threshold: 0.1 }
-    );
-    io.observe(canvas);
+    // Always run animation; no intersection-based pausing
 
     const animate = (now) => {
       animationId = requestAnimationFrame(animate);
-      if (!runningRef.current) return;
-
       const dt = now - last;
       if (dt < minFrame) return;
       last = now;
@@ -214,7 +207,6 @@ export default function RotatingCube() {
 
     return () => {
       cancelAnimationFrame(animationId);
-      io.disconnect();
       window.removeEventListener("resize", setupCanvas);
       canvas.removeEventListener("mousemove", onMove);
     };
