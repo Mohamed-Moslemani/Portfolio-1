@@ -1,1 +1,0 @@
-import{j as a}from"./index-DoV4KBx_.js";function e(){return a.jsxs("div",{className:"ambient-container","aria-hidden":"true",children:[a.jsx("div",{className:"ambient-orb ambient-orb-1"}),a.jsx("div",{className:"ambient-orb ambient-orb-2"}),a.jsx("div",{className:"ambient-orb ambient-orb-3"})]})}export{e as default};
