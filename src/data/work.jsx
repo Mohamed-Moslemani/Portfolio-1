@@ -20,12 +20,14 @@ export const work = [
     ],
   },
   {
-    title: "Graph Enumeration Research",
-    description: "Counting graphs with bounded vertex cover.",
-    focus: [
-      "Parameterized complexity",
-      "Monte Carlo estimators",
-      "Theoretical bounds"
-    ],
-  },
+  title: "Cancer Type Classification from X-Ray Imaging",
+  description:
+    "Designed a multiclass cancer classification system on medical X-ray data using few-shot transfer learning under limited data constraints.",
+  focus: [
+    "Integrated InceptionV3 and ResNet50 backbones into a hybrid deep learning architecture with a custom dense head",
+    "Applied few-shot transfer learning strategies to achieve high accuracy on small, imbalanced medical datasets",
+    "Achieved state-of-the-art performance with a reproducible TensorFlow/Keras pipeline deployed in virtualized Jupyter environments",
+    "Published a modular, extensible codebase on GitHub to support reproducibility and collaborative research"
+  ],
+},
 ];
