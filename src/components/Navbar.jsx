@@ -86,8 +86,8 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
         </Link>
 
         <div className="nav-links" role="menubar">
-          <a href="#work" className={activeSection === "work" ? "active" : ""} role="menuitem" aria-current={activeSection === "work" ? "page" : undefined}>
-            <span>Work</span>
+          <a href="#services" className={activeSection === "services" ? "active" : ""} role="menuitem" aria-current={activeSection === "services" ? "page" : undefined}>
+            <span>Services</span>
           </a>
           <a href="#experience" className={activeSection === "experience" ? "active" : ""} role="menuitem" aria-current={activeSection === "experience" ? "page" : undefined}>
             <span>Experience</span>

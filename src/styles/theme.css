@@ -1,12 +1,14 @@
 :root {
-  --bg-main: #0b1220;
+  --bg-main: #0a0f1a;
   --bg-soft: #111827;
 
   --text-main: #e5e7eb;
   --text-muted: #94a3b8;
 
-  --accent-primary: #3b82f6;
-  --accent-secondary: #5eead4;
+  --accent-primary: #0d9488;
+  --accent-light: #2dd4bf;
+  --accent-muted: #5eead4;
+  --accent-secondary: #f4c752;
 
   --max-width: 1100px;
 }

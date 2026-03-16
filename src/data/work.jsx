@@ -1,33 +1,83 @@
+export const services = [
+  {
+    title: "AI Strategy & Architecture",
+    description:
+      "From concept to blueprint. I help businesses define their AI roadmap, select the right technologies, and design system architectures that scale.",
+    focus: [
+      "AI readiness assessment and opportunity mapping",
+      "End-to-end system architecture design",
+      "Technology stack selection and vendor evaluation",
+      "Scalability and cost optimization planning",
+    ],
+    icon: null,
+  },
+  {
+    title: "AI System Development",
+    description:
+      "Full-cycle development of production-ready AI/ML systems, from data pipelines to deployed models serving real users.",
+    focus: [
+      "Custom ML model development and training",
+      "LLM integration and fine-tuning",
+      "Computer vision and NLP solutions",
+      "API development and model serving",
+    ],
+    icon: null,
+  },
+  {
+    title: "System Integration",
+    description:
+      "Seamlessly embed AI capabilities into your existing infrastructure. No rip-and-replace, just intelligent augmentation.",
+    focus: [
+      "Integration with existing enterprise systems",
+      "Data pipeline design and ETL automation",
+      "Cloud infrastructure setup (AWS, GCP, Azure)",
+      "CI/CD for ML workflows (MLOps)",
+    ],
+    icon: null,
+  },
+  {
+    title: "Maintenance & Optimization",
+    description:
+      "AI systems need continuous care. I provide ongoing monitoring, performance optimization, and model retraining.",
+    focus: [
+      "Model performance monitoring and drift detection",
+      "System reliability and uptime optimization",
+      "Cost reduction and resource efficiency",
+      "Iterative model improvement and retraining",
+    ],
+    icon: null,
+  },
+];
+
 export const work = [
   {
-    title: "Simulation and Exploration of Heat Conduction Models: Fourier and Non‑Fourier",
+    title: "Agentic AI for Financial Fraud Detection",
     description:
-      "Conducted comparative analysis of classical Fourier heat conduction and advanced Non‑Fourier models, including Green–Naghdi frameworks.",
+      "Designed and deployed agentic AI systems for a major financial institution, enabling real-time fraud detection on credit card transactions.",
     focus: [
-      "Investigated physical inconsistencies in traditional models, addressing the infinite thermal propagation paradox",
-      "Developed and validated numerical simulations to benchmark model performance under transient thermal conditions",
-      "Compared Fourier vs. Non‑Fourier (Green–Naghdi) models in accuracy and applicability"
+      "Agentic AI architecture for autonomous decision-making",
+      "Real-time transaction monitoring and anomaly detection",
+      "Production deployment with IBM partnership",
     ],
   },
   {
-    title: "3D-to-3D Voxelized Object Reconstruction using Transformer Architectures",
+    title: "Computer Vision & LLM Systems for Enterprise",
     description:
-      "Designed and implemented a transformer-based architecture for 3D voxel reconstruction from partial or degraded inputs, with a robust voxel completion pipeline for raw STL mesh data.",
+      "Built production ML systems including real-time facial identification from CCTV feeds, volume estimation models, and LLM-powered sales optimization.",
     focus: [
-      "Transformer-based voxel completion pipeline for raw STL meshes",
-      "High-fidelity reconstructions with strong generalization over baseline 3D autoencoders",
-      "End-to-end system for partial/degraded 3D input handling and shape restoration"
+      "93% accurate volume estimation model",
+      "40% increase in sales via LLM fine-tuning",
+      "Real-time facial identification pipeline",
     ],
   },
   {
-  title: "Cancer Type Classification from X-Ray Imaging",
-  description:
-    "Designed a multiclass cancer classification system on medical X-ray data using few-shot transfer learning under limited data constraints.",
-  focus: [
-    "Integrated InceptionV3 and ResNet50 backbones into a hybrid deep learning architecture with a custom dense head",
-    "Applied few-shot transfer learning strategies to achieve high accuracy on small, imbalanced medical datasets",
-    "Achieved state-of-the-art performance with a reproducible TensorFlow/Keras pipeline deployed in virtualized Jupyter environments",
-    "Published a modular, extensible codebase on GitHub to support reproducibility and collaborative research"
-  ],
-},
+    title: "3D Reconstruction with Transformer Architectures",
+    description:
+      "Designed a transformer-based architecture for 3D voxel reconstruction from partial inputs, pushing the boundaries of generative 3D AI.",
+    focus: [
+      "Transformer-based voxel completion pipeline",
+      "High-fidelity reconstructions outperforming baseline autoencoders",
+      "End-to-end system for 3D shape restoration",
+    ],
+  },
 ];

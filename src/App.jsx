@@ -18,10 +18,9 @@ import Contact from "./sections/Contact";
 import "./styles/light-theme.css";
 import "./styles/page-transitions.css";
 
-const sections = ["work", "experience", "about", "contact"]; // remove writing from intersection tracking
+const sections = ["services", "work", "experience", "about", "contact"];
 
 
-const AmbientAnimation = lazy(() => import("./components/AmbientAnimation"));
 const ConstellationGraph = lazy(() => import("./components/ConstellationGraph"));
 const BlogPage = lazy(() => import("./components/BlogPage"));
 const WritingIndex = lazy(() => import("./components/WritingIndex"));
@@ -56,7 +55,6 @@ export default function App() {
     <>
       <LoadingAnimation />
       <Suspense fallback={null}>
-        <AmbientAnimation />
         <ConstellationGraph />
       </Suspense>
       <BlogLinkPreview />

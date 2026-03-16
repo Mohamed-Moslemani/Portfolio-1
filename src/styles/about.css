@@ -21,8 +21,8 @@
   margin-bottom: 4rem;
   padding: 2.5rem;
   border-radius: 12px;
-  border-left: 5px solid rgba(59, 130, 246, 0.6);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(30, 144, 255, 0.03));
+  border-left: 5px solid rgba(13, 148, 136, 0.6);
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(15, 118, 110, 0.03));
   animation: slideInUp 0.6s ease-out 0.1s backwards;
 }
 
@@ -43,17 +43,17 @@
 }
 
 .text-accent {
-  color: #60a5fa;
+  color: #2dd4bf;
   font-weight: 600;
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(13, 148, 136, 0.1);
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
   transition: all 0.3s ease;
 }
 
 .narrative-text:hover .text-accent {
-  background: rgba(59, 130, 246, 0.2);
-  color: #93c5fd;
+  background: rgba(13, 148, 136, 0.2);
+  color: #5eead4;
 }
 
 .interests-container {
@@ -64,7 +64,7 @@
 .interests-title {
   font-size: 1.35rem;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, #ffffff, #dbeafe);
+  background: linear-gradient(135deg, #ffffff, #ccfbf1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -80,8 +80,8 @@
   position: relative;
   padding: 2rem;
   border-radius: 12px;
-  border: 2px solid rgba(59, 130, 246, 0.2);
-  background: rgba(59, 130, 246, 0.05);
+  border: 2px solid rgba(13, 148, 136, 0.2);
+  background: rgba(13, 148, 136, 0.05);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow: hidden;
@@ -106,9 +106,9 @@
 .interest-card:hover,
 .interest-card.active {
   border-color: var(--card-color);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(30, 144, 255, 0.08));
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(15, 118, 110, 0.08));
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 15px 40px rgba(13, 148, 136, 0.2);
 }
 
 .interest-icon {
@@ -160,8 +160,8 @@
 .philosophy-card {
   padding: 3rem;
   border-radius: 12px;
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(30, 144, 255, 0.05));
+  border: 1px solid rgba(13, 148, 136, 0.3);
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(15, 118, 110, 0.05));
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -174,16 +174,16 @@
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, transparent 70%);
   transition: all 0.6s ease;
   z-index: 0;
 }
 
 .philosophy-card:hover {
-  border-color: rgba(59, 130, 246, 0.6);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(30, 144, 255, 0.1));
+  border-color: rgba(13, 148, 136, 0.6);
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(15, 118, 110, 0.1));
   transform: translateY(-4px);
-  box-shadow: 0 20px 50px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 20px 50px rgba(13, 148, 136, 0.15);
 }
 
 .philosophy-card:hover::before {
@@ -195,7 +195,7 @@
   margin-top: 0;
   margin-bottom: 1.5rem;
   font-size: 1.35rem;
-  background: linear-gradient(135deg, #ffffff, #dbeafe);
+  background: linear-gradient(135deg, #ffffff, #ccfbf1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

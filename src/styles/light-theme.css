@@ -9,7 +9,7 @@
   --text-secondary: #4b5563;
   --text-tertiary: #6b7280;
   --text-muted: #6b7280;
-  --border-color: rgba(59, 130, 246, 0.2);
+  --border-color: rgba(13, 148, 136, 0.2);
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -25,7 +25,7 @@
 
 [data-theme="light"] .navbar {
   background: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+  border-bottom: 1px solid rgba(13, 148, 136, 0.2);
 }
 
 [data-theme="light"] .home-title,
@@ -47,7 +47,7 @@
 [data-theme="light"] .contact-card,
 [data-theme="light"] .philosophy-card {
   background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(13, 148, 136, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -56,54 +56,55 @@
 [data-theme="light"] .interest-card:hover,
 [data-theme="light"] .contact-card:hover {
   background: rgba(255, 255, 255, 1);
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+  border-color: rgba(13, 148, 136, 0.4);
+  box-shadow: 0 8px 24px rgba(13, 148, 136, 0.15);
 }
 
 /* Tags in light mode */
 [data-theme="light"] .home-tags span,
 [data-theme="light"] .work-focus-tag {
-  background: rgba(59, 130, 246, 0.1);
-  color: #1e40af;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(13, 148, 136, 0.1);
+  color: #0f766e;
+  border: 1px solid rgba(13, 148, 136, 0.2);
 }
 
 /* Buttons in light mode */
 [data-theme="light"] .btn-primary {
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
-  color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, #f4c752, #e0a82e);
+  color: #1a1a2e;
+  box-shadow: 0 4px 12px rgba(244, 199, 82, 0.3);
 }
 
 [data-theme="light"] .btn-secondary {
-  background: rgba(59, 130, 246, 0.1);
-  color: #1e40af;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(13, 148, 136, 0.1);
+  color: #0f766e;
+  border: 1px solid rgba(13, 148, 136, 0.3);
 }
 
 [data-theme="light"] .btn-secondary:hover {
-  background: rgba(59, 130, 246, 0.2);
+  background: rgba(13, 148, 136, 0.2);
 }
 
 /* Timeline in light mode */
 [data-theme="light"] .experience-timeline::before {
-  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.3), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(13, 148, 136, 0.3), transparent);
 }
 
 [data-theme="light"] .experience-timeline-dot {
   background: rgba(255, 255, 255, 0.9);
-  border: 3px solid #3b82f6;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  border: 3px solid #0d9488;
+  box-shadow: 0 0 20px rgba(13, 148, 136, 0.4);
 }
 
 /* Floating elements in light mode */
 [data-theme="light"] .floating-particle {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent);
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.2), transparent);
 }
 
-/* Cube canvas in light mode */
-[data-theme="light"] .home-cube canvas {
-  opacity: 0.7;
+/* Headshot in light mode */
+[data-theme="light"] .headshot-img {
+  border-color: rgba(13, 148, 136, 0.2);
+  box-shadow: 0 20px 60px rgba(13, 148, 136, 0.1);
 }
 
 /* Navigation links in light mode */
@@ -112,16 +113,16 @@
 }
 
 [data-theme="light"] .nav-links a:hover {
-  color: #3b82f6;
+  color: #0d9488;
 }
 
 [data-theme="light"] .nav-links a.active {
-  color: #3b82f6;
+  color: #0d9488;
 }
 
 /* Gradient text remains visible in light mode */
 [data-theme="light"] .gradient-text {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  background: linear-gradient(135deg, #0d9488, #0d9488);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

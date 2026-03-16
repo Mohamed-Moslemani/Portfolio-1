@@ -14,6 +14,14 @@ export default function Contact() {
 
   const contacts = [
     {
+      title: "Book a Call",
+      description: "Schedule a free consultation",
+      value: "Calendly",
+      icon: "📅",
+      href: "https://calendly.com/moslemanomohamed",
+      type: "link"
+    },
+    {
       title: "Email",
       description: "Prefer direct conversation",
       value: "moslemanomohamed@gmail.com",
@@ -44,16 +52,17 @@ export default function Contact() {
     <Section>
       <div id="contact" ref={ref} className="contact" role="region" aria-label="Contact section">
         <div className="contact-header">
-          <h2>Let's Connect</h2>
+          <h2>Let's Work Together</h2>
           <p className="contact-intro">
-            Whether it's about work, research, or just to chat about football and life—reach out.
+            Have an AI challenge? Let's talk about how I can help. Book a free consultation or reach out directly.
           </p>
         </div>
 
         <div className="contact-message">
           <div className="message-icon">💬</div>
           <p>
-            I'm always open to interesting conversations and new opportunities. Don't hesitate to get in touch.
+            Whether you need a full AI system built from scratch, strategic guidance on your AI roadmap,
+            or hands-on engineering support. I'm here to help.
           </p>
         </div>
 

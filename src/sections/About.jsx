@@ -11,7 +11,7 @@ export default function About() {
       title: "Football",
       icon: "⚽",
       description: "Teamwork, strategy, and endless unpredictability.",
-      color: "#60a5fa"
+      color: "#2dd4bf"
     },
     {
       title: "Nature",
@@ -69,27 +69,28 @@ export default function About() {
         <div className="about-header">
           <h2>About Me</h2>
           <p className="about-intro">
-            Beyond work and titles.
+            The person behind the systems.
           </p>
         </div>
 
         <div className="about-narrative">
           <p className="narrative-text">
-            I’m driven by <span className="text-accent">curiosity</span> that never fills up.
-            it's my puller into machine learning models, complex systems,
-            and endless questions about how things work.
+            I’m an <span className="text-accent">AI Consultant & Engineer</span> currently
+            at Strategy& (PwC), where I help enterprises turn AI ambitions into
+            production systems that actually work.
           </p>
 
           <p className="narrative-text">
-            I care about <span className="text-accent">how things work</span> when they scale,
-            when they fail, and when assumptions collapse.
-            Comfort dulls me.
+            My approach is simple: <span className="text-accent">understand the problem deeply</span>,
+            design the right architecture, build it end-to-end, and make sure it keeps running.
+            No hype, no over-promising. Just systems that deliver.
           </p>
 
           <p className="narrative-text">
-            Balance matters alot to me.
-            I alternate between building demanding systems
-            and deliberately stepping away into nature, music, or physical strain.
+            I’ve built fraud detection systems for banks, computer vision pipelines
+            processing live CCTV feeds, and LLM solutions that drove a 40% increase in sales.
+            Whether you’re a startup exploring AI or an enterprise scaling it —
+            <span className="text-accent">I can help</span>.
           </p>
         </div>
 

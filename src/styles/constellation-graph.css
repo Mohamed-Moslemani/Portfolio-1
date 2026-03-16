@@ -5,7 +5,7 @@
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.25;
 }
 
 @media (prefers-reduced-motion: reduce) {

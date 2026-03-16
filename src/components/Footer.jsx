@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <p className="site-footer__title">M. Moslemani</p>
             <p className="site-footer__subtitle">
-              Building AI systems and writing about it.
+              AI Consultant & Engineer. Turning ambition into production.
             </p>
           </div>
         </div>

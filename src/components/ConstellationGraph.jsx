@@ -39,8 +39,8 @@ export default function ConstellationGraph() {
         height / 2,
         Math.max(width, height) / 1.3
       );
-      backgroundGradient.addColorStop(0, "rgba(59, 130, 246, 0.02)");
-      backgroundGradient.addColorStop(1, "rgba(30, 58, 138, 0.04)");
+      backgroundGradient.addColorStop(0, "rgba(13, 148, 136, 0.02)");
+      backgroundGradient.addColorStop(1, "rgba(6, 78, 59, 0.04)");
     };
 
     const initStars = () => {
@@ -74,7 +74,7 @@ export default function ConstellationGraph() {
             const dist = Math.sqrt(d);
             const opacity = (1 - dist / connectionDistance) * 0.12;
 
-            ctx.strokeStyle = `rgba(147, 197, 253, ${opacity})`;
+            ctx.strokeStyle = `rgba(94, 234, 212, ${opacity})`;
             ctx.lineWidth = 0.45;
             ctx.beginPath();
             ctx.moveTo(s1.x, s1.y);
@@ -85,7 +85,7 @@ export default function ConstellationGraph() {
       }
 
       starsRef.current.forEach((s) => {
-        ctx.fillStyle = `rgba(219, 234, 254, ${s.brightness})`;
+        ctx.fillStyle = `rgba(204, 251, 241, ${s.brightness})`;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();

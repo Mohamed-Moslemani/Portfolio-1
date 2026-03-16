@@ -1,3 +1,110 @@
+.services-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.service-card {
+  position: relative;
+  padding: 2.5rem;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  border-radius: 12px;
+  background: rgba(13, 148, 136, 0.02);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+  animation: slideInUp 0.6s ease-out forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.1s);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.1), transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+.service-card:hover {
+  border-color: rgba(13, 148, 136, 0.6);
+  background: rgba(13, 148, 136, 0.05);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, #ffffff, #ccfbf1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.service-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .service-description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.service-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.service-details li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: #5eead4;
+  line-height: 1.5;
+}
+
+.service-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #0d9488, #2dd4bf);
+  border-radius: 50%;
+}
+
+.case-studies-section {
+  margin-top: 6rem;
+}
+
 .work-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -8,9 +115,9 @@
 .work-item {
   position: relative;
   padding: 2.5rem;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(13, 148, 136, 0.2);
   border-radius: 12px;
-  background: rgba(59, 130, 246, 0.02);
+  background: rgba(13, 148, 136, 0.02);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   overflow: hidden;
@@ -37,7 +144,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.1), transparent);
   transition: left 0.5s ease;
   z-index: 1;
 }
@@ -47,10 +154,10 @@
 }
 
 .work-item:hover {
-  border-color: rgba(59, 130, 246, 0.6);
-  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(13, 148, 136, 0.6);
+  background: rgba(13, 148, 136, 0.05);
   transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
 }
 
 .work-item-header {
@@ -60,7 +167,7 @@
 .work-item h3 {
   font-size: 1.35rem;
   margin: 0;
-  background: linear-gradient(135deg, #ffffff, #dbeafe);
+  background: linear-gradient(135deg, #ffffff, #ccfbf1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -95,22 +202,27 @@
   display: inline-block;
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
-  background: rgba(59, 130, 246, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(13, 148, 136, 0.15);
+  border: 1px solid rgba(13, 148, 136, 0.3);
   border-radius: 20px;
-  color: #93c5fd;
+  color: #5eead4;
   transition: all 0.3s ease;
   font-weight: 500;
 }
 
 .work-item:hover .work-focus-tag {
-  background: rgba(59, 130, 246, 0.25);
-  border-color: rgba(93, 165, 254, 0.6);
+  background: rgba(13, 148, 136, 0.25);
+  border-color: rgba(45, 212, 191, 0.6);
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
 }
 
 @media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
   .work-list {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.75rem;
@@ -118,6 +230,15 @@
 }
 
 @media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .service-card {
+    padding: 2rem;
+  }
+
   .work-list {
     grid-template-columns: 1fr;
     gap: 1.5rem;

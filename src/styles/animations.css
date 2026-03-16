@@ -38,23 +38,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.05), transparent 50%);
+  background: radial-gradient(circle at 50% 0%, rgba(13, 148, 136, 0.05), transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
 
-/* Grid background pattern */
-.section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  z-index: -1;
-}
+/* Grid background pattern - removed for cleaner look */

@@ -5,6 +5,20 @@ import unicefLogo from "../assets/logos/unicef.png";
 
 export const experience = [
   {
+    role: "AI Engineer",
+    company: "Strategy&",
+    org: "PwC Network",
+    location: "Beirut · On-site",
+    period: "Feb 2026 – Present",
+    logo: strategyLogo,
+    summary:
+      "Driving AI strategy and engineering solutions for enterprise clients within PwC's global strategy consulting arm.",
+    highlights: [
+      "Enterprise AI strategy and implementation",
+      "End-to-end ML system architecture for large-scale clients",
+    ],
+  },
+  {
     role: "Technical Consultant",
     company: "QuanTech",
     org: "Midis Group · IBM Partner",
