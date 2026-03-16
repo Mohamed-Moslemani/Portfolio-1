@@ -34,7 +34,7 @@ export default function Work() {
       </div>
 
       <div id="work" role="region" aria-label="Case studies section" className="case-studies-section">
-        <h2>Case Studies</h2>
+        <h2>Case Studies and Research</h2>
         <p className="services-subtitle">Real results from real engagements.</p>
 
         <div className="work-list" role="list">

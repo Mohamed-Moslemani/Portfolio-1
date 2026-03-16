@@ -9,6 +9,7 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
   const [writingOpen, setWritingOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
   const writingRef = useRef(null);
   const dropdownRef = useRef(null);
@@ -85,11 +86,24 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
           <span className="logo-slash" aria-hidden="true">/</span>
         </Link>
 
-        <div className="nav-links" role="menubar">
-          <a href="#services" className={activeSection === "services" ? "active" : ""} role="menuitem" aria-current={activeSection === "services" ? "page" : undefined}>
+        <button
+          className={`hamburger ${mobileOpen ? 'open' : ''}`}
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {mobileOpen && <div className="mobile-overlay" onClick={() => setMobileOpen(false)} />}
+
+        <div className={`nav-links ${mobileOpen ? 'mobile-open' : ''}`} role="menubar">
+          <a href="#services" className={activeSection === "services" ? "active" : ""} role="menuitem" aria-current={activeSection === "services" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
             <span>Services</span>
           </a>
-          <a href="#experience" className={activeSection === "experience" ? "active" : ""} role="menuitem" aria-current={activeSection === "experience" ? "page" : undefined}>
+          <a href="#experience" className={activeSection === "experience" ? "active" : ""} role="menuitem" aria-current={activeSection === "experience" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
             <span>Experience</span>
           </a>
           <div
@@ -163,10 +177,13 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
               ))}
             </div>
           </div>
-          <a href="#about" className={activeSection === "about" ? "active" : ""} role="menuitem" aria-current={activeSection === "about" ? "page" : undefined}>
+          <a href="#education" className={activeSection === "education" ? "active" : ""} role="menuitem" aria-current={activeSection === "education" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
+            <span>Education</span>
+          </a>
+          <a href="#about" className={activeSection === "about" ? "active" : ""} role="menuitem" aria-current={activeSection === "about" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
             <span>About</span>
           </a>
-          <a href="#contact" className={activeSection === "contact" ? "active" : ""} role="menuitem" aria-current={activeSection === "contact" ? "page" : undefined}>
+          <a href="#contact" className={activeSection === "contact" ? "active" : ""} role="menuitem" aria-current={activeSection === "contact" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
             <span>Contact</span>
           </a>
         </div>

@@ -13,12 +13,13 @@ import Home from "./sections/Home";
 const Work = lazy(() => import("./sections/Work"));
 import Experience from "./sections/Experience";
 import About from "./sections/About";
+import Education from "./sections/Education";
 import Contact from "./sections/Contact";
 
 import "./styles/light-theme.css";
 import "./styles/page-transitions.css";
 
-const sections = ["services", "work", "experience", "about", "contact"];
+const sections = ["services", "work", "experience", "education", "about", "contact"];
 
 
 const ConstellationGraph = lazy(() => import("./components/ConstellationGraph"));
@@ -69,6 +70,7 @@ export default function App() {
               <Home />
               <Work />
               <Experience />
+              <Education />
               <About />
               <Contact />
             </>

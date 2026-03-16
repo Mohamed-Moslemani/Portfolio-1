@@ -11,6 +11,7 @@ import "./styles/home.css";
 import "./styles/work.css";
 import "./styles/navbar.css";
 import "./styles/experience.css";
+import "./styles/education.css";
 import "./styles/about.css";
 import "./styles/contact.css";
 import "./styles/footer.css";
