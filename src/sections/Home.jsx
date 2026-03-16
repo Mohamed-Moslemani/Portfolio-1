@@ -47,13 +47,18 @@ export default function Home() {
 
         <div className="trust-strip" role="region" aria-label="Key achievements">
           <div className="trust-item">
-            <span className="trust-number">3+</span>
-            <span className="trust-label">Years in AI & ML</span>
+            <span className="trust-number">10+</span>
+            <span className="trust-label">Projects Delivered</span>
           </div>
           <div className="trust-divider"></div>
           <div className="trust-item">
-            <span className="trust-number">93%</span>
-            <span className="trust-label">Model Accuracy Delivered</span>
+            <span className="trust-number">3+</span>
+            <span className="trust-label">Enterprise Clients</span>
+          </div>
+          <div className="trust-divider"></div>
+          <div className="trust-item">
+            <span className="trust-number">4</span>
+            <span className="trust-label">Industries Served</span>
           </div>
           <div className="trust-divider"></div>
           <div className="trust-item">
