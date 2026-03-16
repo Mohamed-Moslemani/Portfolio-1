@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { posts } from "../posts";
 import ThemeToggle from "./ThemeToggle";
 import { trackEvent } from "../utils/analytics";
@@ -16,6 +16,16 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
   const openTimeout = useRef(null);
   const closeTimeout = useRef(null);
   const navbarRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSectionClick = (e, sectionId) => {
+    setMobileOpen(false);
+    if (location.pathname !== "/") {
+      e.preventDefault();
+      navigate("/#" + sectionId);
+    }
+  };
 
 
   const openWriting = () => {
@@ -100,10 +110,10 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
         {mobileOpen && <div className="mobile-overlay" onClick={() => setMobileOpen(false)} />}
 
         <div className={`nav-links ${mobileOpen ? 'mobile-open' : ''}`} role="menubar">
-          <a href="#services" className={activeSection === "services" ? "active" : ""} role="menuitem" aria-current={activeSection === "services" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
+          <a href="#services" className={activeSection === "services" ? "active" : ""} role="menuitem" aria-current={activeSection === "services" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "services")}>
             <span>Services</span>
           </a>
-          <a href="#experience" className={activeSection === "experience" ? "active" : ""} role="menuitem" aria-current={activeSection === "experience" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
+          <a href="#experience" className={activeSection === "experience" ? "active" : ""} role="menuitem" aria-current={activeSection === "experience" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "experience")}>
             <span>Experience</span>
           </a>
           <div
@@ -177,13 +187,13 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
               ))}
             </div>
           </div>
-          <a href="#education" className={activeSection === "education" ? "active" : ""} role="menuitem" aria-current={activeSection === "education" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
+          <a href="#education" className={activeSection === "education" ? "active" : ""} role="menuitem" aria-current={activeSection === "education" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "education")}>
             <span>Education</span>
           </a>
-          <a href="#about" className={activeSection === "about" ? "active" : ""} role="menuitem" aria-current={activeSection === "about" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
+          <a href="#about" className={activeSection === "about" ? "active" : ""} role="menuitem" aria-current={activeSection === "about" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "about")}>
             <span>About</span>
           </a>
-          <a href="#contact" className={activeSection === "contact" ? "active" : ""} role="menuitem" aria-current={activeSection === "contact" ? "page" : undefined} onClick={() => setMobileOpen(false)}>
+          <a href="#contact" className={activeSection === "contact" ? "active" : ""} role="menuitem" aria-current={activeSection === "contact" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "contact")}>
             <span>Contact</span>
           </a>
         </div>

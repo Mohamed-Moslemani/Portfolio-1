@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import BackToTop from "./components/BackToTop";
@@ -29,6 +29,17 @@ const NotFound = lazy(() => import("./components/NotFound"));
 export default function App() {
   const [activeSection, setActiveSection] = useState(null);
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+
+  // Scroll to hash after navigating from another page
+  useEffect(() => {
+    if (location.pathname === "/" && location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
