@@ -10,50 +10,70 @@ export default function About() {
     {
       title: "Football",
       icon: "⚽",
-      description: "Teamwork, strategy, and endless unpredictability.",
+      description: "Barça heart, German soul,the beautiful game never gets old.",
       color: "#2dd4bf"
     },
     {
       title: "Nature",
       icon: "🌿",
-      description: "Grounding perspectives, fresh air, and wide-open spaces.",
+      description: "Nothing clears the mind like wide-open skies and quiet trails.",
       color: "#34d399"
     },
     {
       title: "Farming",
       icon: "🌾",
-      description: "Patience, growth cycles, and love for the land.",
+      description: "Hands in the dirt, sun on my back, the peace in growing things.",
       color: "#a78bfa"
     },
     {
       title: "Research",
       icon: "🔬",
-      description: "Curiosity-driven exploration and evidence-based insights.",
+      description: "Digging into papers and chasing questions no one's answered yet.",
       color: "#f472b6"
     },
     {
       title: "Tech",
       icon: "💻",
-      description: "Building systems that scale and adapt.",
+      description: "From tinkering with code to shipping real products,  I'm always building.",
       color: "#fbbf24"
     },
     {
       title: "Gym & Sports",
       icon: "🏋️",
-      description: "Physical challenge fuels mental resilience.",
+      description: "A good cardio session fixes everything.",
       color: "#fb7185"
     },
     {
       title: "Music",
       icon: "🎵",
-      description: "Rhythm, emotion, and creative expression.",
+
+      description: "Radiohead for the depths, The Lumineers for the light.",
       color: "#c084fc"
+    },
+    {
+      title: "Cosmos",
+      icon: "🌌",
+      description: "The universe is incomprehensibly vast, and that's the best part.",
+      color: "#818cf8"
+    },
+    {
+      title: "Gaming",
+      icon: "🎮",
+      description: "Fifa forever, Horizon Zero Dawn and Forbidden West.",
+      color: "#fbbf24"
     },
     {
       title: "Love",
       icon: "❤️",
       description: "Connecting deeply with people and ideas.",
       color: "#f472b6"
+    },
+    
+    {
+      title: "Motorcycle Riding",
+      icon: "🏍️",
+      description: "The thrill of the open road and the freedom of two wheels.",
+      color: "#fbbf24"
     }
   ];
 
