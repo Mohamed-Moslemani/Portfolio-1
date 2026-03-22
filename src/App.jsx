@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 
 import Navbar from "./components/Navbar";
 import BackToTop from "./components/BackToTop";
@@ -93,6 +94,7 @@ export default function App() {
       </Routes>
       </Suspense>
       <Footer />
+      <Analytics />
     </>
   );
 }
