@@ -117,4 +117,105 @@ I think that we all should be terrified of physics, and in fact, I think this fe
 <p>Maybe this blog is but a subconscious defensive mechanism by me, to put obstacles and to be pushed away from what’s perceived as dangerous. But to be honest, I like this fear, and I don’t mind going in depth through it, as long as I see development on the tunnel’s end.</p>
 `
 },
-];
+  {
+  slug: "The Theoretical Hype, Again!",
+  title: "The Theoretical Hype, Again!",
+  date: "2022-12-09",
+  tags: ["physics", "theory", "academia", "science", "culture"],
+  excerpt: "A brutally honest reflection on the physics major experience, the illusion of knowledge, and the questionable paths that follow.",
+  cover: "/blog/theory.jpg",
+  content: `
+
+  As I’m approaching the end of my last university year, with only one more semester to go, I couldn’t resist the urge to write about the three-year experience of being a physics major, while trying to open some new horizons for the future, assuming it actually exists.
+
+  Three years of university life teach you a lot about life in general. But let’s be real, we’re physics majors. We don’t discuss life. We discuss minimum wage opportunities and student loans to fund our master’s degrees.
+
+  Beyond the three years of continuous “high-level education,” I now feel very confident about not knowing the material. And honestly, who does? So let’s not pretend that’s the point. Instead, let’s talk about the future, or whatever version of it we’re supposed to believe in.
+
+  Let’s recap.
+
+  As a high school student, you chose physics because you dreamed of becoming a successful theoretical physicist, like Michio Kaku. But as a high schooler, you know about theoretical physics roughly as much as Michio Kaku knows about your future, which is nothing.
+
+  After three years of linear algebra, calculus, and things you barely survived, you now also know nothing about theoretical physics. Shocking, I know. Growth.
+
+  To be fair, you now know what the spin of an electron is, and what a tensor is. And they are, indeed, exactly what they are.
+
+  Jokes aside, the physics BSc journey is a roller coaster. Not necessarily a fun one. Or maybe it is. Hard to tell.
+
+  Now that we’ve properly reviewed your accumulated “knowledge,” we can move toward your desired master’s program, which obviously includes—and is limited to—Theoretical Physics.
+
+  Alright, fine. There are actually many solid programs you can pursue if your goal is to land a decent future. Engineering fields are everywhere, including something called “Quantum Engineering,” which sounds important enough to justify its existence.
+
+  But let’s be honest. You didn’t spend three years paying ridiculous tuition at one of the “finest” institutions just to become an engineer and make money. You owe it to yourself to chase a theoretical path and remain broke until you’re 90, obsessing over whether dark matter is actually dark.
+
+  Outside engineering, there’s astrophysics. Which, translated into reality, means you become a computer scientist working with cool data. Programming becomes essential. Coding is no longer optional if you want your CV to look like something other than a cry for help.
+
+  You should also learn LaTeX. It’s important. Not that you’ll publish anything, but at least your assignments will look intimidating.
+
+  There are also education-oriented programs. These prepare you to teach elementary school students while quietly wondering how you’re supposed to survive on that salary. But then again, you can question your financial decisions while studying string theory, so why settle?
+
+  And now, we arrive at the kingdom where many have fallen: theoretical physics.
+
+  Theoretical physics demands a strong mathematical foundation, which you probably don’t have. It also requires serious programming skills, which you’ve been avoiding. On top of that, it expects you to tolerate conditions like poverty, isolation, and a constant sense of intellectual inadequacy.
+
+  Yes, that’s exaggerated. Slightly. It’s mostly to make theoretical physicists smile, because they need it.
+
+  To become one, you need determination, time, space, groups, tensors, manifolds, and whatever else shows up to ruin your sleep schedule.
+
+  During these three years, you’ve watched computer science students casually talk about financial independence while you’re still trying to understand spin. You’ve heard the classic question: “You’re good at physics, why didn’t you go into engineering?”
+
+  You’ve seen chemists enjoy actual labs, and material scientists try to recruit you like it’s a cult. And every time you mention theoretical physics, you get that look. The one where people pretend to understand but clearly don’t.
+
+  So what now?
+
+  It would be funny if you ended up as a geophysicist. Or an astrophysicist. Or something you didn’t even consider three years ago.
+
+  Physics is just the tip of the iceberg. Or maybe it’s a rabbit hole. Either way, you’re going down it, and you better choose your path carefully.
+
+  And just so you don’t spiral completely, you still matter even if you don’t become a theorist.
+
+  Just… not to me.
+
+`},
+{
+slug: "On Meaning, Or the Lack of It",
+title: "On Meaning, Or the Lack of It",
+date: "2022-12-09",
+tags: ["philosophy", "existentialism", "life", "thoughts","culture"],
+excerpt: "A scattered but honest reflection on meaning, fear, and the absurd struggle of trying to understand why any of this matters.",
+cover: "/blog/meaning.jpg",
+content: ` 
+
+As days progress, and as we enter a hypnotic state of mind, where mediocrity rules over us, it’s totally expected to lose interest in life, and to question meaning. After all. of all the 7+ billion people, who am I to have a life worth living, one with meaning?
+The loss of self is one of a great price to pay, and how cruel it is to lose the soul through the narrow passages of life?
+What am I going to do? That’s the first question, or perhaps the first social stress, of many.
+‘We tend to get lost in life, and as failure preys on our trials, fear grows, perhaps it’s a fear of living, or maybe, a fear of dying without living.
+
+Why does it matter to live? To achieve? To climb the mountains of success and observe those beneath us? The ones that failed life.
+A biological instinct, leading us to become the alpha male of our small societies. Some may accuse me of materialism, stating that I capture the meaning of life and squeeze it onto a bottle of biological, chemical, and physical phenomena. but apart from the aesthetic part of life, isn’t it but a bunch of reactions lead by these three phenomena?
+
+The meaning of life is an issue tackled by many of the greats, ranging between Freud and Victor Frankl mainly, both of which had nearly opposite thoughts.
+The stand taken by many, and which I noticed existing in “The happiness hypothesis” (the latter is a book by Jonathan Heidt), in which he relates internal joy to an equation of four terms, ranging between materialistic and aesthetic objects.
+This approach taken by Heidt is falsified by Argument to moderation fallacy, and I moderately plea to all writers not to fall for such fallacies.
+I admire that, but perhaps life is this or that, it’s no near moderation, and thus, I feel the need to expose some of the thoughts I’ve been piling up through the past few months.
+
+In his book, “The Myth of Sisyphus”, Albert Camus implies that suicide could be an act reasoned behind finding the meaning of life, and that is contradictory. In what sense is finding the meaning of life, leads to one leaving it?
+On the other hand, Victor Frankl, who we mentioned earlier, as I quote: “When a person can’t find a deep sense of meaning, they distract themselves with pleasure.”
+
+One might question any relation between the two, and that’s expected, however, here, I think we can extend Frankl’s thoughts to reach the absurdity of suicide mentioned by Camus. Excessive pleasure leads to loss of meaning, and loss of meaning leads to suicide. On the contrary, finding meaning leads to suicide.
+I still take my time in trying to understand Camus’s thoughts, of their depth as they contradict a basic logic.
+
+We spoke of meaning, but what is finding meaning? Is it passion? dreams? goals?
+life tends to turn into a bunch of daily troubles at which we question whether they’re worth it (it referring to life oddly).
+These daily troubles are occupied by moments of sincere happiness, a stimulating joy passing for a few moments, at which we forget our questions of meaning, in that, is finding joy a road to finding meaning?
+I don’t know, and frankly, I don’t care.
+I wouldn’t want to waste my days questioning the real meaning of my life, while day progress. After all, questioning meaning leads to more loss of meaning, and hence, I envy those who never questioned it, those who are free of such occupying thoughts.
+
+Thank you, Albert Camus, and may you rest in peace, for such piece of art you left behind you, a book worth all the time given to it, coming from the man who said that he didn’t want to waste his time on the meaning of life.
+
+It’s a good habit I developed to switch to philosophy whenever physics is too much, or too scary. Okay, scary is not the word, I think the word is, whenever physics is acting tough on me, but after all, I think that my meaning of life lies in finding what is out there, perhaps there’s nothing out there, and hence, my meaning of life is based on nothing, in that, is my life meaningless? I don’t know, but I hope not!
+
+`}
+]
+;
+
