@@ -15,6 +15,51 @@ const ensureCanonical = (href) => {
   link.href = href;
 };
 
+const escapeHtml = (s) => s
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+const renderContent = (raw) => {
+  if (!raw) return '';
+  if (/<[a-z][\s\S]*>/i.test(raw)) return raw;
+  const blocks = raw.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
+  const html = [];
+  let listBuf = [];
+  const flushList = () => {
+    if (listBuf.length) {
+      html.push('<ul>' + listBuf.map(li => `<li>${escapeHtml(li)}</li>`).join('') + '</ul>');
+      listBuf = [];
+    }
+  };
+  for (const block of blocks) {
+    const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+    const allBullets = lines.length > 0 && lines.every(l => /^[-*]\s+/.test(l));
+    if (allBullets) {
+      lines.forEach(l => listBuf.push(l.replace(/^[-*]\s+/, '')));
+      continue;
+    }
+    flushList();
+    if (block.startsWith('> ')) {
+      const inner = block.replace(/^>\s?/gm, '').trim();
+      html.push(`<blockquote><p>${escapeHtml(inner)}</p></blockquote>`);
+      continue;
+    }
+    const wordCount = block.split(/\s+/).length;
+    const endsLikeSentence = /[.!?…]"?$/.test(block);
+    const isHeading = block.length <= 100 && wordCount <= 14 && !endsLikeSentence && !/\n/.test(block);
+    if (isHeading) {
+      html.push(`<h2>${escapeHtml(block)}</h2>`);
+    } else {
+      const inner = block.split('\n').map(l => escapeHtml(l)).join('<br/>');
+      html.push(`<p>${inner}</p>`);
+    }
+  }
+  flushList();
+  return html.join('\n');
+};
+
 const setJsonLd = (id, data) => {
   if (typeof document === 'undefined') return;
   let el = document.getElementById(id);
@@ -93,7 +138,7 @@ export default function BlogPage() {
   useEffect(() => {
     if (!postRaw?.content) return;
     // Inject IDs into headings and build table of contents
-    let html = postRaw.content;
+    let html = renderContent(postRaw.content);
     const tocItems = [];
     html = html.replace(/<h([23])>(.*?)<\/h\1>/gi, (m, level, text) => {
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$|--+/g, '-');
