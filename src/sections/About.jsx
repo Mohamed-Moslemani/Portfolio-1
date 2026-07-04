@@ -10,69 +10,58 @@ export default function About() {
     {
       title: "Football",
       icon: "⚽",
-      description: "Barça heart, German soul,the beautiful game never gets old.",
+      description: "Simply put, I love the beautiful game.",
       color: "#2dd4bf"
-    },
-    {
-      title: "Nature",
-      icon: "🌿",
-      description: "Nothing clears the mind like wide-open skies and quiet trails.",
-      color: "#34d399"
     },
     {
       title: "Farming",
       icon: "🌾",
-      description: "Hands in the dirt, sun on my back, the peace in growing things.",
+      description: "I enjoy seeing things grow.",
       color: "#a78bfa"
     },
     {
+      title: "Anime",
+      icon: "🎌",
+      description: "My favorite genre.",
+      color: "#a78bfa"
+    },
+
+    {
       title: "Research",
       icon: "🔬",
-      description: "Digging into papers and chasing questions no one's answered yet.",
+      description: "I am a person that likes to think, research gives that to me.",
       color: "#f472b6"
-    },
-    {
-      title: "Tech",
-      icon: "💻",
-      description: "From tinkering with code to shipping real products,  I'm always building.",
-      color: "#fbbf24"
     },
     {
       title: "Gym & Sports",
       icon: "🏋️",
-      description: "A good cardio session fixes everything.",
+      description: "Currently working on building strength and endurance.",
       color: "#fb7185"
     },
     {
       title: "Music",
       icon: "🎵",
 
-      description: "Radiohead for the depths, The Lumineers for the light.",
+      description: "My favorite remains the Lumineers.",
       color: "#c084fc"
     },
     {
       title: "Cosmos",
       icon: "🌌",
-      description: "The universe is incomprehensibly vast, and that's the best part.",
+      description: "The universe reminds me of how small I am.",
       color: "#818cf8"
-    },
-    {
-      title: "Gaming",
-      icon: "🎮",
-      description: "Fifa forever, Horizon Zero Dawn and Forbidden West.",
-      color: "#fbbf24"
     },
     {
       title: "Love",
       icon: "❤️",
-      description: "Connecting deeply with people and ideas.",
+      description: "It's the only thing that I take seriously in life.",
       color: "#f472b6"
     },
     
     {
       title: "Motorcycle Riding",
       icon: "🏍️",
-      description: "The thrill of the open road and the freedom of two wheels.",
+      description: "It's my way to let go and be free.",
       color: "#fbbf24"
     }
   ];
