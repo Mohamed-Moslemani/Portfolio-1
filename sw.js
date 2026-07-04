@@ -1,7 +1,10 @@
-const CACHE_NAME = 'portfolio-cache-v2';
+const CACHE_NAME = 'portfolio-cache-v3';
+// Keep a minimal set of core static assets only. Avoid precaching `index.html` so
+// the service worker won't serve a stale HTML that references removed hashed
+// chunks after a deploy. `index.html` will be cached when fetched from the
+// network (navigation handler) to support offline, but not during install.
 const CORE_ASSETS = [
   '/',
-  '/index.html',
   '/manifest.webmanifest',
   '/vite.svg',
 ];
@@ -21,6 +24,18 @@ self.addEventListener('activate', (event) => {
       await clients.claim();
       const keys = await caches.keys();
       await Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)));
+
+      // Notify all controlled clients that a new service worker is active so
+      // they can reload and pick up fresh assets (prevents serving a cached
+      // index.html that references chunks that no longer exist on the server).
+      const allClients = await clients.matchAll({ type: 'window' });
+      for (const client of allClients) {
+        try {
+          client.postMessage({ type: 'SW_UPDATED' });
+        } catch (e) {
+          // ignore
+        }
+      }
     })()
   );
 });
