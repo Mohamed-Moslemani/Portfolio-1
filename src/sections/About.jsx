@@ -80,6 +80,9 @@ export default function About() {
           <p className="about-intro">
             The person behind the systems.
           </p>
+          <p className="about-name-note">
+            Also spelled Mohamad Meselmani, Mohammad Meselmany, or Mohammad Meslmany, different transliterations, same person.
+          </p>
         </div>
 
         <div className="about-narrative">
