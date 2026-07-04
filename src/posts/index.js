@@ -30,6 +30,40 @@ Elon Musk (I don't like him very much) shows great remorse over this, which is s
 Clearly, there's an increasing trend, and clearly, loneliness is no longer a symptom, it's a disease that's spreading fastly, eating humans up, and dismantling social networks. 
 What's the solution? I don't know, it's one of these problems that I can't give realistic answers to. One answer that you may not like is an apocalyptic event that forces big tech to drop investments on LLMs and social apps, but the latter is far from happening even if a meteor hits. 
 So, while we're at it, we better realize we're lonely, sad, in a wheel of work and study, and we better embrace that.`;
+const changeAndMasks = `Life is by itself a temporal drift, i like to say. It's always been like that. As time progresses, feelings drift, friendships drift, even humanity by itself drifts.
+Society is based on changes, a change in people, in biology even, as our dear friend Darwin set it, change drove evolution.
+A static being, remains, ironically, as it is, it can barely survive on its own.
+As we grow, like trees, blooming, exploring new skies, the roots can either be a limit or a strength to go back to.
+Who are we? Who am I? Am I defined by what happened to me through life? Do my events define the person I am, or do they shape me so that later on I can define myself as I project on these experiences?
+Why am I the way I am? Am I able to change? Should I change?
+I believe that we all have asked these questions at some point in our lives (please say yes, don't wanna feel like a left out).
+Often, life feels too fast, changes happen so abruptly that we see ourselves, going from high school, to university, to work, and then we look in the mirror questioning who we are, and why we are who we are.
+It's odd, to see one self drift so much, from what he had in mind. Am I really that kid of dumb odd dreams? Why life now, oddly feels, so automatic, calm, but empty?
+It's as if, as much as one could accomplish, one could go back home, look at the ceiling, and wonder, what's wrong. Maybe, I say, it's the absence of love, or real friendship.
+Maybe it's the contineous never ending thinking of tiny details that no one notices, but no, something is surely missing.
+Is it that the world is built in such a way now, that the contineous stimuli we have around us is overtaking us into this oblivious circle of loneliness?
+I don't know.
+Change happens so fast nowadays, that you don't have the ability to plan it, or counter it. The world is so fast nowadays. You're constantly pushed into a lifestyle of performing: wake up at 5, go to the gym,
+go to work, then go to the gym, max out your protein, read 10 books in one night, and then, after all of that, find time to learn new skills to stay relevant in a dead job market that underpays interns (if you're an intern reading this, you know the inside joke).
+We are expected to like certain things, love certain poets, know certain places, pronounce the words in french (God forbid) correctly, it's a show, a life of performance, in fact, I don't think anyone is real,
+in a sense, it's all a bunch of idiots trying to perform to each other.
+Why should I care? I'm often asked (not true, no one cares to ask) how can I be so careless but successful? How did I manage to create this side of me, where I can oddly perform, without the need to be obsessed
+about showing performance?
+I answer, that I don't know and I don't care. Life is already heavy enough: wars, death, sickness...etc.
+So, why make it harder by trying to perform to impress needy beings of performance?
+
+Change, oddly, happens on a temporal drift, it isn't a shift, it's a drift, it's not a single incident that can change you. You make think that maybe, the death of your loved ones, or, a car accident, canchange you life, can push you to be the person you want. No, death doesn't change anything. You can't change things, based on an event, because an event can be the start of a drift, but you are the driver of that drift, sadly, and change is usually a counter force.
+It's not easy to change, it's not easy to accept the need to change.
+
+I don't know, if life is supposed to be this simple, but I find the need to perform an act to people, to impress them, oddly disgusting. My preference is to create masks, characters that I am inclined to be like,
+in certain environments.
+Don't define yourself, don't let them estimate you, let them wonder about you, let them ask the questions about you, always have the upper hand of knowledge, of knowing who you arem and them not knowing who you are, not because you're weak, but because there's no need, but for a very limited set of people, to know you.
+Be so hard to define, that people wonder, take hours thinking about you, own the room, by being undefined.
+Wear masks, contradicting masks, do as you please, to not be defined. If you're defined easily, you lose. Never show your true skills, technical or non-technical, never show your cards all at once, be the
+craziest person on the table. Don't let them estimate you.
+
+Life is a game, play it well, wear a mask, and be suspectible to change, be like water, fitting in all places, but your core, is well known to you.`;
+
 export const posts = [
   {
     slug: "the-quantum-trademark",
@@ -130,6 +164,14 @@ export const posts = [
     cover: "/blog/loneliness.jpg",
     content: loneliness
 
+  },
+  {
+    slug: "change-and-masks",
+    title: "Change and Masks",
+    date: "2026-07-05",
+    tags:["change","identity","masks","authenticity"],
+    excerpt: "Life is by itself a temporal drift, i like to say.",
+    content: changeAndMasks
   }
 ];
 
