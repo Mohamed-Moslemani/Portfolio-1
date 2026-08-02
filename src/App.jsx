@@ -18,12 +18,11 @@ import Education from "./sections/Education";
 import Contact from "./sections/Contact";
 
 import "./styles/light-theme.css";
-import "./styles/page-transitions.css";
 
 const sections = ["services", "work", "experience", "education", "about", "contact"];
 
 
-const ConstellationGraph = lazy(() => import("./components/ConstellationGraph"));
+const AttentionField = lazy(() => import("./components/AttentionField"));
 const BlogPage = lazy(() => import("./components/BlogPage"));
 const WritingIndex = lazy(() => import("./components/WritingIndex"));
 const NotFound = lazy(() => import("./components/NotFound"));
@@ -68,7 +67,7 @@ export default function App() {
     <>
       <LoadingAnimation />
       <Suspense fallback={null}>
-        <ConstellationGraph />
+        <AttentionField />
       </Suspense>
       <BlogLinkPreview />
       <Navbar activeSection={activeSection} theme={theme} toggleTheme={toggleTheme} />

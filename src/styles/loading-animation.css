@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(135deg, #0a0f1e 0%, #111827 50%, #1e293b 100%);
+  background: linear-gradient(135deg, var(--bg-page) 0%, var(--bg-card) 50%, var(--bg-card) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +51,7 @@
 }
 
 .loading-m-1 {
-  background: linear-gradient(135deg, #2dd4bf, #5eead4);
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -59,7 +59,7 @@
 }
 
 .loading-m-2 {
-  background: linear-gradient(135deg, #0d9488, #2dd4bf);
+  background: linear-gradient(135deg, var(--accent-dim), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -69,7 +69,7 @@
 
 .loading-slash {
   font-weight: 300;
-  color: #2dd4bf;
+  color: var(--accent);
   margin-left: 0.1em;
   opacity: 0.7;
   animation: logoFloat 2s ease-in-out infinite;
@@ -88,7 +88,7 @@
 .loading-bar {
   width: 200px;
   height: 4px;
-  background: rgba(13, 148, 136, 0.2);
+  background: var(--line-accent);
   border-radius: 10px;
   overflow: hidden;
   margin: 0 auto 1rem;
@@ -96,7 +96,7 @@
 
 .loading-progress {
   height: 100%;
-  background: linear-gradient(90deg, #0d9488, #2dd4bf, #5eead4);
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-bright));
   border-radius: 10px;
   animation: loadingProgress 1.5s ease-in-out infinite;
 }
@@ -117,7 +117,7 @@
 }
 
 .loading-text {
-  color: #5eead4;
+  color: var(--accent-bright);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -144,7 +144,7 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: radial-gradient(circle, rgba(13, 148, 136, 0.8), transparent);
+  background: radial-gradient(circle, var(--accent-dim), transparent);
   border-radius: 50%;
   left: var(--x);
   top: var(--y);
@@ -171,11 +171,11 @@
 }
 
 [data-theme="light"] .loading-bar {
-  background: rgba(13, 148, 136, 0.15);
+  background: var(--accent-wash);
 }
 
 [data-theme="light"] .loading-text {
-  color: #0d9488;
+  color: var(--accent-dim);
 }
 
 @media (max-width: 768px) {

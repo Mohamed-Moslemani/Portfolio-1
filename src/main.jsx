@@ -16,8 +16,6 @@ import "./styles/about.css";
 import "./styles/contact.css";
 import "./styles/footer.css";
 import "./styles/blog-link-preview.css";
-import "./styles/ambient-animation.css";
-import "./styles/constellation-graph.css";
 
 // Register a simple service worker for PWA offline support
 if ('serviceWorker' in navigator) {

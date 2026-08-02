@@ -9,7 +9,8 @@ export const services = [
       "Technology stack selection and vendor evaluation",
       "Scalability and cost optimization planning",
     ],
-    icon: null,
+    pipeline: ["discovery", "assessment", "blueprint", "roadmap"],
+    stack: ["Architecture review", "TCO modelling", "Vendor eval"],
   },
   {
     title: "AI System Development",
@@ -17,23 +18,25 @@ export const services = [
       "Full-cycle development of production-ready AI/ML systems, from data pipelines to deployed models serving real users.",
     focus: [
       "Custom ML model development and training",
-      "LLM integration and fine-tuning",
+      "LLM integration, fine-tuning, and agentic workflows",
       "Computer vision and NLP solutions",
-      "API development and model serving",
+      "API development and model serving as microservices",
     ],
-    icon: null,
+    pipeline: ["data", "train", "eval", "serve"],
+    stack: ["PyTorch", "LangGraph", "FastAPI", "vLLM"],
   },
   {
-    title: "System Integration",
+    title: "Platform & System Integration",
     description:
       "Seamlessly embed AI capabilities into your existing infrastructure. No rip-and-replace, just intelligent augmentation.",
     focus: [
       "Integration with existing enterprise systems",
-      "Data pipeline design and ETL automation",
-      "Cloud infrastructure setup (AWS, GCP, Azure)",
-      "CI/CD for ML workflows (MLOps)",
+      "Databricks and Spark ETL pipeline design and orchestration",
+      "Containers as a service and microservice architecture on Kubernetes",
+      "Cloud infrastructure setup (AWS, GCP, Azure) and CI/CD for ML (MLOps)",
     ],
-    icon: null,
+    pipeline: ["ingest", "databricks", "feature store", "k8s", "api"],
+    stack: ["Databricks", "Spark", "Airflow", "Kubernetes", "Terraform"],
   },
   {
     title: "Maintenance & Optimization",
@@ -45,7 +48,8 @@ export const services = [
       "Cost reduction and resource efficiency",
       "Iterative model improvement and retraining",
     ],
-    icon: null,
+    pipeline: ["monitor", "detect drift", "retrain", "ship"],
+    stack: ["MLflow", "Prometheus", "Grafana", "Evidently"],
   },
 ];
 
@@ -59,6 +63,9 @@ export const work = [
       "Real-time transaction monitoring and anomaly detection",
       "Production deployment with IBM partnership",
     ],
+    domain: "Financial services",
+    stack: ["Agentic orchestration", "Streaming", "Anomaly detection", "IBM Cloud"],
+    metrics: [],
   },
   {
     title: "Computer Vision & LLM Systems for Enterprise",
@@ -68,6 +75,12 @@ export const work = [
       "93% accurate volume estimation model",
       "40% increase in sales via LLM fine-tuning",
       "Real-time facial identification pipeline",
+    ],
+    domain: "Logistics & retail",
+    stack: ["PyTorch", "OpenCV", "LLM fine-tuning", "Real-time inference"],
+    metrics: [
+      { label: "Volume est. accuracy", value: "93", unit: "%", ratio: 0.93 },
+      { label: "Sales uplift", value: "+40", unit: "%" },
     ],
   },
   {
@@ -79,5 +92,26 @@ export const work = [
       "High-fidelity reconstructions outperforming baseline autoencoders",
       "End-to-end system for 3D shape restoration",
     ],
+    domain: "Research",
+    stack: ["Transformers", "Voxel grids", "Generative 3D"],
+    metrics: [],
   },
+];
+
+/* Platform and tooling actually used day to day. Surfaced in the hero because
+   the previous copy named no stack at all — a client scanning for Databricks
+   or Kubernetes found nothing. */
+export const stack = [
+  "Python",
+  "PyTorch",
+  "Databricks",
+  "Spark",
+  "Airflow",
+  "Kubernetes",
+  "Docker",
+  "FastAPI",
+  "LangGraph",
+  "Postgres",
+  "AWS",
+  "Terraform",
 ];

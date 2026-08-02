@@ -32,8 +32,8 @@
 .btn-ghost {
   padding: 0.35rem 0.65rem;
   border-radius: 8px;
-  border: 1px solid rgba(45, 212, 191, 0.18);
-  background: rgba(45, 212, 191, 0.06);
+  border: 1px solid var(--accent-wash);
+  background: var(--accent-wash);
   color: var(--text-primary);
   cursor: pointer;
   transition: transform 0.12s ease, background 0.12s ease;
@@ -42,8 +42,8 @@
 .btn-ghost:hover,
 .btn-ghost:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(45, 212, 191, 0.45);
-  background: rgba(45, 212, 191, 0.12);
+  border-color: var(--line-accent);
+  background: var(--accent-wash);
 }
 
 .share-hint {
@@ -121,7 +121,7 @@
 }
 
 .blog-content blockquote {
-  border-left: 3px solid rgba(13, 148, 136, 0.5);
+  border-left: 3px solid var(--accent-dim);
   margin: 1.75rem 0;
   padding: 0.5rem 1.25rem;
   color: var(--text-muted);
@@ -134,15 +134,15 @@
 }
 
 .blog-content a {
-  color: #2dd4bf;
+  color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: rgba(45, 212, 191, 0.4);
+  text-decoration-color: var(--line-accent);
   text-underline-offset: 3px;
   transition: text-decoration-color 0.15s ease;
 }
 
 .blog-content a:hover {
-  text-decoration-color: rgba(45, 212, 191, 0.9);
+  text-decoration-color: var(--line-accent);
 }
 
 .blog-content pre {
@@ -156,15 +156,15 @@
 }
 
 .blog-content code {
-  color: #e5e7eb;
+  color: var(--fg);
 }
 
 .blog-content :not(pre) > code {
-  background: rgba(13, 148, 136, 0.1);
+  background: var(--accent-wash);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   font-size: 0.95em;
-  color: #5eead4;
+  color: var(--accent-bright);
 }
 
 .code-copy {
@@ -174,13 +174,13 @@
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
-  background: rgba(13, 148, 136, 0.2);
-  color: #5eead4;
-  border: 1px solid rgba(13, 148, 136, 0.3);
+  background: var(--line-accent);
+  color: var(--accent-bright);
+  border: 1px solid var(--line-accent);
 }
 
 .code-copy:hover {
-  background: rgba(13, 148, 136, 0.3);
+  background: var(--line-accent);
 }
 
 .blog-toc {
@@ -192,7 +192,7 @@
 
 .toc-item {
   font-size: 0.95rem;
-  color: var(--link-color, #0d9488);
+  color: var(--link-color, var(--accent-dim));
   text-decoration: none;
 }
 
@@ -261,8 +261,8 @@
 .reading-progress-bar {
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, #0d9488, #2dd4bf);
-  box-shadow: 0 0 12px rgba(13, 148, 136, 0.18);
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+  box-shadow: 0 0 12px var(--accent-wash);
 }
 
 .blog-cover-wrap {

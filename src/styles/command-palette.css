@@ -1,0 +1,190 @@
+/* ==========================================================================
+   ⌘K palette. A portfolio that ships a command palette is making a claim
+   about the person who built it, before a single word of copy is read.
+   ========================================================================== */
+
+.cmdk-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.34rem 0.5rem 0.34rem 0.55rem;
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  color: var(--fg-3);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  transition: color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+
+.cmdk-trigger:hover {
+  color: var(--fg);
+  border-color: var(--line-strong);
+}
+
+.cmdk-trigger kbd {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+/* --- Overlay ------------------------------------------------------------- */
+
+.cmdk-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12vh var(--sp-4) var(--sp-4);
+  background: rgba(3, 4, 6, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: cmdk-fade var(--t-fast) var(--ease) both;
+}
+
+[data-theme="light"] .cmdk-scrim {
+  background: rgba(15, 23, 32, 0.28);
+}
+
+.cmdk {
+  width: min(620px, 100%);
+  max-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: cmdk-rise var(--t-mid) var(--ease-out) both;
+}
+
+@keyframes cmdk-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cmdk-rise {
+  from { opacity: 0; transform: translateY(-8px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+/* --- Input --------------------------------------------------------------- */
+
+.cmdk-input-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.cmdk-prompt {
+  color: var(--accent);
+  font-size: var(--fs-base);
+}
+
+.cmdk-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+}
+
+.cmdk-input::placeholder {
+  color: var(--fg-3);
+}
+
+/* --- Results ------------------------------------------------------------- */
+
+.cmdk-list {
+  overflow-y: auto;
+  padding: var(--sp-2) 0 var(--sp-3);
+  scrollbar-width: thin;
+}
+
+.cmdk-group {
+  padding: var(--sp-4) var(--sp-4) var(--sp-2);
+}
+
+.cmdk-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  width: 100%;
+  padding: 0.5rem var(--sp-4);
+  background: transparent;
+  border: 0;
+  border-left: 2px solid transparent;
+  color: var(--fg-2);
+  text-align: left;
+  cursor: pointer;
+  font-size: var(--fs-base);
+  font-family: inherit;
+}
+
+.cmdk-item[data-active="true"] {
+  background: var(--accent-wash);
+  border-left-color: var(--accent);
+  color: var(--fg);
+}
+
+.cmdk-item-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cmdk-item-hint {
+  flex-shrink: 0;
+  font-size: var(--fs-2xs);
+  color: var(--fg-3);
+}
+
+.cmdk-empty {
+  padding: var(--sp-5) var(--sp-4);
+  color: var(--fg-3);
+  font-size: var(--fs-sm);
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.cmdk-foot {
+  display: flex;
+  gap: var(--sp-5);
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 1px solid var(--line);
+  background: var(--bg-inset);
+  color: var(--fg-3);
+  font-size: var(--fs-2xs);
+}
+
+.cmdk-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .cmdk-trigger {
+    display: none;
+  }
+
+  .cmdk-scrim {
+    padding-top: 8vh;
+  }
+
+  .cmdk-foot {
+    display: none;
+  }
+}

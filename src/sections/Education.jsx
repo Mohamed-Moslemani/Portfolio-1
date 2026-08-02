@@ -55,10 +55,11 @@ export default function Education() {
   return (
     <Section>
       <div id="education" ref={ref} role="region" aria-label="Education section">
-        <div className="education-header-section">
+        <header className="section-head">
+          <span className="label">04 — Education</span>
           <h2>Education</h2>
-          <p className="education-subtitle">From physics fundamentals to cutting-edge AI research.</p>
-        </div>
+          <p className="section-sub">From physics fundamentals to cutting-edge AI research.</p>
+        </header>
 
         <div className="education-timeline" role="list">
           {education.map((item, index) => (

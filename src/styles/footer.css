@@ -2,9 +2,9 @@
 .site-footer {
   margin-top: 4rem;
   padding: 2.5rem 1.5rem 3rem;
-  border-top: 1px solid rgba(13, 148, 136, 0.12);
-  background: radial-gradient(circle at 20% 20%, rgba(45, 212, 191, 0.08), transparent 35%),
-              radial-gradient(circle at 80% 0%, rgba(13, 148, 136, 0.08), transparent 30%),
+  border-top: 1px solid var(--accent-wash);
+  background: radial-gradient(circle at 20% 20%, var(--accent-wash), transparent 35%),
+              radial-gradient(circle at 80% 0%, var(--accent-wash), transparent 30%),
               rgba(11, 18, 32, 0.82);
   backdrop-filter: blur(10px);
 }
@@ -28,11 +28,11 @@
 .site-footer__mark {
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: #2dd4bf;
+  color: var(--accent);
   padding: 0.35rem 0.5rem;
-  border: 1px solid rgba(45, 212, 191, 0.35);
+  border: 1px solid var(--line-accent);
   border-radius: 8px;
-  background: rgba(45, 212, 191, 0.12);
+  background: var(--accent-wash);
 }
 
 .site-footer__title {
@@ -67,9 +67,9 @@
 
 .footer-link:hover {
   transform: translateY(-2px);
-  background: rgba(45, 212, 191, 0.15);
-  border-color: rgba(45, 212, 191, 0.4);
-  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.25);
+  background: var(--accent-wash);
+  border-color: var(--line-accent);
+  box-shadow: 0 4px 12px var(--line-accent);
 }
 
 .footer-link:active {
@@ -77,27 +77,16 @@
 }
 
 .footer-cta {
-  background: linear-gradient(135deg, #0d9488, #2dd4bf);
+  background: linear-gradient(135deg, var(--accent-dim), var(--accent));
   color: white;
   border-color: rgba(255,255,255,0.18);
-  box-shadow: 0 8px 24px rgba(13, 148, 136, 0.25);
+  box-shadow: 0 8px 24px var(--line-accent);
 }
 
 .footer-link-icon {
   display: inline-block;
   width: 16px;
   height: 16px;
-}
-  display: flex;
-  gap: 0.5rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.site-footer__meta .dot {
-  opacity: 0.6;
 }
 
 @media (max-width: 600px) {

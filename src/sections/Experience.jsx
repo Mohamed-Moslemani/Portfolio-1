@@ -9,10 +9,11 @@ export default function Experience() {
   return (
     <Section>
       <div id="experience" ref={ref} role="region" aria-label="Professional experience section">
-        <div className="experience-header-section">
+        <header className="section-head">
+          <span className="label">03 — Experience</span>
           <h2>Experience</h2>
-          <p className="experience-subtitle">Where I've made an impact</p>
-        </div>
+          <p className="section-sub">Where I've made an impact</p>
+        </header>
 
         <div className="experience-timeline" role="list">
           {experience.map((item, index) => (
@@ -30,7 +31,7 @@ export default function Experience() {
                   </div>
                   <div className="experience-meta">
                     <span className="experience-period">{item.period}</span>
-                    <span className="experience-location">📍 {item.location}</span>
+                    <span className="experience-location mono">{item.location}</span>
                   </div>
                 </div>
 

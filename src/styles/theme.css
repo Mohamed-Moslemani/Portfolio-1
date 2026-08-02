@@ -1,14 +1,141 @@
+/* ==========================================================================
+   Design tokens — single source of truth.
+   Dark is the default theme; [data-theme="light"] overrides the same names.
+   No component stylesheet should contain a raw hex value.
+   ========================================================================== */
+
 :root {
-  --bg-main: #0a0f1a;
-  --bg-soft: #111827;
+  /* --- Surfaces -------------------------------------------------------- */
+  --bg-page: #07080b;
+  --bg-raised: #0b0e12;
+  --bg-card: #101419;
+  --bg-card-hover: #151a21;
+  --bg-inset: #05070a;
 
-  --text-main: #e5e7eb;
-  --text-muted: #94a3b8;
+  /* --- Hairlines ------------------------------------------------------- */
+  --line: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --line-accent: rgba(45, 212, 191, 0.28);
 
-  --accent-primary: #0d9488;
-  --accent-light: #2dd4bf;
-  --accent-muted: #5eead4;
-  --accent-secondary: #f4c752;
+  /* --- Foreground ------------------------------------------------------ */
+  --fg: #e9edf2;
+  --fg-2: #a3acb9;
+  --fg-3: #6d7885;
 
-  --max-width: 1100px;
+  /* --- Signal ---------------------------------------------------------- */
+  --accent: #2dd4bf;
+  --accent-dim: #0d9488;
+  --accent-bright: #5eead4;
+  --accent-wash: rgba(45, 212, 191, 0.08);
+  --accent-wash-strong: rgba(45, 212, 191, 0.16);
+  --amber: #f4c752;
+  --amber-dim: #e0a82e;
+
+  /* --- Legacy aliases (kept so older rules keep resolving) -------------- */
+  --bg-main: var(--bg-page);
+  --bg-soft: var(--bg-raised);
+  --text-main: var(--fg);
+  --text-primary: var(--fg);
+  --text-secondary: var(--fg-2);
+  --text-tertiary: var(--fg-3);
+  --text-muted: var(--fg-2);
+  --accent-primary: var(--accent-dim);
+  --accent-light: var(--accent);
+  --accent-muted: var(--accent-bright);
+  --accent-secondary: var(--amber);
+  --border-color: var(--line);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+
+  /* --- Type ------------------------------------------------------------ */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+    Menlo, Consolas, monospace;
+  --font-serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+
+  /* Fluid modular scale, ~1.25 ratio */
+  --fs-2xs: 0.6875rem; /* 11px — mono labels */
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-sm: 0.8125rem; /* 13px */
+  --fs-base: 0.9375rem; /* 15px */
+  --fs-md: 1.0625rem; /* 17px */
+  --fs-lg: clamp(1.125rem, 0.4vw + 1rem, 1.25rem);
+  --fs-xl: clamp(1.375rem, 0.8vw + 1.1rem, 1.625rem);
+  --fs-2xl: clamp(1.75rem, 1.6vw + 1.25rem, 2.25rem);
+  --fs-3xl: clamp(2.25rem, 3.4vw + 1.25rem, 3.5rem);
+
+  --lh-tight: 1.14;
+  --lh-snug: 1.32;
+  --lh-body: 1.62;
+
+  --tracking-tight: -0.021em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-label: 0.14em;
+
+  /* --- Space ----------------------------------------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+  --sp-section: 5rem; /* vertical rhythm between top-level sections */
+
+  /* --- Radius ---------------------------------------------------------- */
+  --r-xs: 3px;
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-full: 999px;
+
+  /* --- Motion ---------------------------------------------------------- */
+  --t-fast: 120ms;
+  --t-mid: 220ms;
+  --t-slow: 420ms;
+  --ease: cubic-bezier(0.2, 0.6, 0.25, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Elevation ------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 60px -20px rgba(0, 0, 0, 0.75);
+
+  /* --- Layout ---------------------------------------------------------- */
+  --max-width: 1140px;
+  --content-max: 1140px;
+  --measure: 68ch;
+  --nav-h: 64px;
+}
+
+[data-theme="light"] {
+  --bg-page: #fbfbfa;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-inset: #f4f5f6;
+
+  --line: rgba(15, 23, 32, 0.11);
+  --line-strong: rgba(15, 23, 32, 0.2);
+  --line-accent: rgba(13, 148, 136, 0.35);
+
+  --fg: #10161d;
+  --fg-2: #4a545f;
+  --fg-3: #737d88;
+
+  --accent: #0d9488;
+  --accent-dim: #0f766e;
+  --accent-bright: #0d9488;
+  --accent-wash: rgba(13, 148, 136, 0.07);
+  --accent-wash-strong: rgba(13, 148, 136, 0.14);
+  --amber: #b4801a;
+  --amber-dim: #96690f;
+
+  --shadow-color: rgba(15, 23, 32, 0.1);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 32, 0.06);
+  --shadow-md: 0 8px 24px -10px rgba(15, 23, 32, 0.16);
+  --shadow-lg: 0 24px 56px -24px rgba(15, 23, 32, 0.22);
 }

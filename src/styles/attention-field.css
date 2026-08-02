@@ -1,0 +1,27 @@
+.attention-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.22;
+  -webkit-mask-image: radial-gradient(
+    ellipse 130% 95% at 50% 12%,
+    #000 0%,
+    transparent 76%
+  );
+  mask-image: radial-gradient(
+    ellipse 130% 95% at 50% 12%,
+    #000 0%,
+    transparent 76%
+  );
+}
+
+[data-theme="light"] .attention-field {
+  opacity: 0.14;
+}
+
+@media (max-width: 768px) {
+  .attention-field {
+    opacity: 0.13;
+  }
+}

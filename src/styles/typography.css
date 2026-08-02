@@ -1,25 +1,129 @@
+/* ==========================================================================
+   Typography — one scale, two families.
+   Sans carries prose. Mono carries every number, label, and identifier:
+   that contrast is the primary "engineering" signal on the site.
+   ========================================================================== */
+
 body {
-  font-family: "Inter", system-ui, sans-serif;
-  color: var(--text-main);
-  background: var(--bg-main);
-  line-height: 1.6;
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  font-optical-sizing: auto;
+  color: var(--fg);
+  line-height: var(--lh-body);
+  font-feature-settings: "cv05" 1, "cv11" 1, "ss03" 1;
 }
 
-h1, h2, h3 {
-  font-weight: 600;
-  line-height: 1.2;
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
+  color: var(--fg);
+  font-weight: 560;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: var(--fs-3xl);
+  font-weight: 620;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
 }
 
+h3 {
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+}
+
+h4 {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+}
+
+/* Body copy defaults to full-strength ink. Muting is opt-in via .dim,
+   not the global default — that was what flattened the old design. */
 p {
-  color: var(--text-muted);
-  max-width: 65ch;
+  margin: 0;
+  color: var(--fg);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.dim {
+  color: var(--fg-2);
+}
+
+strong,
+b {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+/* --- Mono utilities ------------------------------------------------------ */
+
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1, "zero" 1;
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+
+/* Small-caps style section/eyebrow label. */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg-3);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+
+/* Any figure the reader might compare against another figure. */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  letter-spacing: var(--tracking-tight);
+  font-weight: 500;
+}
+
+.text-accent {
+  color: var(--accent-bright);
+}
+
+/* Visible to assistive tech only. Absolutely positioned so it never
+   contributes to layout. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.1em 0.4em;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: var(--fg-2);
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: var(--r-xs);
 }

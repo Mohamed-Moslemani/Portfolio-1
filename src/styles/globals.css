@@ -1,160 +1,215 @@
+/* ==========================================================================
+   Base layout, page substrate, focus, motion.
+   The old ambient teal glow is gone. What replaces it is a precise hairline
+   grid — the page should read as an instrument surface, not a mood.
+   ========================================================================== */
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-section {
-  padding: 8rem 1.5rem;
-}
-
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: calc(var(--nav-h) + var(--sp-5));
   overflow-x: hidden;
+  background: var(--bg-page);
 }
 
+/* The page colour lives on <html> only. If <body> also paints a background,
+   it covers the negative-z-index grid and canvas layers below. */
 body {
   overflow-x: hidden;
   max-width: 100vw;
   position: relative;
-  background: radial-gradient(1200px 900px at 18% 12%, rgba(13, 148, 136, 0.16), transparent 60%),
-    radial-gradient(900px 700px at 82% 8%, rgba(13, 148, 136, 0.14), transparent 60%),
-    #060913;
-  background-attachment: fixed;
+  background: transparent;
 }
 
-body::before,
+/* Engineering grid: 64px major cells, hairline weight, fades toward the
+   bottom of the viewport so content never fights it. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 120% 80% at 50% 0%,
+    #000 0%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 120% 80% at 50% 0%,
+    #000 0%,
+    transparent 78%
+  );
+  opacity: 0.55;
+}
+
+/* Single cool wash at the top, far weaker than the old triple-radial stack. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: -3;
   pointer-events: none;
+  background: radial-gradient(
+    ellipse 90% 55% at 50% -10%,
+    var(--accent-wash) 0%,
+    transparent 70%
+  );
 }
 
-body::before {
-  background: radial-gradient(600px 500px at 25% 30%, rgba(13, 148, 136, 0.1), transparent 60%),
-    radial-gradient(500px 450px at 75% 20%, rgba(94, 234, 212, 0.08), transparent 65%);
-  background-size: 100% 100%;
-  mix-blend-mode: screen;
-  opacity: 0.5;
-  z-index: -2;
+section {
+  padding: var(--sp-section) var(--sp-5);
+  position: relative;
 }
 
-body::after {
-  /* Grid overlay removed for cleaner consultant look */
-  display: none;
+/* --- Section headers ----------------------------------------------------- */
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-7);
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--line);
 }
 
-/* Keyboard Navigation & Focus States */
+.section-head .label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.section-head .label::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-full);
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-wash);
+}
+
+.section-sub {
+  color: var(--fg-2);
+  font-size: var(--fs-md);
+  max-width: var(--measure);
+}
+
+/* --- Surfaces ------------------------------------------------------------ */
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  transition: border-color var(--t-mid) var(--ease),
+    background-color var(--t-mid) var(--ease),
+    transform var(--t-mid) var(--ease);
+}
+
+.panel:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--line-strong);
+}
+
+/* --- Scroll reveal ------------------------------------------------------- */
+/* Previously `.animate-in` was applied by useScrollAnimation but only defined
+   in an orphaned stylesheet, so reveals silently did nothing. */
+
+.animate-in {
+  animation: reveal var(--t-slow) var(--ease-out) both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Focus --------------------------------------------------------------- */
+
 *:focus {
-  outline: 2px solid #2dd4bf;
-  outline-offset: 2px;
-}
-
-*:focus:not(:focus-visible) {
   outline: none;
 }
 
 *:focus-visible {
-  outline: 2px solid #2dd4bf;
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
 }
 
-/* Enhanced focus for interactive elements */
-button:focus-visible,
-a:focus-visible,
-.work-item:focus-visible,
-.experience-card:focus-visible,
-.interest-card:focus-visible,
-.contact-card:focus-visible {
-  outline: 2px solid #2dd4bf;
-  outline-offset: 4px;
-  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2);
-}
-
-/* Skip to content link for screen readers */
 .skip-to-content {
   position: absolute;
-  top: -40px;
-  left: 0;
-  background: #0d9488;
-  color: white;
-  padding: 8px 16px;
-  text-decoration: none;
-  z-index: 100;
+  top: -60px;
+  left: var(--sp-4);
+  z-index: 200;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--accent-dim);
+  color: #fff;
+  border-radius: var(--r-sm);
+  transition: top var(--t-fast) var(--ease);
 }
 
 .skip-to-content:focus {
-  top: 0;
+  top: var(--sp-4);
 }
 
-/* Improve keyboard navigation for cards */
-.work-item:focus,
-.experience-card:focus,
-.interest-card:focus {
-  transform: translateY(-8px);
-  border-color: rgba(13, 148, 136, 0.8);
-}
+/* --- Motion preference --------------------------------------------------- */
+/* One global rule instead of nine ad-hoc per-file overrides. */
 
-/* Button focus states */
-.btn:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(13, 148, 136, 0.4);
-}
-
-/* Navigation link focus */
-.nav-links a:focus-visible {
-  background: rgba(13, 148, 136, 0.2);
-  border-radius: 8px;
-}
-
-/* Responsive section padding */
-@media (max-width: 768px) {
-  section {
-    padding: 5rem 1.25rem;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  html {
-    scroll-padding-top: 70px;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  section {
+    padding: var(--sp-8) var(--sp-4);
+  }
+
+  body::before {
+    background-size: 48px 48px;
+  }
+
+  .section-head {
+    margin-bottom: var(--sp-6);
   }
 }
 
 @media (max-width: 480px) {
   section {
-    padding: 4rem 1rem;
-  }
-
-  html {
-    scroll-padding-top: 60px;
-  }
-}
-
-/* Responsive typography */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.75rem;
-  }
-
-  h3 {
-    font-size: 1.35rem;
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.75rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  h3 {
-    font-size: 1.2rem;
+    padding: var(--sp-7) var(--sp-4);
   }
 }

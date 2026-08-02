@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { posts } from "../posts";
 import ThemeToggle from "./ThemeToggle";
+import CommandPalette from "./CommandPalette";
 import { trackEvent } from "../utils/analytics";
 
 export default function Navbar({ activeSection, theme, toggleTheme }) {
@@ -199,8 +200,9 @@ export default function Navbar({ activeSection, theme, toggleTheme }) {
         </div>
 
         <div className="nav-actions">
-          <a 
-            href="/resume.pdf" 
+          <CommandPalette />
+          <a
+            href="/resume.pdf"
             download="M_Moslemani_Resume.pdf"
             className="resume-btn"
             aria-label="Download resume"

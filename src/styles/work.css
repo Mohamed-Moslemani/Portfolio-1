@@ -1,281 +1,267 @@
-.services-subtitle {
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+/* ==========================================================================
+   Services + case studies
+   ========================================================================== */
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.service-card {
-  position: relative;
-  padding: 2.5rem;
-  border: 1px solid rgba(13, 148, 136, 0.2);
-  border-radius: 12px;
-  background: rgba(13, 148, 136, 0.02);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
-  animation: slideInUp 0.6s ease-out forwards;
-  animation-delay: calc(var(--item-index, 0) * 0.1s);
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.1), transparent);
-  transition: left 0.5s ease;
-  z-index: 1;
-}
-
-.service-card:hover::before {
-  left: 100%;
-}
-
-.service-card:hover {
-  border-color: rgba(13, 148, 136, 0.6);
-  background: rgba(13, 148, 136, 0.05);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
-}
-
-.service-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.service-card h3 {
-  font-size: 1.25rem;
-  margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, #ffffff, #ccfbf1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.service-description {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0 0 1.5rem 0;
-  transition: color 0.3s ease;
-}
-
-.service-card:hover .service-description {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.service-details {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-}
-
-.service-details li {
-  position: relative;
-  padding-left: 1.25rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-  color: #5eead4;
-  line-height: 1.5;
-}
-
-.service-details li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 6px;
-  height: 6px;
-  background: linear-gradient(135deg, #0d9488, #2dd4bf);
-  border-radius: 50%;
+#services,
+#work {
+  max-width: var(--content-max);
+  margin: 0 auto;
 }
 
 .case-studies-section {
-  margin-top: 6rem;
+  margin-top: var(--sp-9);
+}
+
+/* --- Cards --------------------------------------------------------------- */
+
+/* 24rem min yields two columns at the content width, so four services form a
+   2x2 block instead of stranding the fourth card on its own row. */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: var(--sp-4);
 }
 
 .work-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+  gap: var(--sp-4);
 }
 
+.service-card,
 .work-item {
   position: relative;
-  padding: 2.5rem;
-  border: 1px solid rgba(13, 148, 136, 0.2);
-  border-radius: 12px;
-  background: rgba(13, 148, 136, 0.02);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-  overflow: hidden;
-  animation: slideInUp 0.6s ease-out forwards;
-  animation-delay: calc(var(--item-index, 0) * 0.1s);
-  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-5);
+  animation: reveal var(--t-slow) var(--ease-out) both;
+  animation-delay: calc(var(--item-index, 0) * 60ms);
 }
 
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.work-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.1), transparent);
-  transition: left 0.5s ease;
-  z-index: 1;
-}
-
-.work-item:hover::before {
-  left: 100%;
-}
-
+.service-card:hover,
 .work-item:hover {
-  border-color: rgba(13, 148, 136, 0.6);
-  background: rgba(13, 148, 136, 0.05);
-  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
-  box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
+  border-color: var(--line-accent);
+  transform: translateY(-2px);
 }
 
-.work-item-header {
-  margin-bottom: 1.25rem;
+/* Hairline that lights up on hover — one restrained gesture instead of the
+   old sweeping gradient + 3D tilt + scale stack. */
+.service-card::after,
+.work-item::after {
+  content: "";
+  position: absolute;
+  left: var(--sp-5);
+  right: var(--sp-5);
+  top: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0.75;
+  transition: transform var(--t-slow) var(--ease-out);
 }
 
+.service-card:hover::after,
+.service-card:focus-visible::after,
+.work-item:hover::after,
+.work-item:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.card-index {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-5);
+  font-size: var(--fs-2xs);
+  color: var(--fg-3);
+  opacity: 0.6;
+}
+
+.service-card h3,
 .work-item h3 {
-  font-size: 1.35rem;
-  margin: 0;
-  background: linear-gradient(135deg, #ffffff, #ccfbf1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transition: all 0.3s ease;
+  max-width: 26ch;
+  padding-right: var(--sp-5);
 }
 
-.work-item:hover h3 {
-  filter: brightness(1.1);
-}
-
+.service-description,
 .work-description {
-  color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0 0 1.5rem 0;
-  transition: color 0.3s ease;
+  font-size: var(--fs-base);
+  margin: 0;
 }
 
-.work-item:hover .work-description {
-  color: rgba(255, 255, 255, 0.9);
-}
+/* --- Pipeline diagram ---------------------------------------------------- */
 
-.work-focus {
+.pipeline {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-3);
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+
+.pipeline-step {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.pipeline-node {
+  padding: 0.15rem 0.45rem;
+  font-size: var(--fs-2xs);
+  color: var(--fg-2);
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xs);
+  white-space: nowrap;
+  transition: color var(--t-mid) var(--ease),
+    border-color var(--t-mid) var(--ease);
+}
+
+.service-card:hover .pipeline-node {
+  color: var(--accent-bright);
+  border-color: var(--line-accent);
+}
+
+.pipeline-arrow {
+  flex-shrink: 0;
+  stroke: var(--fg-3);
+  stroke-width: 1.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- Detail lists -------------------------------------------------------- */
+
+.service-details,
+.work-focus {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.service-details li,
+.work-focus-item {
   position: relative;
-  z-index: 2;
+  padding-left: var(--sp-4);
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+  line-height: var(--lh-snug);
 }
 
-.work-focus-tag {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  background: rgba(13, 148, 136, 0.15);
-  border: 1px solid rgba(13, 148, 136, 0.3);
-  border-radius: 20px;
-  color: #5eead4;
-  transition: all 0.3s ease;
-  font-weight: 500;
+.service-details li::before,
+.work-focus-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 5px;
+  height: 1px;
+  background: var(--accent);
 }
 
-.work-item:hover .work-focus-tag {
-  background: rgba(13, 148, 136, 0.25);
-  border-color: rgba(45, 212, 191, 0.6);
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+/* --- Chips --------------------------------------------------------------- */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  list-style: none;
+  margin: auto 0 0;
+  padding: var(--sp-4) 0 0;
+  border-top: 1px solid var(--line);
 }
 
-@media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .work-list {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.75rem;
-  }
+.chip {
+  padding: 0.18rem 0.5rem;
+  font-size: var(--fs-2xs);
+  color: var(--fg-3);
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xs);
+  white-space: nowrap;
 }
+
+/* --- Metrics ------------------------------------------------------------- */
+
+.work-domain {
+  display: block;
+  margin-bottom: var(--sp-2);
+  color: var(--accent);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--sp-4);
+  margin: 0;
+  padding: var(--sp-4);
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+
+.metric-label {
+  margin-bottom: var(--sp-2);
+  color: var(--fg-3);
+}
+
+.metric-body {
+  margin: 0;
+}
+
+.metric-value {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1;
+}
+
+.metric-unit {
+  margin-left: 0.08em;
+  font-size: 0.55em;
+  color: var(--fg-2);
+}
+
+.metric-meter {
+  display: block;
+  margin-top: var(--sp-2);
+  height: 3px;
+  background: var(--line);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+
+.metric-meter-fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+}
+
+/* --- Responsive ---------------------------------------------------------- */
 
 @media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .service-card {
-    padding: 2rem;
-  }
-
+  .services-grid,
   .work-list {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 
+  .service-card,
   .work-item {
-    padding: 2rem;
+    padding: var(--sp-4);
   }
 
-  .work-item h3 {
-    font-size: 1.2rem;
-  }
-
-  .work-description {
-    font-size: 0.95rem;
-  }
-
-  .work-focus {
-    gap: 0.6rem;
-  }
-
-  .work-focus-tag {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .work-item {
-    padding: 1.5rem;
-  }
-
-  .work-item h3 {
-    font-size: 1.1rem;
-  }
-
-  .work-description {
-    font-size: 0.9rem;
+  .service-card::after,
+  .work-item::after {
+    left: var(--sp-4);
+    right: var(--sp-4);
   }
 }
