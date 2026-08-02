@@ -4,7 +4,7 @@
 
 .about {
   max-width: var(--content-max);
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
 .about-name-note {

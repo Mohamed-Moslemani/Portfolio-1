@@ -4,7 +4,7 @@
 
 #education {
   max-width: var(--content-max);
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
 .education-timeline {

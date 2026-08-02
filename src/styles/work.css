@@ -5,11 +5,18 @@
 #services,
 #work {
   max-width: var(--content-max);
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
+/* Services and Case Studies are peer sections (01 / 02) that happen to share
+   one <section> wrapper, so they get no padding between them. Two adjacent
+   top-level sections are separated by 2x --sp-section; match that here.
+
+   Note the rule above centres with margin-inline, not `margin: 0 auto` — the
+   shorthand is an ID-level declaration and was silently resetting this
+   margin-top to zero, which jammed the 02 header against the services grid. */
 .case-studies-section {
-  margin-top: var(--sp-9);
+  margin-top: calc(var(--sp-section) * 2);
 }
 
 /* --- Cards --------------------------------------------------------------- */
