@@ -64,6 +64,27 @@ craziest person on the table. Don't let them estimate you.
 
 Life is a game, play it well, wear a mask, and be suspectible to change, be like water, fitting in all places, but your core, is well known to you.`;
 
+const cringe = `If i had to summarize the things I don't understand in this world (which are very limited in count), I would say, on top of them, sits the feeling of cringe.
+Say, I say a joke, a very funny joke (arguably), but then, the girl that should laugh on this joke, looks me dead in the eye and says, it's cringe... But really, what is cringe?
+
+As google defines it, cringe is secondhand embarrassment caused by someone behaving awkwardly, embarrassingly, or trying too hard.
+But, what is awkwardness, embarrassment, and "trying too hard"?
+Today, I will try to set a metric for the definition of cringe, a standard for awkwardness, to be able to measure it effectively, so that when I'm told that I'm cringe, I stop them and say: No, according to my Moslemani-Cringe framework, this falls below the threshold. 
+
+
+## The History
+
+Have you ever told a joke and no one laughed? For me, no, but you surely probably did. Or maybe, you gave a compliment that sounded too, cliche, or whatever they say in common slang. This, occupied with a dense feeling of silence, creates a gap, a dreadful feeling, that usually is interpreted as "cringe", in social gatherings.
+But cringe doesn't seem to be a occupying force of survival, I mean, our ancestors needed fear to flee, love to reproduce, but they surely didn't need cringe, it serves no instinct, so when did it first appear.
+In fact, theorists spectulate that the need of cringe comes from the need to appear of higher status. If you associate yourself with "cringy" people, you're seen as a internal social threat, you hangout with the odd-ones out. This is necessary for social survival, humans (not me) associate themselves with people of higher status (me), to be seen and to be attended for. The more you associate yourself with the odd ones out, the more you'll be seen as an odd one out, and hence, outcasted from your group. This drives the survival of your social hierarchy, which outbounds many of other hierarchies. 
+
+## The illusion 
+
+It's not real, it surely isn't if you think about it, as we associate a dreadful feeling of "nothingness" with a social interaction, we kind of force this feeling, we reward and reinforce it with time, and we redefine it as time passes, it changes across generations, it's not real because it lacks defintion, because when I ask that girl, what cringe is, she says, it's just, cringe. 
+Cringe hence, is a lie, based on the illusion of a social status, that I do not surely care about, and I do not believe in. Honestly, I think I do not care about all social hierarchies, mainly because I think societies are fragile, as individuals, they try to fit themselves into containers, as they chase unreal feelings, unreal interactions, and unreal definitions.
+
+Maybe this blog can be seen as cringe, maybe I've been seen as cringe, and maybe you, reading this, are being cringe. I fail to see a meaningful way to establish a definition on what it is, and what it is not, and hence, I say, it is non-existent, it's not real.`;
+
 export const posts = [
   {
     slug: "the-quantum-trademark",
@@ -172,6 +193,14 @@ export const posts = [
     tags:["change","identity","masks","authenticity"],
     excerpt: "Life is by itself a temporal drift, i like to say.",
     content: changeAndMasks
+  },
+  {
+    slug: "a-brief-history-of-cringe",
+    title: "A Brief History of Cringe",
+    date: "2026-09-03",
+    tags: ["cringe", "society", "psychology", "status"],
+    excerpt: "If i had to summarize the things I don't understand in this world (which are very limited in count), I would say, on top of them, sits the feeling of cringe.",
+    content: cringe
   }
 ];
 

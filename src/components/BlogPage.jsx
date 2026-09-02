@@ -41,6 +41,15 @@ const renderContent = (raw) => {
       continue;
     }
     flushList();
+    // Markdown ATX headings. Without this the hashes render as literal text,
+    // because the fallback below only *infers* headings from block shape.
+    // h1 is reserved for the post title, so # and ## both map to h2.
+    const atx = block.match(/^(#{1,4})\s+(.+)$/);
+    if (atx && !/\n/.test(block)) {
+      const level = Math.min(Math.max(atx[1].length, 2), 4);
+      html.push(`<h${level}>${escapeHtml(atx[2].trim())}</h${level}>`);
+      continue;
+    }
     if (block.startsWith('> ')) {
       const inner = block.replace(/^>\s?/gm, '').trim();
       html.push(`<blockquote><p>${escapeHtml(inner)}</p></blockquote>`);
