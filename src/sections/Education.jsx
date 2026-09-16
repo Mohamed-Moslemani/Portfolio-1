@@ -10,7 +10,7 @@ const education = [
     track: "Machine Learning Track",
     school: "American University of Beirut",
     logo: aubLogo,
-    date: "2026",
+    date: "2024 - 2026",
     highlights: [
       "Graduate Fellowship and Assistantship Program \u2013 Full merit scholarship",
       "TA: CMPS 262 Data Science in R and Python, CMPS 208 Business for Computing",
@@ -28,7 +28,7 @@ const education = [
     degree: "Graduate Diploma in AI and Data Science",
     school: "American University of Beirut",
     logo: aubLogo,
-    date: "2024",
+    date: "2023 - 2024",
     coursework: [
       "Data Science",
       "Machine Learning",
@@ -41,7 +41,7 @@ const education = [
     degree: "Bachelor of Science in Physics",
     school: "Beirut Arab University",
     logo: bauLogo,
-    date: "2023",
+    date: "2020 - 2023",
     highlights: [
       "Top Student of the Department (2022\u20132023)",
       "Faculty of Science Representative in university council (2022\u20132023)",
