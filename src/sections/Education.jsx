@@ -10,7 +10,7 @@ const education = [
     track: "Machine Learning Track",
     school: "American University of Beirut",
     logo: aubLogo,
-    date: "Expected 2026",
+    date: "2026",
     highlights: [
       "Graduate Fellowship and Assistantship Program \u2013 Full merit scholarship",
       "TA: CMPS 262 Data Science in R and Python, CMPS 208 Business for Computing",
