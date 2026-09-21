@@ -85,6 +85,38 @@ Cringe hence, is a lie, based on the illusion of a social status, that I do not 
 
 Maybe this blog can be seen as cringe, maybe I've been seen as cringe, and maybe you, reading this, are being cringe. I fail to see a meaningful way to establish a definition on what it is, and what it is not, and hence, I say, it is non-existent, it's not real.`;
 
+const betrayalOfTheSelf = `Across a wild change of paths, and during an utter everchanging world, you come to be a new version of yourself, often irrecognizable, the spark in the eyes die out, as a neutron star, left with a massive collapse.
+The definitions of one tend to become so elongated, watery, that they lose the definitions themselves, oddly, you become a part of nothingness, and nothingness defines you, and like water, you fit to cups across, spread through the floor, but as water, you're not rigid, you're everywhere, or nowhere.
+The self is an odd place to go into, a journey one tries to avoid, but is indefinite to go to, as in not to be shallow in your 30s, as in not be nothing, in your 30s, as in, not to be a betrayal of thyself in your 30s.
+Why 30s? A very odd numbering indeed, maybe because one, needs a definition before, or maybe because, I oddly fear that age, it's oddly my success age, but that's for another story.
+
+### Glimpse of philosophy
+
+Absurdism suggests that life is meaningless, as a wheel, life progresses, our goal is to create a meaning out of the roll of the wheel, to not allow it to roll us, but to roll with it. On the other side, nihilism suggests that life is meaningless, that the self is meaningless by itself, that the existence of the ego, is purposeless. Emptiness, on both sides, yet, an emptiness that we can leverage to say, there's a light in the end of the tunnel, or another to say, the tunnel doesn't exist, the light doesn't exist, deal with it.
+The self, as defined in psychology, is an individual consciousness, the subjective awareness of the identity, shaped by life events, subjected to biases. So, who are we really?
+One could argue, that the self doesn't exist, that whatever defintions you set on yourself, is just a reflection of your environment, the place you're born at, the feedings done by your family, the way they wrote and scolded their school of thoughts on you, and even escaping these school of thoughts, often leads to counterdependence, which is ironic, that is, what you're running towards, is just a reflection of what you fear you become, in a odd twisted sense.
+In essence, there exists no way of trying to define yourself outside what's been already defined for you.
+The term counterdependence showcases a very odd collective behaviour of humans, that is, we often negate, thinking we're escaping, but oddly, there's no escape, you're always trapped in dogma, mostly, your own dogma.
+
+### Definitions
+
+I like green, I don't want to get married, I like blue, I want 2 kids, I like motorcycles, I hate drawing, I hate myself...etc.
+These are all definitions we set to ourselves, why do we like blue, maybe that car that passed by when we were young. Why we hate marriage? Maybe the odd weird wedding we attended, or just a bad previous experience. Why we want kids? Maybe to forgive ourselves on the pain we caused to ourselves during our childhood.
+Oddly, all these definitions don't come from an intrinsic set of self, that is, a self that exists everly, that has within it all the answers and keys intrinstically, oddly, we are defined through our life. That color you hate? You're gonna love it when the girl of your dreams has a matching eye color. That work you despise? You're gonna give it your all when they pay you a buttload of money.
+The definitions change, not because we are bad people with multiple faces, but simply, because we're humans, subject to change, to the odd circuit of life that forces one to be like water at times, that he forgets, what he truly is made of.
+Nietzche agrees with me (although I don't agree with a murderer *wink if you know, you know*) as he says that the self is a dynamic ongoing process of creation and conflict. O Nietzche, my dear, I wish you could take a toll on my mind, O my dear, you'd hate and love it, I assure you.
+But, I'm irritated by this, it can't be, that I'm not me, in the end, I'm nothing, I'm just a reflection of what this world decided I be, it decided that I like blue, that I like motorcycles, oddly all fit to a small set of events that I have no recall of, and my current self has no control of. O my dear 10 year old self, if I see you, you're gonna be hurt, how did you decide for us to be this, how cruel of you, to not be what I wanted you to be? Oddly, we don't blame the current self, or the future self, but the one of 10 years old, having no control, or maybe a lot of control, but then who knows? I recall nothing.
+
+### The Betrayal
+
+We change, as with people, as with things, as with events, we stop being us, as us, we become something else, we are now, irrecognizable, with a lot of self hatered, and a bunch of blame, fear, and loneliness. Naked in our own self, in the room, looking at a mirror, we see the terror of what we became, that dull soul wondering, doing nothing, staring in the blank, as a standard person, looking through glass to see yourself, but who's this odd creature? Who's this weakling? Why is his hair shorter now? Why is he, just, neutral?
+The betrayal begins from letting go of yourself, from letting go of who you are, in a odd losing gamble to become something, or someone, that is hopefully more of you, more successful maybe, more agressive, stronger, doesn't cry easily.
+But no, who are we kidding, it's a losing gamble, the gamble on the self, as you end up in pieces, a piece of the old you, and a piece of the new you, fighting across, having an odd discussion that ends up with the death of you, metaphorically, I hope.
+The betrayal of the self starts when we sacrifice our own, when we let go, of the only thing that made us, us.
+
+I betrayed myself many times, and I hope to forgive myself for the betrayal, I hope to be able to look in the mirror in a day, and say, I forgive you, for not being you, for not showing you, for not loving you.
+I hope that you don't, I hope that whatever life gives you, gives it to the real you, to not let go of the shine, of who you truly are, maybe, just maybe, you don't have to betray yourself in the journey towards your own, maybe yoou being you, can be enough, maybe it can be enough for someone to love, or for something real to materialize.`;
+
 export const posts = [
   {
     slug: "the-quantum-trademark",
@@ -201,6 +233,14 @@ export const posts = [
     tags: ["cringe", "society", "psychology", "status"],
     excerpt: "If i had to summarize the things I don't understand in this world (which are very limited in count), I would say, on top of them, sits the feeling of cringe.",
     content: cringe
+  },
+  {
+    slug: "essays-on-betrayal-of-the-self",
+    title: "Essays on Betrayal of the Self",
+    date: "2026-09-21",
+    tags: ["self", "identity", "philosophy", "change"],
+    excerpt: "Across a wild change of paths, and during an utter everchanging world, you come to be a new version of yourself, often irrecognizable, the spark in the eyes die out, as a neutron star, left with a massive collapse.",
+    content: betrayalOfTheSelf
   }
 ];
 
