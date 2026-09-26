@@ -117,6 +117,62 @@ The betrayal of the self starts when we sacrifice our own, when we let go, of th
 I betrayed myself many times, and I hope to forgive myself for the betrayal, I hope to be able to look in the mirror in a day, and say, I forgive you, for not being you, for not showing you, for not loving you.
 I hope that you don't, I hope that whatever life gives you, gives it to the real you, to not let go of the shine, of who you truly are, maybe, just maybe, you don't have to betray yourself in the journey towards your own, maybe yoou being you, can be enough, maybe it can be enough for someone to love, or for something real to materialize.`;
 
+const rationalizationsAndLies = `In the bible, Book of Genesis (3:4), the serpent tells Eve, "You will not certainly die," contradicting God's warning about eating the forbidden fruit. Many consider this, the first lie in history, that is, at least theological history. In Islam, in Quran, a similar story also is mentioned, under a different attributer, ideally, Satan, is mentioned as the Devil, and he tries to seduce Adam, as he says,"Then Satan whispered to him; he said, 'O Adam, shall I direct you to the Tree of Eternity and a kingdom that will not deteriorate?'" (Quran 20:120)
+
+Away from the theological sense of lies, history attributes the first lie (deception method) to be a falsehood, belonging to King Darius I of Persia. 
+And while it's surely very hard to pinpoint exactly when was the first lie said, this at least mentions the first large scale deception. Darius, aiming to overthrow the previous king, carved a massive autobiography into a cliffside in western Iran (the Behistun Inscription). In it, he claimed that the man he assassinated wasn't the real king Bardiya, but an imposter magus named Gaumata who had stolen the identity of the king. 
+
+But lies, aren't just historical inaccuracies, or falsehoods, or a story of theology we learn from, infact, they're complex brain related mechanisms that require a godo amount of power, it has a relation between the reaction of the body, and multiple parts of the brain. A liar is a genius in my opinion, he who is able to decieve and convince people (Especially ME) of a certain thing, in detail, is a mastermind and a planner, I mean, maybe had he/she invested the time and energy, in real work, maybe I wouldn't have been writing this blog now, but here we are.
+Lies are deeper though, they're much deeper than just inaccuracies, in fact, they're in my opinion, the first non-physical weapon that came across us, as humans, during our not so nice evolutionary process.
+
+
+## The biological need
+
+We evolved as humans, from singular cell organisms, into tiktok consuming, dopamine addicted monsters, that scroll through the phone on a daily basis for +10 hrs, drooling over AI generated content, but who am I to judge?
+Lies appeared oddly as humans became settlers, as we went into small societies, and as hierarchy appeared, and the need of singling power showed. You see, as power grows, your resources grow, and as your resources grow, your chances of survival, whether on a social level, or on a physical level, increase. In essence, we're all pushed by our need to survive, to pass our genes. 
+The biological need behind lying, is oddly a social one, we feel the need of lying under peer preassure, or maybe, to fit in a place, or maybe, to exit a unearthy situation, or just maybe, to gain more ATTENTION. 
+Attention, is oddly a very odd currency we deal with on a daily basis, people are obsessed with being seen, and sometimes, a bit of manipulation, can give us the satisfaction needed.
+From here, I think one may ask, but Mohamed The Great, teach me how can I detect liars, and what are the classes and types of liars, and to that I answer, worry not my child, for below is a section specified for that. 
+
+##Kind of Lies
+
+I will try to classify lying into multiple categories based solely on my observations, and this categorization comes from the source of lying, meaning, the why behind the lie.
+The first kind of lying is performative lying, that is, a person that lies in order to perform, in order to impress, and this is my least favorite type, in fact, I'm usually disgusted out of people who does this. 
+Let me give you an example, say, I like a very embarrassing type of clothing, but, under peer preassure, and while sitting in a society, I perform, and I say, no, I really love traditional clothing. Another example would be, say I want to impress a group of blondies, so I just sit and say, I made last night 3000$ during the newyork session (I don't even know what the newyork session is), but you get the idea.
+See, impressing people, have always been a psychological need for us humans, we want to belong, to places, to people, to a certain time period, to a certain group, or even, to a band..hmm..
+
+The second type of lying would be exxageration or minimization. Under this, falls a wild variety of lying, mostly, they're unintentional lies, basically, you spot a certain thing that is occuring, and you overthink of it, so that you exxagerate it. Let's imagine that one of the blonde girls is having a small panic attack, you exxagerate and say, she's probably dying, and you base all your reactions under that assumption. The other way around would be minimization, which is a very effective manipulating approach by the way, so that, for the same blonde girl, one minimizer would say, quit the drama.
+As you can see, mainly the minimizer and the exxagerator are both a resultant of parents patterns, a common toxic thinking pattern that is taken from parents.
+I think the two, are mainly victims, unless you deliberately perform each separately, then you fit into our next type of lying, that is, manipulative liars. Manipulative liars are usually psychopaths, they seek control through push pull methods, and through small leveraging and through creating realities that simply do not exist.
+These are the most dangerous of all, and usually, they're oddly silent, calm, and just, watching, collecting, and under the hood, manipulating. 
+
+Above lies, sit a different layer. You see, lies are not easy to deal with, they carry within guilt, very tough guilt, that is only handled through another type of lying, that is, a self lie, but we will tackle this in another section, as the title reference dummy. 
+
+## Below and Above a Lie
+
+A lie is like a boat, above it exists a sky, and around it a lot of water, and under it, a depth of an ocean. 
+We discussed a bit on the main whys of a lie, but there's many more trust me, and many are complex, showcasing what we humans are, as we are very sophisticated species that can reproduce and reign over earth, but yet suffers to say the truth, directly.
+Below the lie lies a lot of insecurity, fear, and need. It's the fragile side of the lie, but sometimes, it's not so fragile, sometimes, a political lie can win you a campaign, or it can help you gain the attention you needed, make money...etc. Behind lies live multiple edges of existences. But like a boat, the lie remains weak, shallow, and easy to puncture,with the right tooling.
+Above the lie, lives a sky of rationalizations, convincing methods to feel less guilty. Guilt is a very strong emotion, often coupled with a bunch of others, mainly, resentment, hate, and love. 
+Sigmund Freud proposed that guilt arises from the superego punishing the ego for forbidden desires, according to a certain moral standard set by the former. But as an evolutionary need, guilt is more of a social surviving skill, acting as a pro-social glue. It signals that a social bond is threatened, motivating you to make amends and preserve group cooperation, allowing you and others to keep playing the game, that is, society. 
+But why lying is coupled with guilt? As we mentioned, lying is a survival strategy, a deception method to gain resources, power, and status, but if lying becomes abundant with no consequence, on a personal or group level, that would collapse society as we know it, it's like an unregulated use of a weapon, a very strong one, by literally everyone. But guilt is not only internal, it also originates from how the group sees us, how they view our actions, triggering external guilt, and blame. 
+
+But above all, above guilt, and above goals of lies, and above lies themselves, sit rationalizations. They're the worst, the most dangeorous, and are often coupled by an intense human being, usually accustommed to no self boundaries. You see, rationalizers act freely, too freely, they're danger to themselves and to others. 
+A rataionalizer escapes guilt by rationalizing his lie, or his action, around a deeper lie that he himself believes, and he spreads. He creates his own reality and view of things, building not-so-truthful events, convincing the so-around of them. They rationalize on their own truths, and that's, just dangerous. They live in their own head, they refuse to see the truth behind the curtain, and they spend their own lives rationalizing over things that they did, running away from guilt, that later manifests in anger, resentment, or an ill of understanding. 
+
+
+## My Ill of Understanding
+
+Lies are abundant in a society that is built on performances, the act of deception is one that leads to the growth of the individual and the group alike, under certain set of predefined conditions. Lying through history was abundant, but I couldn't learn it, I can't lie, or maybe, that's a very good lie, but who knows?
+Maybe it's not a lie that I can run 5 km in 15 minutes, and maybe it's not a lie that I can achieve all I want, regardless of it.
+Maybe it's not a rationalization, that last thing you did, maybe it's not a lie, maybe facts, numbers, and counts, are indeed, what we usually see,maybe, we aren't as bad as we see ourselves, or maybe we are. 
+It's odd to know a person, with the abundance of lies and deception, anyone with a pretty face can pass by. 
+But, I live by the principle of do good, and see good. Everyone's good, in the end, everyone has their own story, we may be, villians in some, heroes in some, or just, passerbyes, in many. 
+I exist, however, as I am here, and I refuse to endulge in a separable game of lies, to express myself in a yet deamining society. 
+The ill of understanding of lies, have always beeen my ghost, that trust, shouldn't be abundant to people who don't deserve it, but usually, we learn so often late in life, but, that's life, and, that's me. 
+
+`;
+
 export const posts = [
   {
     slug: "the-quantum-trademark",
@@ -241,6 +297,14 @@ export const posts = [
     tags: ["self", "identity", "philosophy", "change"],
     excerpt: "Across a wild change of paths, and during an utter everchanging world, you come to be a new version of yourself, often irrecognizable, the spark in the eyes die out, as a neutron star, left with a massive collapse.",
     content: betrayalOfTheSelf
+  },
+  {
+    slug: "rationalizations-and-lies",
+    title: "Rationalizations and Lies",
+    date: "2026-09-26",
+    tags: ["lies", "psychology", "philosophy", "society"],
+    excerpt: `In the bible, Book of Genesis (3:4), the serpent tells Eve, "You will not certainly die," contradicting God's warning about eating the forbidden fruit.`,
+    content: rationalizationsAndLies
   }
 ];
 
