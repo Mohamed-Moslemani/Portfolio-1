@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#e9e5dc"/>
-  <text x="32" y="43" text-anchor="middle" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="700" font-size="34" letter-spacing="-3" fill="#171b19">m<tspan fill="#d7442d">.</tspan>m</text>
+  <rect width="64" height="64" fill="#2347ad"/>
+  <path d="M11 54V22h9.5L32 37.5 43.5 22H53v32h-9V36.5L32 52 20 36.5V54z" fill="#f5f2e9"/>
+  <circle cx="51" cy="12" r="6.5" fill="#d7442d"/>
 </svg>
