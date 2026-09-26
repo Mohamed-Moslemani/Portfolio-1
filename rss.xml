@@ -2,25 +2,112 @@
 <rss version="2.0">
   <channel>
     <title>M. Moslemani Blog</title>
-    <link>https://mmoslemani.com/writing</link>
-    <description>Essays on AI systems and ML in production.</description>
+    <link>https://www.mohamedmoslemani.com/writing</link>
+    <description>Essays on physics, philosophy, society, and the way people think.</description>
     <item>
-      <title>Designing Agentic Systems That Scale</title>
-      <link>https://mmoslemani.com/writing/agentic-systems-architecture</link>
-      <pubDate>Sun, 10 Aug 2025 00:00:00 GMT</pubDate>
-      <description>A practical architecture for production-grade agentic systems, from orchestration to evaluation.</description>
+      <title>Rationalizations and Lies</title>
+      <link>https://www.mohamedmoslemani.com/writing/rationalizations-and-lies</link>
+      <guid>https://www.mohamedmoslemani.com/writing/rationalizations-and-lies</guid>
+      <pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+      <description>In the bible, Book of Genesis (3:4), the serpent tells Eve, &quot;You will not certainly die,&quot; contradicting God's warning about eating the forbidden fruit.</description>
     </item>
     <item>
-      <title>ML Systems: From Notebooks to Production</title>
-      <link>https://mmoslemani.com/writing/ml-systems-in-production</link>
-      <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
-      <description>Bridging the gap between exploration and robust, maintainable ML services.</description>
+      <title>Essays on Betrayal of the Self</title>
+      <link>https://www.mohamedmoslemani.com/writing/essays-on-betrayal-of-the-self</link>
+      <guid>https://www.mohamedmoslemani.com/writing/essays-on-betrayal-of-the-self</guid>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Across a wild change of paths, and during an utter everchanging world, you come to be a new version of yourself, often irrecognizable, the spark in the eyes die out, as a neutron star, left with a massive collapse.</description>
     </item>
     <item>
-      <title>Turning Research into Impact</title>
-      <link>https://mmoslemani.com/writing/research-to-impact</link>
-      <pubDate>Fri, 18 Apr 2025 00:00:00 GMT</pubDate>
-      <description>A framework to translate research insights into real-world systems.</description>
+      <title>A Brief History of Cringe</title>
+      <link>https://www.mohamedmoslemani.com/writing/a-brief-history-of-cringe</link>
+      <guid>https://www.mohamedmoslemani.com/writing/a-brief-history-of-cringe</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
+      <description>If i had to summarize the things I don't understand in this world (which are very limited in count), I would say, on top of them, sits the feeling of cringe.</description>
+    </item>
+    <item>
+      <title>Change and Masks</title>
+      <link>https://www.mohamedmoslemani.com/writing/change-and-masks</link>
+      <guid>https://www.mohamedmoslemani.com/writing/change-and-masks</guid>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Life is by itself a temporal drift, i like to say.</description>
+    </item>
+    <item>
+      <title>Loneliness Epidemic</title>
+      <link>https://www.mohamedmoslemani.com/writing/Loneliness%20Epidemic</link>
+      <guid>https://www.mohamedmoslemani.com/writing/Loneliness%20Epidemic</guid>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+      <description>One thing that the 21th century rewarded us with is social networks, dense ones, that oddly generates loneliness.</description>
+    </item>
+    <item>
+      <title>I’m nearly done, now what?</title>
+      <link>https://www.mohamedmoslemani.com/writing/im-nearly-done-now-what</link>
+      <guid>https://www.mohamedmoslemani.com/writing/im-nearly-done-now-what</guid>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 GMT</pubDate>
+      <description>As I’m approaching the end of my last university year, and as I only have one more semester to go, I couldn’t control the urge to write about the 3 years experience as a physics major, while opening some new horizons for the future (if it…</description>
+    </item>
+    <item>
+      <title>Meaninglessly Meaningful</title>
+      <link>https://www.mohamedmoslemani.com/writing/meaninglessly-meaningful</link>
+      <guid>https://www.mohamedmoslemani.com/writing/meaninglessly-meaningful</guid>
+      <pubDate>Tue, 30 Aug 2022 00:00:00 GMT</pubDate>
+      <description>In the summer of some year, around a time which none have heard of, and in the amidst of unrecognizable patterns, you existed. There, you stood, observing nothingness that filled space-time around you, a full nothingness, spoiling the…</description>
+    </item>
+    <item>
+      <title>Stuck in Mediocrity</title>
+      <link>https://www.mohamedmoslemani.com/writing/stuck-in-mediocrity</link>
+      <guid>https://www.mohamedmoslemani.com/writing/stuck-in-mediocrity</guid>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 GMT</pubDate>
+      <description>In the 21th century, the greatest price to pay is that of being mediocre. What is mediocrity?</description>
+    </item>
+    <item>
+      <title>On the absurdity of Life</title>
+      <link>https://www.mohamedmoslemani.com/writing/on-the-absurdity-of-life</link>
+      <guid>https://www.mohamedmoslemani.com/writing/on-the-absurdity-of-life</guid>
+      <pubDate>Tue, 21 Jun 2022 00:00:00 GMT</pubDate>
+      <description>As days progress, and as we enter a hypnotic state of mind, where mediocrity rules over us, it’s totally expected to lose interest in life, and to question meaning. After all.</description>
+    </item>
+    <item>
+      <title>The Theoretical Hype, Again!</title>
+      <link>https://www.mohamedmoslemani.com/writing/the-theoretical-hype-again</link>
+      <guid>https://www.mohamedmoslemani.com/writing/the-theoretical-hype-again</guid>
+      <pubDate>Sat, 12 Feb 2022 00:00:00 GMT</pubDate>
+      <description>When one think of all the possibilities he has in physics, it’s typical to look at theoretical physics as the land of dreams, the higher aim, the Einsteinian mystery, and typically, it’s what each undergraduate student thinks to himself as…</description>
+    </item>
+    <item>
+      <title>You’re biased and I know it</title>
+      <link>https://www.mohamedmoslemani.com/writing/youre-biased-and-i-know-it</link>
+      <guid>https://www.mohamedmoslemani.com/writing/youre-biased-and-i-know-it</guid>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 GMT</pubDate>
+      <description>1 + 1 = 3.We all had similar incidents, sometimes within ourselves, where we believed or worked through an idea, that we came to realize how wrong it was.With the constant increase of human population, reaching current levels of 7 billion,…</description>
+    </item>
+    <item>
+      <title>Alien Life: Reality or Fantasy?</title>
+      <link>https://www.mohamedmoslemani.com/writing/alien-life-reality-or-fantasy</link>
+      <guid>https://www.mohamedmoslemani.com/writing/alien-life-reality-or-fantasy</guid>
+      <pubDate>Wed, 17 Nov 2021 00:00:00 GMT</pubDate>
+      <description>Are we alone? A question that pondered our existence through our evolutionary journey here on earth.</description>
+    </item>
+    <item>
+      <title>Where a Theorist loses it</title>
+      <link>https://www.mohamedmoslemani.com/writing/where-a-theorist-loses-it</link>
+      <guid>https://www.mohamedmoslemani.com/writing/where-a-theorist-loses-it</guid>
+      <pubDate>Tue, 05 Oct 2021 00:00:00 GMT</pubDate>
+      <description>Theory is splendid but until put into practice, it’s valueless Theory, inancient Greekθεωρία (theōría), is to look and observe, and also to speculate.The range of”theory”is widely used in all sciences, however, reflecting back to ancient…</description>
+    </item>
+    <item>
+      <title>God On Trial</title>
+      <link>https://www.mohamedmoslemani.com/writing/god-on-trial</link>
+      <guid>https://www.mohamedmoslemani.com/writing/god-on-trial</guid>
+      <pubDate>Thu, 19 Aug 2021 00:00:00 GMT</pubDate>
+      <description>What are we? Perhaps, an ever-evolving species forwarding into absolute chaos.</description>
+    </item>
+    <item>
+      <title>The Quantum Trademark</title>
+      <link>https://www.mohamedmoslemani.com/writing/the-quantum-trademark</link>
+      <guid>https://www.mohamedmoslemani.com/writing/the-quantum-trademark</guid>
+      <pubDate>Fri, 11 Jun 2021 00:00:00 GMT</pubDate>
+      <description>In the early nine hundreds, a new idea emerged out of the dark, as physicists led by Max Planck and Niels Bohr formulated a new theory, to be known as the Quantum theory.</description>
     </item>
   </channel>
 </rss>

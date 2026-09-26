@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://mmoslemani.com/</loc>
-  </url>
-  <url>
-    <loc>https://mmoslemani.com/writing</loc>
-  </url>
-  <url>
-    <loc>https://mmoslemani.com/writing/agentic-systems-architecture</loc>
-  </url>
-  <url>
-    <loc>https://mmoslemani.com/writing/ml-systems-in-production</loc>
-  </url>
-  <url>
-    <loc>https://mmoslemani.com/writing/research-to-impact</loc>
-  </url>
+  <url><loc>https://www.mohamedmoslemani.com/</loc></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/rationalizations-and-lies</loc><lastmod>2026-09-26</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/essays-on-betrayal-of-the-self</loc><lastmod>2026-09-21</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/a-brief-history-of-cringe</loc><lastmod>2026-09-03</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/change-and-masks</loc><lastmod>2026-07-05</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/Loneliness%20Epidemic</loc><lastmod>2026-05-11</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/im-nearly-done-now-what</loc><lastmod>2022-12-26</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/meaninglessly-meaningful</loc><lastmod>2022-08-30</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/stuck-in-mediocrity</loc><lastmod>2022-06-28</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/on-the-absurdity-of-life</loc><lastmod>2022-06-21</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/the-theoretical-hype-again</loc><lastmod>2022-02-12</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/youre-biased-and-i-know-it</loc><lastmod>2021-12-01</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/alien-life-reality-or-fantasy</loc><lastmod>2021-11-17</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/where-a-theorist-loses-it</loc><lastmod>2021-10-05</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/god-on-trial</loc><lastmod>2021-08-19</lastmod></url>
+  <url><loc>https://www.mohamedmoslemani.com/writing/the-quantum-trademark</loc><lastmod>2021-06-11</lastmod></url>
 </urlset>

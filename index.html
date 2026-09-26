@@ -6,11 +6,18 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Type: Inter for prose, JetBrains Mono for every figure and identifier -->
+    <!-- Theme before first paint: avoids a flash when a dark choice is saved -->
+    <script>
+      try {
+        if (localStorage.getItem("mm-theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) {}
+    </script>
+
+    <!-- Type: Space Grotesk display, DM Sans prose, DM Mono labels -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Space+Grotesk:wght@400..700&display=swap"
       rel="stylesheet"
     />
     
@@ -24,22 +31,21 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mmoslemani.com/" />
+    <meta property="og:url" content="https://www.mohamedmoslemani.com/" />
     <meta property="og:title" content="M. Moslemani - AI/ML Engineer & Researcher" />
     <meta property="og:description" content="Experienced AI/ML Engineer and Researcher specializing in machine learning, data science, and innovative tech solutions. Explore my work, research, and technical expertise." />
-    <meta property="og:image" content="https://mmoslemani.com/og-image.jpg" />
+    <meta property="og:image" content="https://www.mohamedmoslemani.com/og-image.jpg" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://mmoslemani.com/" />
+    <meta property="twitter:url" content="https://www.mohamedmoslemani.com/" />
     <meta property="twitter:title" content="M. Moslemani - AI/ML Engineer & Researcher" />
     <meta property="twitter:description" content="Experienced AI/ML Engineer and Researcher specializing in machine learning, data science, and innovative tech solutions." />
-    <meta property="twitter:image" content="https://mmoslemani.com/og-image.jpg" />
+    <meta property="twitter:image" content="https://www.mohamedmoslemani.com/og-image.jpg" />
     
     <!-- Additional SEO -->
-    <link rel="canonical" href="https://mmoslemani.com/" />
-    <meta name="theme-color" content="#07080b" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)" />
+    <link rel="canonical" href="https://www.mohamedmoslemani.com/" />
+    <meta name="theme-color" content="#e9e5dc" />
 
     <!-- Structured Data: Person (helps search engines match name-spelling variants) -->
     <script type="application/ld+json">
@@ -53,8 +59,8 @@
         "Mohammad Meslmany",
         "M. Moslemani"
       ],
-      "url": "https://mmoslemani.com/",
-      "image": "https://mmoslemani.com/og-image.jpg",
+      "url": "https://www.mohamedmoslemani.com/",
+      "image": "https://www.mohamedmoslemani.com/og-image.jpg",
       "jobTitle": "AI Consultant & Engineer",
       "worksFor": {
         "@type": "Organization",
@@ -67,8 +73,8 @@
       ]
     }
     </script>
-    <script type="module" crossorigin src="/assets/index-B8X8hfKm.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CzdY5DqO.css">
+    <script type="module" crossorigin src="/assets/index-Z2Olzv9y.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-KzPsbqmJ.css">
   </head>
   <body>
     <div id="root"></div>
