@@ -1,4 +1,5 @@
-const CACHE_NAME = 'portfolio-cache-v3';
+/* global clients */
+const CACHE_NAME = 'portfolio-cache-v5';
 // Keep a minimal set of core static assets only. Avoid precaching `index.html` so
 // the service worker won't serve a stale HTML that references removed hashed
 // chunks after a deploy. `index.html` will be cached when fetched from the
@@ -6,7 +7,7 @@ const CACHE_NAME = 'portfolio-cache-v3';
 const CORE_ASSETS = [
   '/',
   '/manifest.webmanifest',
-  '/vite.svg',
+  '/favicon.svg',
 ];
 
 // Ensure the new service worker takes control ASAP
@@ -32,7 +33,7 @@ self.addEventListener('activate', (event) => {
       for (const client of allClients) {
         try {
           client.postMessage({ type: 'SW_UPDATED' });
-        } catch (e) {
+        } catch {
           // ignore
         }
       }
@@ -63,7 +64,24 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cache-first for same-origin static assets
+  // Un-hashed files (resume.pdf, feeds, favicon) change in place: network-first,
+  // falling back to cache offline, so updates are never masked by a stale copy.
+  if (!url.pathname.startsWith('/assets/')) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response && response.status === 200) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  // Cache-first for content-hashed build assets
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;

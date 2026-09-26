@@ -2,16 +2,21 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { posts } from "../posts";
 import { trackEvent } from "../utils/analytics";
-import "../styles/command-palette.css";
+import "../styles/palette.css";
+
+import { OPEN_PALETTE_EVENT as OPEN_EVENT } from "../utils/palette";
 
 const SECTIONS = [
-  ["services", "Services"],
-  ["work", "Case Studies"],
   ["experience", "Experience"],
+  ["services", "Services"],
+  ["work", "Selected work"],
   ["education", "Education"],
   ["about", "About"],
   ["contact", "Contact"],
 ];
+
+const IS_MAC =
+  typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -19,6 +24,7 @@ export default function CommandPalette() {
   const [cursor, setCursor] = useState(0);
   const inputRef = useRef(null);
   const listRef = useRef(null);
+  const returnFocusRef = useRef(null);
   const navigate = useNavigate();
 
   const commands = useMemo(() => {
@@ -39,14 +45,14 @@ export default function CommandPalette() {
       })),
       ...posts.map((p) => ({
         id: `post-${p.slug}`,
-        group: "Writing",
+        group: "Blogs",
         title: p.title,
         hint: new Date(p.date).toISOString().slice(0, 10),
         run: () => navigate(`/writing/${p.slug}`),
       })),
       {
         id: "all-writing",
-        group: "Writing",
+        group: "Blogs",
         title: "Browse all posts",
         hint: "/writing",
         run: () => navigate("/writing"),
@@ -70,9 +76,9 @@ export default function CommandPalette() {
         id: "email",
         group: "Actions",
         title: "Send an email",
-        hint: "moslemanomohamed@gmail.com",
+        hint: "mh.moslemani@gmail.com",
         run: () => {
-          window.location.href = "mailto:moslemanomohamed@gmail.com";
+          window.location.href = "mailto:mh.moslemani@gmail.com";
         },
       },
       {
@@ -112,6 +118,11 @@ export default function CommandPalette() {
     setCursor(0);
   }, []);
 
+  const show = useCallback(() => {
+    returnFocusRef.current = document.activeElement;
+    setOpen(true);
+  }, []);
+
   const runAt = useCallback(
     (index) => {
       const cmd = results[index];
@@ -128,24 +139,29 @@ export default function CommandPalette() {
     const onKey = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setOpen((v) => !v);
+        if (open) close();
+        else show();
         return;
       }
-      if (e.key === "Escape") close();
+      if (e.key === "Escape" && open) close();
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [close]);
+    window.addEventListener(OPEN_EVENT, show);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener(OPEN_EVENT, show);
+    };
+  }, [open, close, show]);
 
   useEffect(() => {
-    if (open) {
-      inputRef.current?.focus();
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!open) return;
+    inputRef.current?.focus();
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = prev;
+      const el = returnFocusRef.current;
+      if (el && document.contains(el)) el.focus();
     };
   }, [open]);
 
@@ -168,25 +184,30 @@ export default function CommandPalette() {
     }
   };
 
-  if (!open) {
-    return (
-      <button
-        className="cmdk-trigger mono"
-        onClick={() => setOpen(true)}
-        aria-label="Open command palette"
-      >
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7" />
-          <path d="M20 20l-3.5-3.5" />
-        </svg>
-        <kbd>⌘K</kbd>
-      </button>
-    );
-  }
+  const trigger = (
+    <button
+      type="button"
+      className="cmdk-trigger"
+      onClick={show}
+      aria-label="Search the site (Control or Command + K)"
+      aria-haspopup="dialog"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" />
+        <path d="M20 20l-3.5-3.5" />
+      </svg>
+      <span className="cmdk-trigger-label">Search</span>
+      <kbd aria-hidden="true">{IS_MAC ? "⌘K" : "Ctrl K"}</kbd>
+    </button>
+  );
+
+  if (!open) return trigger;
 
   let lastGroup = null;
 
   return (
+    <>
+    {trigger}
     <div className="cmdk-scrim" onMouseDown={close} role="presentation">
       <div
         className="cmdk"
@@ -206,7 +227,7 @@ export default function CommandPalette() {
               setCursor(0);
             }}
             onKeyDown={onInputKey}
-            placeholder="Jump to a section, post, or action…"
+            placeholder="Jump to a section, post, or action"
             aria-label="Search commands"
             autoComplete="off"
             spellCheck="false"
@@ -247,5 +268,6 @@ export default function CommandPalette() {
         </div>
       </div>
     </div>
+    </>
   );
 }

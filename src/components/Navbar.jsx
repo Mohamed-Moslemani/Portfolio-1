@@ -1,223 +1,296 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { posts } from "../posts";
 import ThemeToggle from "./ThemeToggle";
 import CommandPalette from "./CommandPalette";
+import { openCommandPalette } from "../utils/palette";
+import { NAV_SECTIONS } from "../data/nav";
+import { sortedPosts, fmtDate } from "../utils/posts";
 import { trackEvent } from "../utils/analytics";
 
+const latestPosts = sortedPosts.slice(0, 3);
+
+const trackResume = () =>
+  trackEvent({ action: "resume_download", category: "outbound", label: "resume.pdf" });
+
 export default function Navbar({ activeSection, theme, toggleTheme }) {
-  const featuredPosts = [...posts]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 3);
-  const [writingOpen, setWritingOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [logoClicks, setLogoClicks] = useState(0);
-  const writingRef = useRef(null);
-  const dropdownRef = useRef(null);
-  const openTimeout = useRef(null);
-  const closeTimeout = useRef(null);
-  const navbarRef = useRef(null);
+  const [blogsOpen, setBlogsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const blogsRef = useRef(null);
+  const blogsBtnRef = useRef(null);
+  const hoverTimer = useRef(null);
+  const menuBtnRef = useRef(null);
+  const panelRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const onWriting = location.pathname.startsWith("/writing");
 
-  const handleSectionClick = (e, sectionId) => {
-    setMobileOpen(false);
+  const closeMenu = useCallback((restoreFocus = true) => {
+    setMenuOpen(false);
+    if (restoreFocus) requestAnimationFrame(() => menuBtnRef.current?.focus());
+  }, []);
+
+  const goToSection = (e, id) => {
+    setMenuOpen(false);
     if (location.pathname !== "/") {
       e.preventDefault();
-      navigate("/#" + sectionId);
+      navigate("/#" + id);
     }
   };
 
-
-  const openWriting = () => {
-    clearTimeout(closeTimeout.current);
-    openTimeout.current = setTimeout(() => setWritingOpen(true), 120);
-    // Prefetch index route component
-    import('./WritingIndex');
-  };
-  const closeWriting = () => {
-    clearTimeout(openTimeout.current);
-    closeTimeout.current = setTimeout(() => setWritingOpen(false), 120);
-  };
-  const toggleWriting = () => setWritingOpen((v) => !v);
-
-  const onWritingKeyDown = (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggleWriting();
-    }
-    if (e.key === "Escape") {
-      closeWriting();
-    }
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      const items = dropdownRef.current?.querySelectorAll('.nav-dropdown-item');
-      items && items[0]?.focus();
-    }
-  };
-
+  /* ---- Blogs disclosure ------------------------------------------------ */
   useEffect(() => {
-    const onDocClick = (e) => {
-      if (!writingOpen) return;
-      const target = e.target;
-      if (
-        writingRef.current && !writingRef.current.contains(target) &&
-        dropdownRef.current && !dropdownRef.current.contains(target)
-      ) {
-        setWritingOpen(false);
+    if (!blogsOpen) return;
+    const onDown = (e) => {
+      if (!blogsRef.current?.contains(e.target)) setBlogsOpen(false);
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setBlogsOpen(false);
+        blogsBtnRef.current?.focus();
       }
     };
-    document.addEventListener('mousedown', onDocClick);
-    document.addEventListener('touchstart', onDocClick);
+    document.addEventListener("pointerdown", onDown);
+    document.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener('mousedown', onDocClick);
-      document.removeEventListener('touchstart', onDocClick);
+      document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("keydown", onKey);
     };
-  }, [writingOpen]);
+  }, [blogsOpen]);
 
-  // Logo easter egg
-  const onLogoClick = () => {
-    const newClicks = logoClicks + 1;
-    setLogoClicks(newClicks);
-    if (newClicks === 5) {
-      navbarRef.current?.classList.add('easter-egg-triggered');
-      setTimeout(() => {
-        navbarRef.current?.classList.remove('easter-egg-triggered');
-        setLogoClicks(0);
-      }, 800);
-    }
+  const hoverCapable = () => window.matchMedia("(hover: hover)").matches;
+  const onBlogsEnter = () => {
+    if (!hoverCapable()) return;
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setBlogsOpen(true), 120);
+    import("./WritingIndex");
+  };
+  const onBlogsLeave = () => {
+    if (!hoverCapable()) return;
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setBlogsOpen(false), 180);
   };
 
+  /* ---- Mobile menu: scroll lock, focus trap, escape --------------------- */
+  useEffect(() => {
+    if (!menuOpen) return;
+    const panel = panelRef.current;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusables = () =>
+      panel.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+    focusables()[0]?.focus();
+
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeMenu();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    const onResize = () => {
+      if (window.innerWidth >= 1180) setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [menuOpen, closeMenu]);
+
+  const isCurrent = (s) =>
+    s.to ? onWriting : location.pathname === "/" && activeSection === s.id;
+
   return (
-    <nav ref={navbarRef} className="navbar" role="navigation" aria-label="Main navigation">
+    <header className="nav" role="banner">
+      <a href="#main" className="skip-link">Skip to content</a>
       <div className="nav-inner">
-        <Link to="/" className="nav-logo" aria-label="Home - M. Moslemani" onClick={onLogoClick}>
-          <span className="logo-m logo-m-1" aria-hidden="true">M</span>
-          <span className="logo-m logo-m-2" aria-hidden="true">M</span>
-          <span className="logo-slash" aria-hidden="true">/</span>
+        <Link
+          to="/"
+          className="nav-brand"
+          aria-label="Mohamed Moslemani, home"
+          onClick={() => location.pathname === "/" && window.scrollTo({ top: 0 })}
+        >
+          m<span>.</span>m
         </Link>
 
-        <button
-          className={`hamburger ${mobileOpen ? 'open' : ''}`}
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={mobileOpen}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        {mobileOpen && <div className="mobile-overlay" onClick={() => setMobileOpen(false)} />}
-
-        <div className={`nav-links ${mobileOpen ? 'mobile-open' : ''}`} role="menubar">
-          <a href="#services" className={activeSection === "services" ? "active" : ""} role="menuitem" aria-current={activeSection === "services" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "services")}>
-            <span>Services</span>
-          </a>
-          <a href="#experience" className={activeSection === "experience" ? "active" : ""} role="menuitem" aria-current={activeSection === "experience" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "experience")}>
-            <span>Experience</span>
-          </a>
-          <div
-            className="nav-writing"
-            role="menuitem"
-            aria-haspopup="true"
-            aria-expanded={writingOpen ? "true" : "false"}
-            tabIndex={0}
-            onMouseEnter={openWriting}
-            onMouseLeave={closeWriting}
-            onFocus={openWriting}
-            onKeyDown={onWritingKeyDown}
-            onClick={toggleWriting}
-            ref={writingRef}
-          >
-            <span>Blogs</span>
-            <span className={`nav-caret ${writingOpen ? 'open' : ''}`} aria-hidden="true">▾</span>
-            <div ref={dropdownRef} className={`nav-dropdown ${writingOpen ? 'open' : ''}`} role="menu" aria-label="Available blogs">
-              <div className="nav-backdrop" aria-hidden="true" onClick={closeWriting}></div>
-              <Link
-                to="/writing"
-                role="menuitem"
-                className="nav-dropdown-item nav-dropdown-viewall"
-                onClick={() => {
-                  trackEvent({ action: 'nav_blog_index', category: 'navigation', label: 'view_all' });
-                  closeWriting();
-                }}
-              >
-                <span className="nav-dropdown-title">Browse all blogs</span>
-                <span className="nav-dropdown-date">Browse index</span>
-              </Link>
-              <div className="nav-dropdown-separator" aria-hidden="true"></div>
-              {featuredPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  to={`/writing/${post.slug}`}
-                  role="menuitem"
-                  className="nav-dropdown-item"
-                  onClick={() => {
-                    trackEvent({ action: 'nav_blog_click', category: 'navigation', label: post.slug });
-                    closeWriting();
-                  }}
-                  onMouseEnter={() => {
-                    // Prefetch route components
-                    import('../components/BlogPage');
-                  }}
-                  onKeyDown={(e) => {
-                    const items = dropdownRef.current?.querySelectorAll('.nav-dropdown-item');
-                    if (!items) return;
-                    const arr = Array.from(items);
-                    const idx = arr.indexOf(e.currentTarget);
-                    if (e.key === 'ArrowDown') {
-                      e.preventDefault();
-                      arr[idx + 1]?.focus();
-                    } else if (e.key === 'ArrowUp') {
-                      e.preventDefault();
-                      arr[idx - 1]?.focus();
-                    }
-                  }}
+        <nav className="nav-primary" aria-label="Primary">
+          <ul className="nav-links">
+            {NAV_SECTIONS.map((s) =>
+              s.to ? (
+                <li
+                  key={s.id}
+                  ref={blogsRef}
+                  className="nav-blogs"
+                  onMouseEnter={onBlogsEnter}
+                  onMouseLeave={onBlogsLeave}
                 >
-                  <span className="nav-dropdown-title">{post.title}</span>
-                  <span className="nav-dropdown-date">{new Date(post.date).toLocaleDateString()}</span>
-                  {post.tags?.length ? (
-                    <div className="nav-dropdown-tags" aria-hidden="true">
-                      {post.tags.map((tag) => (
-                        <span key={tag} className="nav-dropdown-tag">{tag}</span>
+                  <Link
+                    to={s.to}
+                    className="nav-link"
+                    aria-current={isCurrent(s) ? "page" : undefined}
+                    onClick={() =>
+                      trackEvent({ action: "nav_blog_index", category: "navigation", label: "nav" })
+                    }
+                  >
+                    {s.label}
+                  </Link>
+                  <button
+                    ref={blogsBtnRef}
+                    type="button"
+                    className="nav-caret"
+                    aria-expanded={blogsOpen}
+                    aria-controls="nav-blogs-panel"
+                    aria-label="Latest blog posts"
+                    onClick={() => setBlogsOpen((v) => !v)}
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+                      <path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.4" />
+                    </svg>
+                  </button>
+                  <div id="nav-blogs-panel" className="nav-dropdown" hidden={!blogsOpen}>
+                    <p className="eyebrow nav-dropdown-label">Latest</p>
+                    <ul>
+                      {latestPosts.map((p) => (
+                        <li key={p.slug}>
+                          <Link
+                            to={`/writing/${p.slug}`}
+                            className="nav-dropdown-item"
+                            onMouseEnter={() => import("./BlogPage")}
+                            onClick={() => {
+                              setBlogsOpen(false);
+                              trackEvent({ action: "nav_blog_click", category: "navigation", label: p.slug });
+                            }}
+                          >
+                            <span className="nav-dropdown-title">{p.title}</span>
+                            <span className="nav-dropdown-date">{fmtDate(p.date)}</span>
+                          </Link>
+                        </li>
                       ))}
-                    </div>
-                  ) : null}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <a href="#education" className={activeSection === "education" ? "active" : ""} role="menuitem" aria-current={activeSection === "education" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "education")}>
-            <span>Education</span>
-          </a>
-          <a href="#about" className={activeSection === "about" ? "active" : ""} role="menuitem" aria-current={activeSection === "about" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "about")}>
-            <span>About</span>
-          </a>
-          <a href="#contact" className={activeSection === "contact" ? "active" : ""} role="menuitem" aria-current={activeSection === "contact" ? "page" : undefined} onClick={(e) => handleSectionClick(e, "contact")}>
-            <span>Contact</span>
-          </a>
-        </div>
+                    </ul>
+                    <Link
+                      to="/writing"
+                      className="nav-dropdown-all"
+                      onClick={() => {
+                        setBlogsOpen(false);
+                        trackEvent({ action: "nav_blog_index", category: "navigation", label: "view_all" });
+                      }}
+                    >
+                      All posts and topics →
+                    </Link>
+                  </div>
+                </li>
+              ) : (
+                <li key={s.id}>
+                  <a
+                    href={`/#${s.id}`}
+                    className="nav-link"
+                    aria-current={isCurrent(s) ? "location" : undefined}
+                    onClick={(e) => goToSection(e, s.id)}
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              )
+            )}
+          </ul>
+        </nav>
 
         <div className="nav-actions">
           <CommandPalette />
           <a
             href="/resume.pdf"
-            download="M_Moslemani_Resume.pdf"
-            className="resume-btn"
-            aria-label="Download resume"
-            onClick={() => trackEvent({ action: 'resume_download', category: 'outbound', label: 'resume.pdf' })}
+            download="Mohamed_Moslemani_CV.pdf"
+            className="nav-resume"
+            onClick={trackResume}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span>Resume</span>
+            Resume<span aria-hidden="true"> ↓</span>
+            <span className="sr-only"> (PDF download)</span>
           </a>
           <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          <button
+            ref={menuBtnRef}
+            type="button"
+            className="nav-menu-btn"
+            aria-expanded={menuOpen}
+            aria-controls="nav-mobile-panel"
+            onClick={() => setMenuOpen(true)}
+          >
+            Menu
+          </button>
         </div>
       </div>
-    </nav>
+
+      {menuOpen && (
+        <div
+          id="nav-mobile-panel"
+          className="nav-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+          ref={panelRef}
+        >
+          <div className="nav-panel-top">
+            <span className="nav-brand" aria-hidden="true">
+              m<span>.</span>m
+            </span>
+            <button type="button" className="nav-menu-btn is-close" onClick={() => closeMenu()}>
+              Close
+            </button>
+          </div>
+          <nav aria-label="Site menu">
+            <ol className="nav-panel-links">
+              {NAV_SECTIONS.map((s, i) => (
+                <li key={s.id}>
+                  {s.to ? (
+                    <Link
+                      to={s.to}
+                      aria-current={isCurrent(s) ? "page" : undefined}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      <span className="eyebrow">{String(i + 1).padStart(2, "0")}</span>
+                      {s.label}
+                    </Link>
+                  ) : (
+                    <a href={`/#${s.id}`} onClick={(e) => goToSection(e, s.id)}>
+                      <span className="eyebrow">{String(i + 1).padStart(2, "0")}</span>
+                      {s.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <div className="nav-panel-actions">
+            <a href="/resume.pdf" download="Mohamed_Moslemani_CV.pdf" className="btn btn-solid" onClick={trackResume}>
+              Download resume (PDF)
+            </a>
+            <button
+              type="button"
+              className="btn btn-line"
+              onClick={() => {
+                closeMenu(false);
+                openCommandPalette();
+              }}
+            >
+              Search the site
+            </button>
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} withLabel />
+          </div>
+        </div>
+      )}
+    </header>
   );
 }

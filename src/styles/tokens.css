@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Design tokens — single source of truth. Component stylesheets use these
+   names only; no raw colour values outside this file.
+   Paper is the default. [data-theme="dark"] redefines the same names.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --paper: #e9e5dc;
+  --paper-2: #f5f2e9;
+  --paper-3: #dfdace;
+
+  /* Foreground */
+  --ink: #171b19;
+  --ink-2: #3a3d38;
+  --muted: #5b5e57;
+
+  /* Lines */
+  --line: #bcbeb4;
+  --line-strong: var(--ink);
+
+  /* Signal */
+  --red: #d7442d;          /* large type, fills */
+  --red-text: #b3341f;     /* small text on paper, >= 4.5:1 */
+  --blue: #2347ad;
+  --on-accent: #f5f2e9;
+
+  /* Inverted block (selected work) */
+  --block: #171b19;
+  --block-fg: #e9e5dc;
+  --block-fg-2: #b8bab3;
+  --block-muted: #92968c;
+  --block-line: #4a4e47;
+
+  /* Cobalt block (contact, footer) */
+  --cobalt: #2347ad;
+  --cobalt-fg: #f5f2e9;
+  --cobalt-fg-2: #c9cee5;
+  --cobalt-accent: #f2c3b3;
+  --cobalt-line: #7e8fcf;
+
+  /* Type */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Layout */
+  --gutter: clamp(16px, 3.2vw, 56px);
+  --max: 1560px;
+  --nav-h: 68px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 0.5s;
+
+  /* Red block (current role): darker than --red so body text passes 4.5:1 */
+  --red-block: #c13a25;
+  --on-red: #f5f2e9;
+  --block-red-text: #f07a63; /* small red text on the ink block */
+
+  --focus: var(--blue);
+  --selection-bg: var(--red);
+  --selection-fg: #ffffff;
+
+  /* Page-level values captured at the root, for panels nested inside blocks
+     that locally redefine --ink / --muted / --line. */
+  --page-ink: var(--ink);
+  --page-ink-2: var(--ink-2);
+  --page-muted: var(--muted);
+  --page-line: var(--line);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #141715;
+  --paper-2: #1b1f1c;
+  --paper-3: #232824;
+
+  --ink: #ebe7de;
+  --ink-2: #cfcbc2;
+  --muted: #a3a59c;
+
+  --line: #3b403a;
+
+  --red: #ef5a40;
+  --red-text: #f47b64;
+  --blue: #7d9bf0;
+  --on-accent: #141715;
+
+  --block: #0c0e0d;
+  --block-fg: #ebe7de;
+  --block-fg-2: #b8bab3;
+  --block-muted: #8d9188;
+  --block-line: #343832;
+
+  --cobalt: #1d3a8f;
+  --cobalt-fg: #f5f2e9;
+  --cobalt-fg-2: #c9cee5;
+  --cobalt-accent: #f2c3b3;
+  --cobalt-line: #6173b8;
+
+  --red-block: #a8301d;
+  --block-red-text: #f47b64;
+
+  --focus: #9db4ff;
+}

@@ -1,98 +1,100 @@
-import { useEffect, useState } from "react";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 
 import Navbar from "./components/Navbar";
-import BackToTop from "./components/BackToTop";
-import LoadingAnimation from "./components/LoadingAnimation";
 import Footer from "./components/Footer";
-import BlogLinkPreview from "./components/BlogLinkPreview";
-
+import BackToTop from "./components/BackToTop";
 import { useTheme } from "./hooks/useTheme";
+import { SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, setCanonical, setMeta } from "./utils/seo";
+
 import Home from "./sections/Home";
-const Work = lazy(() => import("./sections/Work"));
+import Services from "./sections/Services";
+import Work from "./sections/Work";
 import Experience from "./sections/Experience";
-import About from "./sections/About";
 import Education from "./sections/Education";
+import About from "./sections/About";
 import Contact from "./sections/Contact";
 
-import "./styles/light-theme.css";
-
-const sections = ["services", "work", "experience", "education", "about", "contact"];
-
-
-const AttentionField = lazy(() => import("./components/AttentionField"));
 const BlogPage = lazy(() => import("./components/BlogPage"));
 const WritingIndex = lazy(() => import("./components/WritingIndex"));
 const NotFound = lazy(() => import("./components/NotFound"));
+
+const SECTIONS = ["experience", "services", "work", "education", "about", "contact"];
+
+function HomePage() {
+  // Blog routes rewrite title, description, and canonical; restore them here.
+  useEffect(() => {
+    document.title = DEFAULT_TITLE;
+    setMeta("name", "description", DEFAULT_DESCRIPTION);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:url", SITE_URL + "/");
+    setCanonical(SITE_URL + "/");
+  }, []);
+
+  return (
+    <>
+      <Home />
+      <Experience />
+      <Services />
+      <Work />
+      <Education />
+      <About />
+      <Contact />
+    </>
+  );
+}
+
 export default function App() {
   const [activeSection, setActiveSection] = useState(null);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
-  // Scroll to hash after navigating from another page
+  // Hash targets after cross-route navigation; top of page otherwise.
   useEffect(() => {
     if (location.pathname === "/" && location.hash) {
-      const id = location.hash.replace("#", "");
-      setTimeout(() => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const t = setTimeout(() => {
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      }, 60);
+      return () => clearTimeout(t);
     }
-  }, [location]);
+    if (!location.hash) window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
 
+  // Active section for the nav. Re-bound whenever the home route mounts.
   useEffect(() => {
+    if (location.pathname !== "/") return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      {
-        rootMargin: "-40% 0px -40% 0px",
-      }
+      { rootMargin: "-45% 0px -50% 0px" }
     );
-
-    sections.forEach((id) => {
+    SECTIONS.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
-      <LoadingAnimation />
-      <Suspense fallback={null}>
-        <AttentionField />
-      </Suspense>
-      <BlogLinkPreview />
       <Navbar activeSection={activeSection} theme={theme} toggleTheme={toggleTheme} />
-      <BackToTop />
-      <Suspense fallback={<div style={{ padding: '6rem 1.5rem' }}>Loading…</div>}>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Home />
-              <Work />
-              <Experience />
-              <Education />
-              <About />
-              <Contact />
-            </>
-          }
-        />
-        <Route path="/writing" element={<WritingIndex />} />
-        <Route path="/writing/:slug" element={<BlogPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      </Suspense>
+      <main id="main" tabIndex={-1}>
+        <Suspense fallback={<div className="route-loading wrap eyebrow">Loading</div>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/writing" element={<WritingIndex />} />
+            <Route path="/writing/:slug" element={<BlogPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </main>
       <Footer />
+      <BackToTop />
       <Analytics />
     </>
   );

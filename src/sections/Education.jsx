@@ -1,117 +1,86 @@
-import Section from "../components/Section";
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import LazyImage from "../components/LazyImage";
-import aubLogo from "../assets/logos/31-Aug-The-American-University-of-Beirut-reveals-its-new-logo-that-reaffirms-its-identity-and-role-in-the-region-680x460.png";
-import bauLogo from "../assets/logos/bau.png";
+import { education } from "../data/experience";
+import { useReveal } from "../hooks/useReveal";
 
-const education = [
-  {
-    degree: "MSc in Computational Science",
-    track: "Machine Learning Track",
-    school: "American University of Beirut",
-    logo: aubLogo,
-    date: "2024 - 2026",
-    highlights: [
-      "Graduate Fellowship and Assistantship Program \u2013 Full merit scholarship",
-      "TA: CMPS 262 Data Science in R and Python, CMPS 208 Business for Computing",
-    ],
-    coursework: [
-      "Statistical Learning",
-      "Topics in AI: LLMs",
-      "AI in Industry",
-      "Reinforcement Learning",
-      "Algorithmic Graph Theory",
-      "Partial Differential Equations",
-    ],
-  },
-  {
-    degree: "Graduate Diploma in AI and Data Science",
-    school: "American University of Beirut",
-    logo: aubLogo,
-    date: "2023 - 2024",
-    coursework: [
-      "Data Science",
-      "Machine Learning",
-      "Deep Learning",
-      "Business Analytics",
-      "Arabic NLP",
-    ],
-  },
-  {
-    degree: "Bachelor of Science in Physics",
-    school: "Beirut Arab University",
-    logo: bauLogo,
-    date: "2020 - 2023",
-    highlights: [
-      "Top Student of the Department (2022\u20132023)",
-      "Faculty of Science Representative in university council (2022\u20132023)",
-    ],
-  },
-];
+const chronological = [...education].reverse();
 
 export default function Education() {
-  const ref = useScrollAnimation();
+  const ref = useReveal();
 
   return (
-    <Section>
-      <div id="education" ref={ref} role="region" aria-label="Education section">
-        <header className="section-head">
-          <span className="label">04 — Education</span>
-          <h2>Education</h2>
-          <p className="section-sub">From physics fundamentals to cutting-edge AI research.</p>
-        </header>
+    <section id="education" className="education" ref={ref} aria-labelledby="education-title">
+      <div className="wrap">
+        <div className="section-head eyebrow">
+          <span>04 / Education &amp; research</span>
+          <span>From physics fundamentals to AI research</span>
+        </div>
 
-        <div className="education-timeline" role="list">
-          {education.map((item, index) => (
-            <div key={index} className="education-card" style={{ "--card-index": index }} role="listitem">
-              <div className="education-timeline-dot"></div>
+        <div className="edu-intro">
+          <h2 id="education-title" className="section-title" data-reveal>
+            Foundations<span className="dot">.</span>
+          </h2>
+          <p data-reveal>
+            Physics taught me to model a system before touching it. The AI diploma added the
+            methods. The MSc turns both toward a question production keeps asking: what happens
+            when the data changes?
+          </p>
+        </div>
 
-              <div className="education-card-inner">
-                <div className="education-top">
-                  <div className="education-logo">
-                    <LazyImage
-                      src={item.logo}
-                      alt={item.school}
-                      className="education-logo-img"
-                    />
-                  </div>
-                  <div className="education-meta">
-                    <span className="education-period">{item.date}</span>
-                  </div>
-                </div>
-
-                <div className="education-content">
-                  <div className="education-title-group">
-                    <h3 className="education-degree">{item.degree}</h3>
-                    {item.track && <span className="education-track">{item.track}</span>}
-                  </div>
-
-                  <p className="education-school">{item.school}</p>
-
-                  {item.highlights && (
-                    <ul className="education-highlights">
-                      {item.highlights.map((h, i) => (
-                        <li key={i}>
-                          <span className="highlight-dot"></span>
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {item.coursework && (
-                    <div className="education-coursework">
-                      {item.coursework.map((c, i) => (
-                        <span key={i} className="coursework-tag">{c}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+        <ol className="edu-track">
+          {chronological.map((e, i) => (
+            <li key={e.degree} className="edu-step" data-reveal>
+              <p className="edu-stage eyebrow">
+                <span>{String(i + 1).padStart(2, "0")}</span> {e.role}
+              </p>
+              <p className="edu-date">{e.date}</p>
+              <h3>
+                {e.degree}
+                {e.track && <span className="edu-track-name">{e.track}</span>}
+              </h3>
+              <p className="edu-school">
+                {e.school}
+                {e.status && <span className="edu-status eyebrow">{e.status}</span>}
+              </p>
+              {e.note && <p className="edu-note">{e.note}</p>}
+              {e.highlights && (
+                <ul className="dash-list edu-highlights">
+                  {e.highlights.map((h) => (
+                    <li key={h}>{h}</li>
+                  ))}
+                </ul>
+              )}
+              {e.coursework && (
+                <p className="edu-course">
+                  <span className="eyebrow">Coursework</span>
+                  {e.coursework.join(", ")}
+                </p>
+              )}
+            </li>
           ))}
+        </ol>
+
+        <div className="research" data-reveal>
+          <p className="eyebrow research-label">Research threads</p>
+          <ul className="research-list">
+            <li>
+              <h3>Distribution shift</h3>
+              <p>
+                MSc research, AUB. How models behave when deployment data drifts from training
+                data, a common cause of model degradation in production.
+              </p>
+            </li>
+            <li>
+              <h3>3D reconstruction with transformers</h3>
+              <p>
+                Voxel completion from partial or degraded inputs, compared against baseline 3D
+                autoencoders.
+              </p>
+              <a href="#work-3d" className="case-link link-under">
+                Read the case study →
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

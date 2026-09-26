@@ -1,61 +1,58 @@
-import LinkedIn from '../assets/icons/linkedin.svg';
-import GitHub from '../assets/icons/github.svg';
-import XIcon from '../assets/icons/X.png';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { NAV_SECTIONS } from "../data/nav";
 
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const year = new Date().getFullYear();
+
+  const go = (e, id) => {
+    if (location.pathname !== "/") {
+      e.preventDefault();
+      navigate("/#" + id);
+    }
+  };
+
   return (
-    <footer className="site-footer" aria-label="Site footer">
-      <div className="site-footer__inner">
-        <div className="site-footer__brand">
-          <div className="site-footer__mark">MM/</div>
-          <div>
-            <p className="site-footer__title">M. Moslemani</p>
-            <p className="site-footer__subtitle">
-              AI Consultant & Engineer. Turning ambition into production.
-            </p>
-          </div>
-        </div>
-
-        <div className="site-footer__links">
-          <a
-            href="https://github.com/mohamed-moslemani"
-            className="footer-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src={GitHub}
-              alt="GitHub"
-              className="footer-link-icon"
-            />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/mohamed-moslemani/"
-            className="footer-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src={LinkedIn}
-              alt="LinkedIn"
-              className="footer-link-icon"
-            />
-          </a>
-
-          <a
-            href="https://x.com/mohamed07238494"
-            className="footer-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src={XIcon}
-              alt="X"
-              className="footer-link-icon"
-            />
-          </a>
-        </div>
+    <footer className="site-footer block-cobalt">
+      <div className="wrap site-footer-inner">
+        <p className="site-footer-brand">
+          <span className="nav-brand" aria-hidden="true">
+            m<span>.</span>m
+          </span>
+          <span className="eyebrow">© {year} Mohamed Moslemani</span>
+        </p>
+        <nav aria-label="Footer">
+          <ul className="site-footer-links eyebrow">
+            {NAV_SECTIONS.map((s) => (
+              <li key={s.id}>
+                {s.to ? (
+                  <Link to={s.to} className="link-under">{s.label}</Link>
+                ) : (
+                  <a href={`/#${s.id}`} className="link-under" onClick={(e) => go(e, s.id)}>
+                    {s.label}
+                  </a>
+                )}
+              </li>
+            ))}
+            <li>
+              <a href="/resume.pdf" download="Mohamed_Moslemani_CV.pdf" className="link-under">
+                Resume (PDF)
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <a
+          href="#main"
+          className="site-footer-top eyebrow link-under"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            document.getElementById("main")?.focus({ preventScroll: true });
+          }}
+        >
+          Back to top ↑
+        </a>
       </div>
     </footer>
   );

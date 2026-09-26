@@ -3,12 +3,12 @@
   "short_name": "Portfolio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0b1020",
-  "theme_color": "#3b82f6",
+  "background_color": "#e9e5dc",
+  "theme_color": "#e9e5dc",
   "description": "Personal portfolio and blog by M. Moslemani",
   "icons": [
     {
-      "src": "/vite.svg",
+      "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

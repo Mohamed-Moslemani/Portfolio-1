@@ -1,113 +1,103 @@
-import { useState } from "react";
-import Section from "../components/Section";
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import headshot from "../assets/headshot.png";
+import { useReveal } from "../hooks/useReveal";
 
-/* Emoji icons were the loudest "personal blog" tell on the page. The copy is
-   unchanged; each card is now indexed in mono instead. */
+/* Personal interests: copy unchanged from the previous site. */
 const interests = [
   { title: "Football", description: "Simply put, I love the beautiful game." },
   { title: "Farming", description: "I enjoy seeing things grow." },
   { title: "Anime", description: "My favorite genre." },
-  {
-    title: "Research",
-    description: "I am a person that likes to think, research gives that to me.",
-  },
-  {
-    title: "Gym & Sports",
-    description: "Currently working on building strength and endurance.",
-  },
+  { title: "Research", description: "I am a person that likes to think, research gives that to me." },
+  { title: "Gym & Sports", description: "Currently working on building strength and endurance." },
   { title: "Music", description: "My favorite remains the Lumineers." },
   { title: "Cosmos", description: "The universe reminds me of how small I am." },
   { title: "Love", description: "It's the only thing that I take seriously in life." },
-  {
-    title: "Motorcycle Riding",
-    description: "It's my way to let go and be free.",
-  },
+  { title: "Motorcycle Riding", description: "It's my way to let go and be free." },
 ];
 
 export default function About() {
-  const scrollRef = useScrollAnimation();
-  const [activeInterest, setActiveInterest] = useState(0);
+  const ref = useReveal();
 
   return (
-    <Section>
-      <div
-        id="about"
-        ref={scrollRef}
-        className="about"
-        role="region"
-        aria-label="About section"
-      >
-        <header className="section-head">
-          <span className="label">05 — About</span>
-          <h2>About Me</h2>
-          <p className="section-sub">The person behind the systems.</p>
-        </header>
-
-        <p className="about-name-note dim">
-          Also spelled Mohamad Meselmani, Mohammad Meselmany, or Mohammad Meslmany,
-          different transliterations, same person.
-        </p>
-
-        <div className="about-narrative">
-          <p className="narrative-text">
-            I’m an <span className="text-accent">AI Consultant &amp; Engineer</span>{" "}
-            currently at Strategy&amp; (PwC), where I help enterprises turn AI
-            ambitions into production systems that actually work.
-          </p>
-
-          <p className="narrative-text">
-            My approach is simple:{" "}
-            <span className="text-accent">understand the problem deeply</span>, design
-            the right architecture, build it end-to-end, and make sure it keeps
-            running. No hype, no over-promising. Just systems that deliver.
-          </p>
-
-          <p className="narrative-text">
-            I’ve built fraud detection systems for banks, computer vision pipelines
-            processing live CCTV feeds, and LLM solutions that drove a 40% increase in
-            sales. Whether you’re a startup exploring AI or an enterprise scaling it —
-            <span className="text-accent"> I can help</span>.
-          </p>
+    <section id="about" className="about" ref={ref} aria-labelledby="about-title">
+      <div className="wrap">
+        <div className="section-head eyebrow">
+          <span>05 / About</span>
+          <span>The person behind the systems</span>
         </div>
 
-        <div className="interests-container">
-          <h3 className="interests-title">What I Care About</h3>
-
-          <div className="interests-grid" role="list" aria-label="Personal interests">
-            {interests.map((interest, index) => (
-              <div
-                key={interest.title}
-                className={`interest-card${
-                  activeInterest === index ? " active" : ""
-                }`}
-                onMouseEnter={() => setActiveInterest(index)}
-                onFocus={() => setActiveInterest(index)}
-                tabIndex={0}
-                role="listitem"
-                aria-label={`${interest.title}: ${interest.description}`}
-              >
-                <span className="interest-index mono" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h4 className="interest-title">{interest.title}</h4>
-                <p className="interest-description dim">{interest.description}</p>
-              </div>
-            ))}
+        <div className="about-grid">
+          <div className="about-left">
+            <h2 id="about-title" className="section-title" data-reveal>
+              Physics
+              <br />
+              first. Then
+              <br />
+              systems<span className="dot">.</span>
+            </h2>
+            <figure className="about-portrait" data-reveal>
+              <span className="about-portrait-frame">
+              <img
+                src={headshot}
+                alt="Portrait of Mohamed Moslemani"
+                width="380"
+                height="380"
+                loading="lazy"
+                decoding="async"
+              />
+              </span>
+              <figcaption className="eyebrow">Mohamed Moslemani · Beirut</figcaption>
+            </figure>
           </div>
-        </div>
 
-        <div className="about-philosophy">
-          <div className="philosophy-card">
-            <span className="label">Philosophy</span>
+          <div className="about-copy" data-reveal>
             <p>
-              I believe rigor beats hype. Depth beats speed. And meaningful work comes
-              from thinking honestly, accepting constraints, and choosing hard paths on
-              purpose.
+              I studied physics at Beirut Arab University and finished as the department's top
+              student. Physics trains one habit above all: reduce a system to what actually
+              governs it, and write down the assumptions before trusting a result.
+            </p>
+            <p>
+              That habit carried into computational science at AUB, where my graduate research
+              looks at distribution shift, models meeting data that no longer resembles what
+              they were trained on. It is the problem production systems face every day,
+              stated formally.
+            </p>
+            <p>
+              In industry I have built computer vision and LLM systems for a storage and logistics
+              company, an agentic system and fraud detection model for a banking client, and, at Strategy&amp;,
+              where I lead a team of five, forecasting models, agentic automation, and production
+              data pipelines. The domain changes. The
+              method doesn't: define the failure modes, measure honestly, and ship the smallest
+              system that holds up.
             </p>
           </div>
         </div>
+
+        <blockquote className="philosophy" data-reveal>
+          <p>
+            I believe rigor beats hype. Depth beats speed. And meaningful work comes from thinking
+            honestly, accepting constraints, and choosing hard paths on purpose.
+          </p>
+          <footer className="eyebrow">Philosophy</footer>
+        </blockquote>
+
+        <div className="interests" data-reveal>
+          <h3 className="eyebrow">Outside work</h3>
+          <ul>
+            {interests.map((it, i) => (
+              <li key={it.title}>
+                <span className="eyebrow">{String(i + 1).padStart(2, "0")}</span>
+                <strong>{it.title}</strong>
+                <span>{it.description}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p className="about-name-note">
+          Also spelled Mohamad Meselmani, Mohammad Meselmany, or Mohammad Meslmany: different
+          transliterations, same person.
+        </p>
       </div>
-    </Section>
+    </section>
   );
 }
