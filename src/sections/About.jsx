@@ -64,7 +64,7 @@ export default function About() {
             <p>
               In industry I have built computer vision and LLM systems for a storage and logistics
               company, an agentic system and fraud detection model for a banking client, and, at Strategy&amp;,
-              where I lead a team of five, forecasting models, agentic automation, and production
+              where I am Data Tech Lead, forecasting models, agentic automation, and production
               data pipelines. The domain changes. The
               method doesn't: define the failure modes, measure honestly, and ship the smallest
               system that holds up.

@@ -10,7 +10,7 @@ export const experience = [
     period: "Jan 2026 – Present",
     current: true,
     summary:
-      "Data Tech Lead for a team of five: I set technical direction, review designs and code, and own delivery of the team's data and AI workstreams.",
+      "As Data Tech Lead, I set technical direction, review designs and code, and own delivery of the team's data and AI workstreams.",
     contributions: [
       "Lead forecasting models for multiple business KPIs, primarily revenue, used for planning and decision support",
       "Designed and delivered an end-to-end agentic AI system (LangGraph, FastAPI), exposed as an internal service that automates workflows across several departments",

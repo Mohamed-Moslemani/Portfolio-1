@@ -19,8 +19,8 @@ export default function Home() {
         <div className="hero-foot">
           <p className="hero-lede">
             I design, build, and maintain machine learning, LLM, and data systems, from the
-            pipeline to the deployed service. Currently AI/ML Engineer at Strategy&amp; (PwC
-            network), where I lead a team of five as Data Tech Lead; MSc in Computational Science at AUB.
+            pipeline to the deployed service. Currently AI/ML Engineer and Data Tech Lead at
+            Strategy&amp; (PwC network); MSc in Computational Science at AUB.
           </p>
           <div className="hero-actions">
             <a href="#work" className="btn btn-solid">
