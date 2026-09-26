@@ -1,10 +1,18 @@
 /* Source: public/resume.pdf (Mohamed_Moslemani_CV.pdf, 2026-09-05) and the
    previous site copy. No client names or confidential detail. */
 
+import strategyLogo from "../assets/logos/strategy-mono.png";
+import quantechLogo from "../assets/logos/quantech-mono.png";
+import storageLogo from "../assets/logos/storage-mono.png";
+import unicefLogo from "../assets/logos/unicef-mono.png";
+import aubLogo from "../assets/logos/aub-mono.png";
+import bauLogo from "../assets/logos/bau-mono.png";
+
 export const experience = [
   {
     role: "AI/ML Engineer · Data Tech Lead",
     company: "Strategy&",
+    logo: strategyLogo,
     org: "PwC Network",
     location: "Beirut · On-site",
     period: "Jan 2026 – Present",
@@ -22,6 +30,8 @@ export const experience = [
   {
     role: "AI Technical Consultant",
     company: "QuanTech",
+    logo: quantechLogo,
+    logoWide: true,
     org: "Midis Group · IBM Partner",
     location: "Beirut · On-site",
     period: "Oct 2025 – Jan 2026",
@@ -38,6 +48,7 @@ export const experience = [
   {
     role: "Data Scientist",
     company: "800Storage",
+    logo: storageLogo,
     location: "Dubai · Remote",
     period: "Feb 2024 – Jul 2025",
     summary:
@@ -54,6 +65,7 @@ export const experience = [
   {
     role: "Data Intern",
     company: "UNICEF",
+    logo: unicefLogo,
     location: "Lebanon · On-site",
     period: "Sep 2023 – Feb 2024",
     summary:
@@ -68,6 +80,7 @@ export const experience = [
 export const education = [
   {
     degree: "MSc in Computational Science",
+    logo: aubLogo,
     track: "Machine Learning Track",
     school: "American University of Beirut",
     short: "AUB",
@@ -91,6 +104,7 @@ export const education = [
   },
   {
     degree: "Graduate Diploma in AI and Data Science",
+    logo: aubLogo,
     school: "American University of Beirut",
     short: "AUB",
     date: "2023 – 2024",
@@ -105,6 +119,7 @@ export const education = [
   },
   {
     degree: "Bachelor of Science in Physics",
+    logo: bauLogo,
     school: "Beirut Arab University",
     short: "BAU",
     date: "2020 – 2023",

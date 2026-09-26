@@ -1,5 +1,6 @@
 import { education } from "../data/experience";
 import { useReveal } from "../hooks/useReveal";
+import LogoMark from "../components/LogoMark";
 
 const chronological = [...education].reverse();
 
@@ -28,9 +29,12 @@ export default function Education() {
         <ol className="edu-track">
           {chronological.map((e, i) => (
             <li key={e.degree} className="edu-step" data-reveal>
-              <p className="edu-stage eyebrow">
-                <span>{String(i + 1).padStart(2, "0")}</span> {e.role}
-              </p>
+              <div className="edu-top">
+                <p className="edu-stage eyebrow">
+                  <span>{String(i + 1).padStart(2, "0")}</span> {e.role}
+                </p>
+                <LogoMark src={e.logo} size="md" />
+              </div>
               <p className="edu-date">{e.date}</p>
               <h3>
                 {e.degree}

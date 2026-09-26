@@ -630,6 +630,67 @@ section.block-ink {
   }
 }
 
+/* ==== Logo marks ==================================================== */
+
+/* Mono PNGs are drawn in --ink (#171b19). invert() maps them to near-paper
+   for dark surfaces; alpha is untouched, so cut-outs stay transparent. */
+.logo-mark {
+  display: block;
+  width: auto;
+  max-width: 132px;
+  object-fit: contain;
+  opacity: 0.88;
+  transition: opacity 0.2s;
+}
+
+.logo-mark--md {
+  height: 40px;
+}
+
+.logo-mark--wide {
+  height: 22px;
+  margin-block: 9px;
+}
+
+.logo-mark--lg {
+  height: 58px;
+}
+
+.timeline-row:hover .logo-mark,
+.edu-step:hover .logo-mark {
+  opacity: 1;
+}
+
+:root[data-theme="dark"] .logo-mark,
+.block-red .logo-mark {
+  filter: invert(1) sepia(0.12) brightness(0.96);
+}
+
+:root[data-theme="dark"] .block-red .logo-mark {
+  filter: invert(1) sepia(0.12) brightness(0.96);
+}
+
+.timeline-head .logo-mark {
+  margin-bottom: 16px;
+}
+
+.now-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.edu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.edu-top + .edu-date {
+  margin-top: 8px;
+}
+
 /* ==== Experience ====================================================== */
 
 .experience {

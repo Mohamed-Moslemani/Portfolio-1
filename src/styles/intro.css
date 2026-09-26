@@ -1,0 +1,195 @@
+/* First-visit intro. Timeline lives in Intro.jsx (T); keep durations in sync. */
+
+.intro-playing body {
+  overflow: hidden;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.intro.is-lift {
+  transform: translateY(-100%);
+}
+
+.intro-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 22px var(--gutter);
+}
+
+.intro-top,
+.intro-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+}
+
+.intro-top {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  animation: intro-fade 0.4s var(--ease) both;
+}
+
+.intro-bottom {
+  padding-top: 16px;
+  border-top: 1px solid var(--ink);
+  align-items: baseline;
+  animation: intro-fade 0.4s 0.1s var(--ease) both;
+}
+
+/* ---- Wordmark grid ---------------------------------------------------- */
+
+.intro-grid {
+  --cell: min(calc((100vw - 2 * var(--gutter)) / 16), 64px);
+  --gap: calc(var(--cell) * 0.16);
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell));
+  grid-template-rows: repeat(var(--rows), var(--cell));
+  gap: var(--gap);
+}
+
+.intro-cell {
+  border: 1px dashed var(--line);
+  animation: intro-fade 0.3s calc(var(--i) * 12ms) both;
+}
+
+.is-fill .intro-cell,
+.is-flood .intro-cell,
+.is-lift .intro-cell {
+  animation: intro-fill 0.35s calc(var(--i) * 25ms) cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+.intro-cell.is-dot {
+  border-radius: 50%;
+  border-color: var(--red);
+}
+
+.is-fill .intro-cell.is-dot,
+.is-flood .intro-cell.is-dot,
+.is-lift .intro-cell.is-dot {
+  animation-name: intro-fill-dot;
+}
+
+@keyframes intro-fill {
+  0% {
+    background: transparent;
+    transform: scale(0.4);
+  }
+  60% {
+    background: var(--red);
+  }
+  100% {
+    background: var(--ink);
+    border-color: transparent;
+    transform: none;
+  }
+}
+
+@keyframes intro-fill-dot {
+  0% {
+    transform: scale(0.3);
+  }
+  100% {
+    background: var(--red);
+    transform: none;
+  }
+}
+
+@keyframes intro-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---- Pipeline caption ------------------------------------------------- */
+
+.intro-stages {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.intro-stages li {
+  transition: color 0.2s;
+}
+
+.intro-stages li.is-on {
+  color: var(--ink);
+}
+
+.intro-stages li.is-on:last-child {
+  color: var(--red-text);
+}
+
+.intro-arrow {
+  margin-inline: 0.7em;
+  color: var(--muted);
+}
+
+/* ---- Flood from the dot ----------------------------------------------- */
+
+.intro-flood {
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  clip-path: circle(0 at var(--fx, 50%) var(--fy, 50%));
+  transition: clip-path 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.is-flood .intro-flood,
+.is-lift .intro-flood {
+  clip-path: circle(150vmax at var(--fx, 50%) var(--fy, 50%));
+}
+
+/* ---- Hero entrance as the flood lifts --------------------------------- */
+
+.intro-reveal .hero-eyebrow,
+.intro-reveal .hero-title,
+.intro-reveal .hero-foot,
+.intro-reveal .hero-aside {
+  animation: intro-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.intro-reveal .hero-eyebrow {
+  animation-delay: 0.15s;
+}
+
+.intro-reveal .hero-title {
+  animation-delay: 0.22s;
+}
+
+.intro-reveal .hero-foot {
+  animation-delay: 0.34s;
+}
+
+.intro-reveal .hero-aside {
+  animation-delay: 0.28s;
+}
+
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-skip {
+    display: none;
+  }
+
+  .intro-grid {
+    --cell: calc((100vw - 2 * var(--gutter)) / 15.5);
+  }
+}

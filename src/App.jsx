@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import Intro from "./components/Intro";
 import { useTheme } from "./hooks/useTheme";
 import { SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, setCanonical, setMeta } from "./utils/seo";
 
@@ -82,6 +83,7 @@ export default function App() {
 
   return (
     <>
+      <Intro />
       <Navbar activeSection={activeSection} theme={theme} toggleTheme={toggleTheme} />
       <main id="main" tabIndex={-1}>
         <Suspense fallback={<div className="route-loading wrap eyebrow">Loading</div>}>

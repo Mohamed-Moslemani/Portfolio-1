@@ -1,5 +1,6 @@
 import { experience } from "../data/experience";
 import { useReveal } from "../hooks/useReveal";
+import LogoMark from "../components/LogoMark";
 
 function RoleBody({ item }) {
   const points = [...(item.highlights || []), ...(item.contributions || [])];
@@ -37,7 +38,10 @@ export default function Experience() {
       <article className="now block-red" data-reveal aria-labelledby="role-now">
         <div className="wrap now-grid">
           <div className="now-head">
-            <p className="eyebrow">Now · {current.period}</p>
+            <div className="now-top">
+              <LogoMark src={current.logo} size="lg" />
+              <p className="eyebrow">Now · {current.period}</p>
+            </div>
             <h3 id="role-now" className="now-company">
               {current.company}
             </h3>
@@ -59,6 +63,7 @@ export default function Experience() {
             <li key={item.company} className="timeline-row" data-reveal>
               <p className="timeline-date eyebrow">{item.period}</p>
               <div className="timeline-head">
+                <LogoMark src={item.logo} size={item.logoWide ? "wide" : "md"} />
                 <h3>{item.company}</h3>
                 <p>
                   {item.role}
