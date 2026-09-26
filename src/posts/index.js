@@ -134,7 +134,7 @@ The biological need behind lying, is oddly a social one, we feel the need of lyi
 Attention, is oddly a very odd currency we deal with on a daily basis, people are obsessed with being seen, and sometimes, a bit of manipulation, can give us the satisfaction needed.
 From here, I think one may ask, but Mohamed The Great, teach me how can I detect liars, and what are the classes and types of liars, and to that I answer, worry not my child, for below is a section specified for that. 
 
-##Kind of Lies
+## Kind of Lies
 
 I will try to classify lying into multiple categories based solely on my observations, and this categorization comes from the source of lying, meaning, the why behind the lie.
 The first kind of lying is performative lying, that is, a person that lies in order to perform, in order to impress, and this is my least favorite type, in fact, I'm usually disgusted out of people who does this. 
